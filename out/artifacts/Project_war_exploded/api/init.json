@@ -61,7 +61,7 @@
           "child": [
             {
               "title": "督办管理",
-              "href": "Moudel_3/table.html",
+              "href": "Moudel3/table.html",
               "icon": "fa fa-list-alt",
               "target": "_self"
             },

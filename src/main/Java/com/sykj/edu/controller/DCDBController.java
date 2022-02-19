@@ -14,7 +14,7 @@ public class DCDBController {
     @Autowired
     private DBGLDao dBDao;
 
-
+//督办信息表
     @RequestMapping("findall")
     @ResponseBody
     public Object list(String SupervisorTitlef,String dbr,String bdbr,String beginTime,String finishTime,String Supervisorstatusf,int page,int limit){
