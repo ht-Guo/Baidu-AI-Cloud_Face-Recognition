@@ -3,8 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>内部消息</title>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function(){
+            var idf=window.location.href.split("?")[1];
+            $.ajax({
+                dateType:"json",
+                url:"../DcdbController/NBXX",
+                method:"post",
+                data:{"idf":idf},
+                success:function(date){
+                            var str1="<font>"+date.bdbr+"</font>"
+                            var str2="<font>"+date.supervisorTitlef+"</font>"
+                            var str3="<font>"+date.supervisorMsgf+"</font>"
+                            $("#d1").append(" "+str1);
+                            $("#d2").append(" "+str2);
+                            $("#d3").append(" "+str3);
+                    }
+            })
+        })
+    </script>
+    <style>
+        body{
+            font-family: '楷体', '微软雅黑';
+            font-size: 24px;
+        }
+    </style>
 </head>
-<body style="background-color: red">
-sdfadsfasd
+<body style="background-color: #eeeeee">
+<div>
+    <div><h3>内部短信息回复</h3></div>
+    <div id="d1">接收人:</div>
+    <br/>
+    <div id="d2">标题:</div>
+    <br/>
+    <div id="d3">信息内容:</div>
+</div>
 </body>
 </html>

@@ -106,7 +106,7 @@
                 {field: 'dbr', width:230,title:'督办人'},
                 {field: 'bdbr', width:230,title:'被督办人'},
                 {field: 'supervisorTimef',width:230,title:'督办日期'},
-                {field: 'supervisorstatusf',width:210,title:'状态'}
+                {field: 'status',width:210,title:'状态'}
             ]],
             //一页多少条数据
             limits: [1, 3, 5,],
@@ -235,11 +235,12 @@
     //             })
     //         }
     //     })
-    //     layer.open({
-    //         type:2,
-    //         content:"Moudel3/NBXX.html",
-    //         area: ['800px', '600px']
-    //     })
+        layer.open({
+            type:2,
+            title:false,
+            content:"Moudel3/NBXX.html?"+obj.data.idf,
+            area: ['600px', '400px'],
+        })
     })
 
     });

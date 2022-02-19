@@ -2,6 +2,8 @@ package com.sykj.edu.dao;
 
 
 
+import com.sykj.edu.vo.ArchiveSupervisorVo;
+
 import java.util.List;
 
 
@@ -15,4 +17,5 @@ public interface DBGLDao {
 //    private String Supervisorstatusf;//状态
 //    private String SupervisorReplyIDf;//回复内容
     public List<Object> findAll(String SupervisorTitlef, String dbr, String bdbr, String beginTime, String finishTime, String Supervisorstatusf, int page,int limit);
+    public ArchiveSupervisorVo findAll(String idf);
 }

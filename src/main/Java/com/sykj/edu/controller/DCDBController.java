@@ -1,6 +1,7 @@
 package com.sykj.edu.controller;
 
 import com.sykj.edu.dao.DBGLDao;
+import com.sykj.edu.vo.ArchiveSupervisorVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,5 +23,11 @@ public class DCDBController {
         return findall;
     }
 
-
+    //内部信息表
+    @RequestMapping("NBXX")
+    @ResponseBody
+    public Object list(String idf){
+        ArchiveSupervisorVo findall = dBDao.findAll(idf);
+        return findall;
+    }
 }

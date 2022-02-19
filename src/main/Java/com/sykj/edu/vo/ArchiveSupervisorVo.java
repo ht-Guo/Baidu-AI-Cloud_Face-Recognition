@@ -9,7 +9,30 @@ public class ArchiveSupervisorVo {
     private String SupervisorTimef;//督办时间
     private String Supervisorstatusf;//状态
     private String SupervisorReplyIDf;//回复内容
-//    查出的总数据
+    private String status;
+
+    public ArchiveSupervisorVo(int idf, String dbr, String bdbr, String supervisorTitlef, String supervisorMsgf, String supervisorTimef, String supervisorstatusf, String supervisorReplyIDf, String status, int count) {
+        this.idf = idf;
+        this.dbr = dbr;
+        this.bdbr = bdbr;
+        SupervisorTitlef = supervisorTitlef;
+        SupervisorMsgf = supervisorMsgf;
+        SupervisorTimef = supervisorTimef;
+        Supervisorstatusf = supervisorstatusf;
+        SupervisorReplyIDf = supervisorReplyIDf;
+        this.status = status;
+        this.count = count;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    //    查出的总数据
     private int count;
 
 
@@ -19,18 +42,6 @@ public class ArchiveSupervisorVo {
     }
 
     public void setCount(int count) {
-        this.count = count;
-    }
-
-    public ArchiveSupervisorVo(int idf, String dbr, String bdbr, String supervisorTitlef, String supervisorMsgf, String supervisorTimef, String supervisorstatusf, String supervisorReplyIDf, int count) {
-        this.idf = idf;
-        this.dbr = dbr;
-        this.bdbr = bdbr;
-        SupervisorTitlef = supervisorTitlef;
-        SupervisorMsgf = supervisorMsgf;
-        SupervisorTimef = supervisorTimef;
-        Supervisorstatusf = supervisorstatusf;
-        SupervisorReplyIDf = supervisorReplyIDf;
         this.count = count;
     }
 

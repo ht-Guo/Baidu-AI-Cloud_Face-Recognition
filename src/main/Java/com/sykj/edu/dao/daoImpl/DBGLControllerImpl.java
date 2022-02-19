@@ -41,15 +41,6 @@ public class DBGLControllerImpl implements DBGLDao {
         String sql2="select count(*) as 'count' from ("+sql+")a  ";
 //        分页查询
         sql+=" limit "+((limit*page)-limit)+","+limit+" ";
-
-
-
-        System.out.println(sql);
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println(sql2);
-
         try {
             List<ArchiveSupervisorVo> data = qr.query(conn, sql, new BeanListHandler<ArchiveSupervisorVo>(ArchiveSupervisorVo.class));
             ArchiveSupervisorVo d=qr.query(conn,sql2,new BeanHandler<ArchiveSupervisorVo>(ArchiveSupervisorVo.class));
@@ -69,5 +60,22 @@ public class DBGLControllerImpl implements DBGLDao {
             }
         }
         return null;
+    }
+
+    @Override
+    public ArchiveSupervisorVo findAll(String idf) {
+        Connection conn=ConnUtil.getConn();
+        ArchiveSupervisorVo asv=null;
+        String sql="select * from (select  a.idf,s2.truename as 'dbr',s3.truename  as 'bdbr',a.SupervisorTitlef ,a.SupervisorMsgf,a.SupervisorTimef,case a.Supervisorstatusf when 1 then '未读' " +
+                "when 2 then '已读' " +
+                "when 3 then '已回复' " +
+                "else '' end 'status',a.Supervisorstatusf,a.SupervisorReplyIDf  from archivesupervisor a,sys_user s2,sys_user s3 where a.Supervisorf=s2.UIDF and a.beenSupervisorf=s3.UIDF)dc where idf=? ";
+        try {
+            asv=qr.query(conn,sql,new BeanHandler<>(ArchiveSupervisorVo.class),idf);
+            return asv;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return asv;
     }
 }
