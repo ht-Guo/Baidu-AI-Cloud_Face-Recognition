@@ -1,0 +1,326 @@
+.body_left {
+	background-IMAGE: url(IMAGE/space_bodybg.gif);
+}
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #ffffff;
+	font-size: 12px;
+	color: #2c3a45;
+}
+a:link {
+	color: #386586;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #666666;
+}
+a:hover {
+	text-decoration: none;
+	color: #386586;
+}
+a:active {
+	text-decoration: none;
+}
+.daohang_txt{
+	font-size: 12px;
+	font-weight: bold;
+	color: #666;
+	line-height: 30px;
+}
+.button {
+	font-size: 14px;
+	color: #436b84;
+	background-IMAGE: url(dh_bg.jpg);
+	height: 31px;
+	width: 80px;
+	line-height: 31px;
+	font-weight: bold;
+}
+.button_under {
+	font-size: 14px;
+	color: #FFFFFF;
+	background-IMAGE: url(dh_bg1.jpg);
+	height: 31px;
+	width: 80px;
+	border: none;
+	line-height: 31px;
+	font-weight: bold;
+}
+.Menu_OutTable {
+	border: 1px solid #B4B7B9;
+}
+.Menu_OutTd {
+	font-size: 12px;
+	line-height: 24px;
+	color: #FFFFFF;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+.Menu_OutTd2 {
+	font-size: 12px;
+	line-height: 24px;
+	color: #FFFFFF;
+	background-color: #3D6A83;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	border-top-color: #676767;
+	border-right-color: #676767;
+	border-bottom-color: #676767;
+	border-left-color: #676767;
+}
+.div{
+	display:none;
+}
+.bj1 {
+	BACKGROUND-IMAGE: url(bt_1.gif);
+	BACKGROUND-REPEAT: no-repeat;
+	FONT-SIZE: 12px;
+	FONT-WEIGHT: bold;
+	color: #000000;
+	line-height: 22px;
+	cursor: hand;
+}
+.bj2 {
+	BACKGROUND-IMAGE: url(bt_2.gif);
+	BACKGROUND-REPEAT: no-repeat;
+	FONT-SIZE: 12px;
+	FONT-WEIGHT: normal;
+	color: #333333;
+	line-height: 22px;
+	cursor: hand;
+}
+.bk{
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #88b6e7;
+	border-bottom-color: #88b6e7;
+	border-left-color: #88b6e7;
+}
+.bk_q{
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #88b6e7;
+	border-bottom-color: #88b6e7;
+	border-left-color: #88b6e7;
+}
+.bk_qb{
+	border: 1px solid #88b6e7;
+	background-color: #d3f1ff;
+}
+.btl{
+	font-size: 12px;
+	line-height: 24px;
+	font-weight: bold;
+	color: #293243;
+	background-image: url(btl_bg.jpg);
+	background-repeat: repeat-x;
+	background-position: top;
+}
+.tr_1{
+	font-size: 12px;
+	line-height: 24px;
+	color: #2c3a45;
+	background-color: #fefefe;
+	text-indent: 6px;
+	cursor: hand;
+}
+.tr_2{
+	font-size: 12px;
+	line-height: 24px;
+	color: #2c3a45;
+	background-color: #f0f9ff;
+	text-indent: 6px;
+	cursor: hand;
+}
+.lihang{
+	font-size: 12px;
+	line-height: 28px;
+	font-weight: bold;
+	color: #2a3a49;
+	text-indent: 10px;
+}
+.k_b{
+	border: 1px solid #b2bac5;
+	font-size: 12px;
+	height: 18px;
+	color: #34312c;
+	background-color: #EBF2FA;
+}
+.ss_txt{
+	font-size: 12px;
+	line-height: 24px;
+	color: #303942;
+}
+.bnt{
+	font-size: 12px;
+	color: #213d55;
+	background-image: url(btn.gif);
+	text-align: left;
+	text-indent: 8px;
+	height: 19px;
+	width: 51px;
+	background-position: left;
+	border: none;
+}
+.xz_q{
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #b3b9c5;
+	border-bottom-color: #b3b9c5;
+	border-left-color: #b3b9c5;
+}
+.xz_bt{
+	font-size: 14px;
+	line-height: 24px;
+	font-weight: bold;
+	color: #28405a;
+}
+.xz_txt{
+	font-size: 12px;
+	line-height: 22px;
+	color: #2c3a45;
+}
+.xz_b{
+	border: 1px solid #b2bac5;
+	font-size: 12px;
+	
+	color: #34312c;
+	background-color: #EBF2FA;
+	vertical-align: bottom;
+}
+.xz_b1{
+	border: 1px solid #b2bac5;
+	font-size: 12px;
+	
+	color: #34312c;
+	background-color: #DFECFC;
+	vertical-align: bottom;
+}
+.xz_b2{
+	border: 1px solid #b2bac5;
+	font-size: 12px;
+	color: #0033FF;
+	background-color: #E1E8F8;
+	vertical-align: bottom;
+}
+.bnt_bg{
+	font-size: 12px;
+	color: #213d55;
+	background-image: url(btn_bg.gif);
+	height: 22px;
+	width: 66px;
+	background-position: left;
+	border: none;
+	cursor: hand;
+}
+.bnt_bg7{
+	font-size: 12px;
+	color: #213d55;
+	background-image: url(btn_bg7.gif);
+	height: 22px;
+	width: 100px;
+	background-position: left;
+	border: none;
+}
+.xz_an{
+	font-size: 12px;
+	color: #FFFFFF;
+	background-image: url(xz_an.jpg);
+	height: 22px;
+	width: 65px;
+	background-position: left;
+	border: none;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.sj_txt{
+	font-size: 14px;
+	line-height: 27px;
+	color: #FFFFFF;
+}
+.sj_txt:link {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+a.sj_txt:visited {
+	text-decoration: none;
+	color: #fff;
+}
+a.sj_txt:hover {
+	text-decoration: none;
+	color: #00FFFF;
+}
+.xzbb{
+	font-size: 14px;
+	line-height: 29px;
+	font-weight: normal;
+	color: #386586;
+}
+
+.bbbt{
+	font-size: 16px;
+	line-height: 30px;
+	font-weight: bold;
+	color: #293243;
+	background-image: url(btl_bg.jpg);
+	background-repeat: repeat-x;
+	background-position: top;
+}
+bb_td{
+	font-size: 12px;
+	line-height: 22px;
+	color: #2c3a45;
+}
+.bb_td td{
+	background-color: #f0f9ff;
+	font-size: 12px;
+}
+.x_an{
+	font-size: 12px;
+	color: #213d55;
+	background-image: url(x_an.jpg);
+	height: 23px;
+	width: 48px;
+	background-position: left;
+	border: none;
+	
+}
+.STYLE3 {color: #0033FF}
+.autofinish {
+	BORDER-RIGHT: #000000 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #000000 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; BACKGROUND: #eeeeee; PADDING-BOTTOM: 2px; BORDER-LEFT: #000000 1px solid; COLOR: #0000cc; PADDING-TOP: 2px; BORDER-BOTTOM: #000000 1px solid; FONT-FAMILY: arial
+}
+.autofinish_over {
+	FONT-SIZE: 12px; BACKGROUND: #c4e4ff; MARGIN: 5px; COLOR: #0000cc
+}
+.autofinish TD {
+	FONT-SIZE: 12px
+}
+.dk{
+	background-color: #d3f1ff;
+}
+.STYLE4 {color: #FF0000}
+/*-----------------------------------------------------------------------------------------------------------*/
