@@ -174,7 +174,10 @@
                                     layer.msg("账号未启用")
                                 }else{
                                     window.sessionStorage.setItem("username",data.username)
-                                    window.location.href="index.html?"+data.isactive;
+                                    window.sessionStorage.setItem("truename",data.truename)
+                                    window.sessionStorage.setItem("uidf",data.uidf)
+                                    window.location.href="index.html";
+
                                 }
                                 //弹窗
                                 // layer.open({"title":"1224","content":"index.html"})

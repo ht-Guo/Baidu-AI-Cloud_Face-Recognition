@@ -16,6 +16,9 @@ public interface DBGLDao {
 //    private String SupervisorTimef;//督办时间
 //    private String Supervisorstatusf;//状态
 //    private String SupervisorReplyIDf;//回复内容
-    public List<Object> findAll(String SupervisorTitlef, String dbr, String bdbr, String beginTime, String finishTime, String Supervisorstatusf, int page,int limit);
+    public List<Object> findAll(String SupervisorTitlef, String dbr, String bdbr, String beginTime, String finishTime, String Supervisorstatusf, int page,int limit,int userId);
+//    通过idf查看内部信息表
     public ArchiveSupervisorVo findAll(String idf);
+//    修改状态,增加内容
+    public int updateStatus(int status,String idf,String SupervisorReplyIDf);
 }

@@ -3,22 +3,25 @@ package com.sykj.edu.vo;
 /*
   Created by IntelliJ IDEA.
   @User: guohaotian
-  @Date: 2022/2/19 23:05
+  @Date: 2022/2/21 9:38
   @package_Name: com.sykj.edu.vo
-  @Class_Name: abc
+  @Class_Name: Login
   To change this template use File | Settings | File Templates.
 */
-public class abc {
-    private String title;
-    private String href;
-    private String img;
 
-    public String getImg() {
-        return img;
+//初始化接口
+public class Login {
+    private String title;
+    private String image;
+    private String href;
+
+    public Login(String title, String image, String href) {
+        this.title = title;
+        this.image = image;
+        this.href = href;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public Login() {
     }
 
     public String getTitle() {
@@ -27,6 +30,14 @@ public class abc {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getHref() {

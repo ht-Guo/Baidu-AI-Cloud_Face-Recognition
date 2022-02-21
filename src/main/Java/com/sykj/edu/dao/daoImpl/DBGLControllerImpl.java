@@ -21,12 +21,12 @@ import java.util.List;
 public class DBGLControllerImpl implements DBGLDao {
     QueryRunner qr = new QueryRunner();
     @Override
-    public List<Object> findAll(String SupervisorTitlef, String dbr, String bdbr, String beginTime, String finishTime, String Supervisorstatusf,int page,int limit) {
+    public List<Object> findAll(String SupervisorTitlef, String dbr, String bdbr, String beginTime, String finishTime, String Supervisorstatusf,int page,int limit,int userId) {
         Connection conn = ConnUtil.getConn();
         String sql="select * from (select  a.idf,s2.truename as 'dbr',s3.truename  as 'bdbr',a.SupervisorTitlef ,a.SupervisorMsgf,a.SupervisorTimef,case a.Supervisorstatusf when 1 then '未读' " +
                 "when 2 then '已读' " +
                 "when 3 then '已回复' " +
-                "else '' end 'status',a.Supervisorstatusf,a.SupervisorReplyIDf  from archivesupervisor a,sys_user s2,sys_user s3 where a.Supervisorf=s2.UIDF and a.beenSupervisorf=s3.UIDF)dc  where 1=1 ";
+                "else '' end 'status',a.Supervisorstatusf,a.SupervisorReplyIDf  from archivesupervisor a,sys_user s2,sys_user s3 where a.Supervisorf=s2.UIDF and a.beenSupervisorf=s3.UIDF and (s2.uidf ='"+userId+"' or s3.uidf ='"+userId+"'))dc  where 1=1 ";
 //        信访标题
         sql+=(SupervisorTitlef!=null  && !SupervisorTitlef.equals("") )? " and dc.SupervisorTitlef like '%"+SupervisorTitlef+"%' ":" ";
 //        督办人
@@ -78,4 +78,20 @@ public class DBGLControllerImpl implements DBGLDao {
         }
         return asv;
     }
+
+//    修改状态,增加内容
+    @Override
+    public int updateStatus(int status,String idf,String SupervisorReplyIDf) {
+        Connection conn=ConnUtil.getConn();
+        String sql="update archivesupervisor set Supervisorstatusf = ?,SupervisorReplyIDf=? where  idf= ? ";
+        try {
+            int update = qr.update(conn, sql, status, SupervisorReplyIDf,idf);
+            return update;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+
 }

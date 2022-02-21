@@ -35,22 +35,22 @@
                         <div class="layui-inline">
                             <label class="layui-form-label"><font size="2">督办日期</font>&nbsp;:&nbsp;</label>
                             <div class="layui-input-inline">
-                                <input type="date" name="beginTime" autocomplete="off" class="layui-input">
+                                <input type="text" id="lay_date1" name="beginTime" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label"><font size="2">截止到</font>&nbsp;:&nbsp;</label>
                             <div class="layui-input-inline">
-                                <input type="date" name="finishTime" autocomplete="off" class="layui-input">
+                                <input type="text" id="lay_date2" name="finishTime" autocomplete="off" class="layui-input">
                             </div>
                         </div>
-                        <div class="layui-inline">
+                        <div class="layui-form-item" pane style="width: 500px">
                             <label class="layui-form-label"><font size="2">状态</font>&nbsp;:&nbsp;</label>
-                            <div class="layui-input-inline" style="width: 600px">
-                                <input type="radio" name="Supervisorstatusf" autocomplete="off" class="layui-input"  value="" title="全部">
-                                <input type="radio" name="Supervisorstatusf" autocomplete="off" class="layui-input" value="1" title="未读">
-                                <input type="radio" name="Supervisorstatusf" autocomplete="off" class="layui-input" value="2" title="已读">
-                                <input type="radio" name="Supervisorstatusf" autocomplete="off" class="layui-input" value="3" title="已回复">
+                            <div class="layui-input-block">
+                                <input type="radio" name="Supervisorstatusf"  value="" title="全部">
+                                <input type="radio" name="Supervisorstatusf"  value="1" title="未读">
+                                <input type="radio" name="Supervisorstatusf"  value="2" title="已读">
+                                <input type="radio" name="Supervisorstatusf"  value="3" title="已回复">
                             </div>
                         </div>
 
@@ -76,15 +76,32 @@
 </div>
 
 <script>
-    layui.use(['form', 'table','miniPage','element'], function () {
+    layui.use(['form', 'table','miniPage','element','laydate'], function () {
         var $ = layui.jquery,
             form = layui.form,
+            laydate=layui.laydate,
             table = layui.table,
+            // lay
             miniPage = layui.miniPage;
 
+        //日期初始化
+        laydate.render({
+            elem:"#lay_date1",
+            type:'datetime',
+            range:false,//双面板
+            format: 'yyyy-MM-dd HH:mm:ss'
+        })
+        laydate.render({
+            elem:"#lay_date2",
+            type:'datetime',
+            range:false,//双面板
+            format: 'yyyy-MM-dd HH:mm:ss'
+        })
+
+        var userId=window.sessionStorage.getItem("uidf");
         table.render({
             elem: '#currentTableId',
-            url: 'DcdbController/findall',
+            url: 'DcdbController/findall/',
             parseData:function(res){
                 return {
                     "code": 0,
@@ -93,6 +110,8 @@
                     "data":res[0]
                 }
             },
+            method:"post",
+            where:{"userId":userId},
             toolbar: '#toolbarDemo',
             defaultToolbar: ['filter', 'exports', 'print', {
                 title: '提示',
@@ -126,22 +145,23 @@
 
             //执行搜索重载
 
-            // console.log(SupervisorTitlef)
-        //String SupervisorTitlef, String dbr, String bdbr, String beginTime, String finishTime, String Supervisorstatusf
         table.reload('currentTableId',{
-                url:'DcdbController/findall',
-                method:"post",
+                // url:'DcdbController/findall',
+                // method:"post",
                 where:{
                         "SupervisorTitlef":result.SupervisorTitlef,
                         "dbr":result.dbr,
                         "bdbr":result.bdbr,
                         "beginTime":result.beginTime,
                         "finishTime":result.finishTime,
-                        "Supervisorstatusf":result.Supervisorstatusf
-                },page: {
-                curr: 1//重新从第一页开始
-            }
-            },'data');
+                        "Supervisorstatusf":result.Supervisorstatusf,
+                        "userId":userId
+                }
+        })
+            //     },page: {
+            //     curr: 1//重新从第一页开始
+            // }
+            // },'data');
             // table.render();
 
             //查询完之后清除表单中的值
@@ -222,7 +242,7 @@
     /**
      * 行双击事件（lay-filter的值）
      * **/
-    table.on('rowDouble(currentTableFilter)',function(obj){
+    var a=table.on('rowDouble(currentTableFilter)',function(obj){
     // 查看消息
     //     var idf=obj.data.idf;
     //     $.ajax({
@@ -235,13 +255,31 @@
     //             })
     //         }
     //     })
+
         layer.open({
             type:2,
             title:false,
             content:"Moudel3/NBXX.html?"+obj.data.idf,
-            area: ['600px', '400px'],
+            area: ['700px', '450px'],
+            //右上角关闭时自定义状态
+            cancel:function(){
+                window.location.reload();
+                // parent.layer.getFrameIndex(window.name);//获取当前窗口的name
+            }
         })
     })
+        console.log(a);
+    //     var status="yes";
+    // function close(status){
+    //     if(status=="yes") {
+    //         window.parent.location.reload();//刷新父页面
+    //         var index=parent.location.getFrameIndex(window.name);//获取窗口索引
+    //         parent.layer.close(index);
+    //     }
+    //     var index=parent.layer.getFrameIndex(window.name);
+    //     parent.layer.close(index);
+    // }
+    // close(status);
 
     });
 </script>

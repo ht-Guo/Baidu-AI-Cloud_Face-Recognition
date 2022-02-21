@@ -10,11 +10,15 @@ package com.sykj.edu.controller;
   To change this template use File | Settings | File Templates.
 */
 
-import com.sykj.edu.vo.InitVo;
+import com.sykj.edu.dao.InitDao;
+import com.sykj.edu.vo.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,132 +29,153 @@ import java.util.List;
 @Controller
 @RequestMapping("json")
 public class InitController {
+    @Autowired
+    private InitDao InitDao;
 
-    @RequestMapping("init")
+    @RequestMapping("init/{uidf}")
     @ResponseBody
-    public Object init(){
-        InitVo iV=new InitVo();
+    public Object init(@PathVariable("uidf")Integer uidf) {
+
+        List<Childs> allInit = InitDao.findAllInit(uidf);
         /**
          * homeInfo
          * */
-        InitVo.home home=iV.new home("首页","page/welcome-1.html");
+        Home home=new Home("首页","page/welcome-1.html");
         /**
          * logoInfo
          * */
-        InitVo.login login=iV.new login("信访系统","images/logo.png","");
+        Login login=new Login("信访系统","images/logo.png","");
         /**
          * menuInfo
          * */
-//        首页
-        final InitVo.childs sY=iV.new childs("首页","page/menu.html","fa fa-home","_self",null);
+        //        信访功能模块
+        List xFGNMK=new ArrayList();
 
-//        信访登记
-        final InitVo.childs xFDJ=iV.new childs("信访登记","page/menu.html","fa fa-window-maximize","_self",null);
+        //        首页
+        final Childs sY=new Childs("首页","page/menu.html","fa fa-home","_self",null);
+        xFGNMK.add(sY);
 
+        for(int i=0;i<allInit.size();i++){
+        switch(allInit.get(i).getTitle()){
+            case "信访登记":
+                //        信访登记
+                final   Childs xFDJ=new  Childs("信访登记","page/menu.html","fa fa-window-maximize","_self",null);
+                xFGNMK.add(xFDJ);
+                break;
+
+            case"信访处理":
 //      信访处理(待办件，非正常上访，已办件)
 //        待办件
-         final InitVo.childs dBJ=iV.new childs("待办件","page/welcome-1.html","fa fa-tachometer","_self",null);
+                final   Childs dBJ=new  Childs("待办件","page/welcome-1.html","fa fa-tachometer","_self",null);
 //        非正常上访
-         final InitVo.childs fZCCSF=iV.new childs("非正常上访","page/welcome-2.html","fa fa-tachometer","_self",null);
+                final   Childs fZCCSF=new  Childs("非正常上访","page/welcome-2.html","fa fa-tachometer","_self",null);
 //        已办件
-         final InitVo.childs yBJ=iV.new childs("已办件","page/welcome-3.html","fa fa-tachometer","_self",null);
-        List xFList=new ArrayList(){
-            {
-                add(dBJ);
-                add(fZCCSF);
-                add(yBJ);
-            }
-        };
-        final InitVo.childs xFCL=iV.new childs("信访处理","page/setting.html","fa fa-gears","_self",xFList);
+                final   Childs yBJ=new  Childs("已办件","page/welcome-3.html","fa fa-tachometer","_self",null);
+                List xFList=new ArrayList(){
+                    {
+                        add(dBJ);
+                        add(fZCCSF);
+                        add(yBJ);
+                    }
+                };
+                final   Childs xFCL=new  Childs("信访处理","page/setting.html","fa fa-gears","_self",xFList);
+                xFGNMK.add(xFCL);
+                break;
 
-//        督查督办(督办管理，实时督查，系统预警，督查统计)
+            case "督查督办":
+                //        督查督办(督办管理，实时督查，系统预警，督查统计)
 //        督办管理
-        final InitVo.childs dBGL=iV.new childs("督办管理","Moudel3/table.html","fa fa-list-alt","_self",null);
+                final   Childs dBGL=new  Childs("督办管理","Moudel3/table.html","fa fa-list-alt","_self",null);
 //        实时督查
-        final InitVo.childs sSDC=iV.new childs("实时督查","page/table.html","fa fa-navicon","_self",null);
+                final   Childs sSDC=new  Childs("实时督查","page/table.html","fa fa-navicon","_self",null);
 //        系统预警
-        final InitVo.childs xTYJ=iV.new childs("系统预警","page/table.html","fa fa-tags","_self",null);
+                final   Childs xTYJ=new  Childs("系统预警","page/table.html","fa fa-tags","_self",null);
 //        督查统计
-        final InitVo.childs dCTJ=iV.new childs("督查统计","page/table.html","fa fa-tags","_self",null);
-        List dCList=new ArrayList(){
-            {
-                add(dBGL);
-                add(sSDC);
-                add(xTYJ);
-                add(dCTJ);
-            }
-        };
-        final InitVo.childs dCDB=iV.new childs("督察督办","page/table.html","fa fa-gears","_self",dCList);
+                final   Childs dCTJ=new  Childs("督查统计","page/table.html","fa fa-tags","_self",null);
+                List dCList=new ArrayList(){
+                    {
+                        add(dBGL);
+                        add(sSDC);
+                        add(xTYJ);
+                        add(dCTJ);
+                    }
+                };
+                final   Childs dCDB=new  Childs("督察督办","page/table.html","fa fa-gears","_self",dCList);
+                xFGNMK.add(dCDB);
+                break;
 
-//        查询统计(本局报表，上报报表，综合查询)
+                case"查询统计":
+                    //        查询统计(本局报表，上报报表，综合查询)
 //        本局报表
-        final InitVo.childs bJBB=iV.new childs("本局报表","page/form.html","fa fa-list-alt","_self",null);
+                    final   Childs bJBB=new  Childs("本局报表","page/form.html","fa fa-list-alt","_self",null);
 //        上报报表
-        final InitVo.childs sBBB=iV.new childs("上报报表","page/form-step.html","fa fa-navicon","_self",null);
+                    final   Childs sBBB=new  Childs("上报报表","page/form-step.html","fa fa-navicon","_self",null);
 //        综合查询
-        final InitVo.childs zHCX=iV.new childs("综合查询","page/login-3.html","fa fa-tags","_blank",null);
-        List tJList=new ArrayList(){
-            {
-                add(bJBB);
-                add(sBBB);
-                add(zHCX);
-            }
-        };
-        final InitVo.childs cXTJ=iV.new childs("查询统计","","fa fa-gears","_self",tJList);
+                    final   Childs zHCX=new  Childs("综合查询","page/login-3.html","fa fa-tags","_blank",null);
+                    List tJList=new ArrayList(){
+                        {
+                            add(bJBB);
+                            add(sBBB);
+                            add(zHCX);
+                        }
+                    };
+                    final   Childs cXTJ=new  Childs("查询统计","","fa fa-gears","_self",tJList);
+                    xFGNMK.add(cXTJ);
+                    break;
 
-//        公共信息(通知通告，内部短消息)
+            case"公共信息":
+                //        公共信息(通知通告，内部短消息)
 //        通知通告
-        final InitVo.childs tZTG=iV.new childs("通知通告","page/login-1.html","fa fa-stumbleupon-circle","_blank",null);
+                final   Childs tZTG=new  Childs("通知通告","page/login-1.html","fa fa-stumbleupon-circle","_blank",null);
 //        内部短信息
-        final InitVo.childs nBDXX=iV.new childs("内部短消息","page/login-2.html","fa fa-viacoin","_blank",null);
-        List gGXXList=new ArrayList(){
-            {
-                add(tZTG);
-                add(nBDXX);
-            }
-        };
-        final InitVo.childs gGXX=iV.new childs("公共信息","","fa fa-flag-o","_self",gGXXList);
+                final   Childs nBDXX=new  Childs("内部短消息","page/login-2.html","fa fa-viacoin","_blank",null);
+                List gGXXList=new ArrayList(){
+                    {
+                        add(tZTG);
+                        add(nBDXX);
+                    }
+                };
+                final   Childs gGXX=new  Childs("公共信息","","fa fa-flag-o","_self",gGXXList);
+                xFGNMK.add(gGXX);
+                break;
 
-//        系统管理(用户管理，角色管理)
+            case"系统管理":
+                //        系统管理(用户管理，角色管理)
 //        用户管理
-        final InitVo.childs yHGL=iV.new childs("用户管理","page/404.html","fa fa-hourglass-end","_self",null);
+                final   Childs yHGL=new  Childs("用户管理","page/404.html","fa fa-hourglass-end","_self",null);
 //        角色管理
-        final InitVo.childs jSGL=iV.new childs("角色管理","page/404.html","fa fa-hourglass-end","_self",null);
-        List xTGLList=new ArrayList(){
-            {
-                add(yHGL);
-                add(jSGL);
-            }
-        };
-        final InitVo.childs xTGL=iV.new childs("查询统计","","fa fa-gears","_self",xTGLList);
+                final   Childs jSGL=new  Childs("角色管理","page/404.html","fa fa-hourglass-end","_self",null);
+                List xTGLList=new ArrayList(){
+                    {
+                        add(yHGL);
+                        add(jSGL);
+                    }
+                };
+                final   Childs xTGL=new  Childs("系统管理","","fa fa-gears","_self",xTGLList);
+                xFGNMK.add(xTGL);
+                break;
 
-//       重点对象管理(重点对象查询，维稳报表)
+            case "重点对象":
+                //       重点对象管理(重点对象查询，维稳报表)
 //        重点对象查询
-        final InitVo.childs zDDXCX=iV.new childs("重点对象查询","page/button.html","fa fa-snowflake-o","_self",null);
+                final   Childs zDDXCX=new  Childs("重点对象查询","page/button.html","fa fa-snowflake-o","_self",null);
 //        维稳报表
-        final InitVo.childs wWBB=iV.new childs("维稳报表","page/layer.html","fa fa-shield","_self",null);
-        List zDDXGLList=new ArrayList(){
-            {
-                add(zDDXCX);
-                add(wWBB);
-            }
-        };
-        final InitVo.childs zDDXGL=iV.new childs("重点对象管理","","fa fa-snowflake-o","",zDDXGLList);
+                final   Childs wWBB=new  Childs("维稳报表","page/layer.html","fa fa-shield","_self",null);
+                List zDDXGLList=new ArrayList(){
+                    {
+                        add(zDDXCX);
+                        add(wWBB);
+                    }
+                };
+                final   Childs zDDXGL=new  Childs("重点对象管理","","fa fa-snowflake-o","",zDDXGLList);
+                xFGNMK.add(zDDXGL);
+                break;
+        }
+        }
 
-//        信访功能模块
-        List xFGNMK=new ArrayList(){
-            {
-                add(sY);
-                add(xFDJ);
-                add(xFCL);
-                add(dCDB);
-                add(cXTJ);
-                add(gGXX);
-                add(xTGL);
-                add(zDDXGL);
-            }
-        };
-        final InitVo.menu menu =iV.new menu("信访功能模块","fa fa-address-book","","_self",xFGNMK);
+
+
+        final Menu menu =new Menu("信访功能模块","fa fa-address-book","","_self",xFGNMK);
         List meNuCount=new ArrayList(){
             {
                 add(menu);

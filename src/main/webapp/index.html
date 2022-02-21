@@ -125,11 +125,19 @@
             miniTongji = layui.miniTongji;
             var username=window.sessionStorage.getItem("username")
             $("#username").text(username)
+            var uidf=window.sessionStorage.getItem("uidf")
 
 
-
+        // $.ajax({
+        //     url:"json/init",
+        //     type:"post",
+        //     dateType:"json",
+        //     data:{"uidf":uidf},
+        //     success:function(data){
+        //     }
+        // })
         var options = {
-            iniUrl: "json/init",             // 初始化接口
+            iniUrl: "json/init/"+uidf,             // 初始化接口
             clearUrl: "api/clear.json", // 缓存清理接口
             renderPageVersion: true,    // 初始化页面是否加版本号
             bgColorDefault: false,      // 主题默认配置
@@ -139,6 +147,12 @@
             pageAnim: true,             // 切换菜单动画
         };
         miniAdmin.render(options);
+
+
+
+
+
+
 
         // 百度统计代码，只统计指定域名
         miniTongji.render({
