@@ -66,11 +66,11 @@ public class InitController {
             case"信访处理":
 //      信访处理(待办件，非正常上访，已办件)
 //        待办件
-                final   Childs dBJ=new  Childs("待办件","page/welcome-1.html","fa fa-tachometer","_self",null);
+                final   Childs dBJ=new  Childs("待办件","Moudel2/table-dbj.html","fa fa-tachometer","_self",null);
 //        非正常上访
-                final   Childs fZCCSF=new  Childs("非正常上访","page/welcome-2.html","fa fa-tachometer","_self",null);
+                final   Childs fZCCSF=new  Childs("非正常上访","table-AbnormalPetition.html","fa fa-tachometer","_self",null);
 //        已办件
-                final   Childs yBJ=new  Childs("已办件","page/welcome-3.html","fa fa-tachometer","_self",null);
+                final   Childs yBJ=new  Childs("已办件","table-CompletedParts.html","fa fa-tachometer","_self",null);
                 List xFList=new ArrayList(){
                     {
                         add(dBJ);
@@ -87,7 +87,7 @@ public class InitController {
 //        督办管理
                 final   Childs dBGL=new  Childs("督办管理","Moudel3/table.html","fa fa-list-alt","_self",null);
 //        实时督查
-                final   Childs sSDC=new  Childs("实时督查","page/table.html","fa fa-navicon","_self",null);
+                final   Childs sSDC=new  Childs("实时督查","Moudel3/ssdb.html","fa fa-navicon","_self",null);
 //        系统预警
                 final   Childs xTYJ=new  Childs("系统预警","page/table.html","fa fa-tags","_self",null);
 //        督查统计
@@ -100,7 +100,7 @@ public class InitController {
                         add(dCTJ);
                     }
                 };
-                final   Childs dCDB=new  Childs("督察督办","page/table.html","fa fa-gears","_self",dCList);
+                final   Childs dCDB=new  Childs("督察督办","","fa fa-gears","_self",dCList);
                 xFGNMK.add(dCDB);
                 break;
 

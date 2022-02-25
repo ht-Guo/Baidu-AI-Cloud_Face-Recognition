@@ -63,22 +63,15 @@
         body{
             font-family:'微软雅黑';
             color: #6B6B6B;
+            background-color: snow;
         }
     </style>
 </head>
 <body>
-<!--<div>-->
-    <!--<div><h3>内部短信息回复</h3></div>-->
-    <!--<div id="d1">接收人:</div>-->
-    <!--<br/>-->
-    <!--<div id="d2">标题:</div>-->
-    <!--<br/>-->
-    <!--<div id="d3">信息内容:</div>-->
-<!--</div>-->
 <div class="layuimini-container layuimini-page-anim">
     <div class="layuimini-main">
-        <fieldset class="table-search-fieldset">
-            <legend>内部短消息</legend>
+        <fieldset class="table-search-fieldset" style="border: 2px dashed #d9baff">
+            <legend>督办信息:</legend>
             <div style="margin: 10px 10px 10px 10px">
                 <form class="layui-form layui-form-pane" action="" id="form">
                     <div class="layui-form-item">
@@ -104,8 +97,8 @@
                         </div>
                     </div>
 
-                    <fieldset class="table-search-fieldset" id="fiel1" hidden>
-                        <legend>消息回复</legend>
+                    <fieldset class="table-search-fieldset" id="fiel1" hidden style="border: 2px dotted #997687">
+                        <legend>信息回复:</legend>
                         <div style="margin: 10px 10px 10px 10px">
                                 <div class="layui-form-item">
                                     <div class="layui-inline">
@@ -116,12 +109,12 @@
                                 </div>
                         </div>
                         <div class="layui-inline">
-                            <button type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="data-search-btn">发送</button>
+                            <button type="submit" class="layui-btn layui-btn-radius"  lay-submit lay-filter="data-search-btn">发送</button>
                         </div>
                     </fieldset>
 
-                    <fieldset class="table-search-fieldset" id="fiel2" hidden>
-                        <legend>回复信息</legend>
+                    <fieldset class="table-search-fieldset" id="fiel2" hidden style="border: 1px dotted #566299">
+                        <legend>回复信息:</legend>
                         <div style="margin: 10px 10px 10px 10px">
                             <div class="layui-form-item">
                                 <div class="layui-inline">
@@ -162,8 +155,8 @@
                     var index=parent.layer.getFrameIndex(window.name); //获取当前窗口的name
                     //关闭弹出层
                     parent.layer.close(index);
-                //    刷新父页面
-                    window.parent.location.reload();
+                    //    刷新表格
+                    parent.layui.table.reload("currentTableId");
                 }
             })
             return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。

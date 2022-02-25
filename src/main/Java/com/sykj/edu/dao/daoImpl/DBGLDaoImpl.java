@@ -18,14 +18,14 @@ import java.util.List;
 //limit分几条
 
 @Repository
-public class DBGLControllerImpl implements DBGLDao {
+public class DBGLDaoImpl implements DBGLDao {
     QueryRunner qr = new QueryRunner();
     @Override
     public List<Object> findAll(String SupervisorTitlef, String dbr, String bdbr, String beginTime, String finishTime, String Supervisorstatusf,int page,int limit,int userId) {
         Connection conn = ConnUtil.getConn();
-        String sql="select * from (select  a.idf,s2.truename as 'dbr',s3.truename  as 'bdbr',a.SupervisorTitlef ,a.SupervisorMsgf,a.SupervisorTimef,case a.Supervisorstatusf when 1 then '未读' " +
-                "when 2 then '已读' " +
-                "when 3 then '已回复' " +
+        String sql="select * from (select  a.idf,s2.truename as 'dbr',s3.truename  as 'bdbr',a.SupervisorTitlef ,a.SupervisorMsgf,a.SupervisorTimef,case a.Supervisorstatusf when 1 then '<font color=red>未读</font>' " +
+                "when 2 then '<font color=#003BFF>已读</font>' " +
+                "when 3 then '<font color=#00E9FF >已回复</font>' " +
                 "else '' end 'status',a.Supervisorstatusf,a.SupervisorReplyIDf  from archivesupervisor a,sys_user s2,sys_user s3 where a.Supervisorf=s2.UIDF and a.beenSupervisorf=s3.UIDF and (s2.uidf ='"+userId+"' or s3.uidf ='"+userId+"'))dc  where 1=1 ";
 //        信访标题
         sql+=(SupervisorTitlef!=null  && !SupervisorTitlef.equals("") )? " and dc.SupervisorTitlef like '%"+SupervisorTitlef+"%' ":" ";
@@ -66,8 +66,8 @@ public class DBGLControllerImpl implements DBGLDao {
     public ArchiveSupervisorVo findAll(String idf) {
         Connection conn=ConnUtil.getConn();
         ArchiveSupervisorVo asv=null;
-        String sql="select * from (select  a.idf,s2.truename as 'dbr',s3.truename  as 'bdbr',a.SupervisorTitlef ,a.SupervisorMsgf,a.SupervisorTimef,case a.Supervisorstatusf when 1 then '未读' " +
-                "when 2 then '已读' " +
+        String sql="select * from (select  a.idf,s2.truename as 'dbr',s3.truename  as 'bdbr',a.SupervisorTitlef ,a.SupervisorMsgf,a.SupervisorTimef,case a.Supervisorstatusf when 1 then '未读'" +
+                "when 2 then '已读'" +
                 "when 3 then '已回复' " +
                 "else '' end 'status',a.Supervisorstatusf,a.SupervisorReplyIDf  from archivesupervisor a,sys_user s2,sys_user s3 where a.Supervisorf=s2.UIDF and a.beenSupervisorf=s3.UIDF)dc where idf=? ";
         try {

@@ -65,7 +65,7 @@
 
 
 
-        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter1"></table>
 
         <!--<script type="text/html" id="currentTableBar">-->
             <!--<a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">修改</a>-->
@@ -148,15 +148,16 @@
         table.reload('currentTableId',{
                 // url:'DcdbController/findall',
                 // method:"post",
-                where:{
-                        "SupervisorTitlef":result.SupervisorTitlef,
-                        "dbr":result.dbr,
-                        "bdbr":result.bdbr,
-                        "beginTime":result.beginTime,
-                        "finishTime":result.finishTime,
-                        "Supervisorstatusf":result.Supervisorstatusf,
-                        "userId":userId
-                }
+                where:result
+                    // {
+                        // "SupervisorTitlef":result.SupervisorTitlef,
+                        // "dbr":result.dbr,
+                        // "bdbr":result.bdbr,
+                        // "beginTime":result.beginTime,
+                        // "finishTime":result.finishTime,
+                        // "Supervisorstatusf":result.Supervisorstatusf,
+                        // "userId":userId
+                // }
         })
             //     },page: {
             //     curr: 1//重新从第一页开始
@@ -242,7 +243,7 @@
     /**
      * 行双击事件（lay-filter的值）
      * **/
-    var a=table.on('rowDouble(currentTableFilter)',function(obj){
+    var a=table.on('row(currentTableFilter1)',function(obj){
     // 查看消息
     //     var idf=obj.data.idf;
     //     $.ajax({
@@ -263,7 +264,8 @@
             area: ['700px', '450px'],
             //右上角关闭时自定义状态
             cancel:function(){
-                window.location.reload();
+                table.reload("currentTableId")//刷新表格数据
+                // window.location.reload();刷新页面
                 // parent.layer.getFrameIndex(window.name);//获取当前窗口的name
             }
         })
