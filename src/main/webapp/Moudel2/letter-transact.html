@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <style>
+        .noborder{
+            border: 0px;
+            font-family:"等线 Light" ;
+            color: #1e9fff;
+        }
+
+    </style>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <meta charset="UTF-8">
+    <title>办理</title>
+</head>
+<body>
+
+    <div class="layuimini-main">
+
+        <div class="layui-form layuimini-form">
+
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                <legend>信访办理</legend>
+            </fieldset>
+
+<!--            卡片 选项卡-->
+            <div class="layui-tab layui-tab-card">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">
+                        <span><i class="layui-icon layui-icon-tabs" style="font-size: 30px; color: #1E9FFF;">表格</i></span>
+                    </li>
+                    <li>
+                        <span><i class="layui-icon layui-icon-upload-drag" style="font-size: 30px; color: #1E9FFF;">附件</i></span>
+                    </li>
+                    <li>
+                        <span><i class="layui-icon layui-icon-form" style="font-size: 30px; color: #1e9fff;">流程日志</i></span>
+                    </li>
+                    <li>
+                        <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">
+                            <i class="fa fa-refresh"/>发送
+                        </i>
+                    </li>
+                </ul>
+                <br/>
+
+                <div class="layui-tab-content">
+<!--                    表格 tableTabs-->
+                    <div class="layui-tab-item layui-show">
+                        <!--简洁 选项卡-->
+                        <div class="layui-tab layui-tab-brief" lay-filter="tableTabs">
+                            <ul class="layui-tab-title">
+                                <li class="layui-this">信访登记</li>
+                                <li>处理意见</li>
+                            </ul>
+                            <div class="layui-tab-content" style="height: 720px;">
+                                <!--属性类别 letterProperties-->
+                                <div style="color: #292222;background-color: #fdfafa;height: 45px">
+                                    <div class="layui-row layui-col-space10">
+                                        <div class="layui-col-md2"></div>
+                                        <div class="layui-col-md8" style="text-align: center">
+                                            <!--                        属性类别 letterProperties-->
+                                            <div class="layui-inline">
+                                                <input type="radio" name="letterProperties" disabled value="列入排查" title="列入排查" >
+                                                <input type="radio" name="letterProperties" disabled value="领导包案" title="领导包案">
+                                                <input type="radio" name="letterProperties" disabled value="代接代访件" title="代接代访件">
+                                                <input type="radio" name="letterProperties" disabled value="非正常上访" title="非正常上访">
+                                                <input type="radio" name="letterProperties" disabled value="敏感时期" title="敏感时期">
+                                                <input type="radio" name="letterProperties" disabled value="领导批示" title="领导批示">
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-md2"></div>
+                                    </div>
+                                </div>
+                                <!--信访登记-->
+                                <div class="layui-tab-item layui-show">
+                                    <!--信访人 基本信息 -->
+                                    <div style="color: #f5f5f5;background-color: #1e9fff;height: 22px"> 信访人基本信息</div>
+                                    <form name="personform" id="personform">
+                                        <div class="layui-form-item" style="margin-top: 10px">
+                                        <!--                            信访人 letterName-->
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">信访人:</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" readonly style="background:#fdfafa" id="letterName" name="letterName" autocomplete="off" class="layui-input" value="" placeholder="请输入letterName">
+                                            </div>
+                                        </div>
+                                        <!--                            身份证 idCard-->
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">身份证:</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" readonly style="background:#fdfafa" id="idCard" name="idCard" autocomplete="off" placeholder="请输入idCard" class="layui-input">
+                                            </div>
+                                        </div>
+                                        <!--                            手机号 phone-->
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">联系电话:</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" readonly style="background:#fdfafa" id="phone"  name="phone" autocomplete="off" placeholder="请输入Phone" class="layui-input">
+                                            </div>
+                                        </div>
+                                        <!--                            工作单位 work-->
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">工作单位:</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" readonly style="background:#fdfafa" id="work" name="work" autocomplete="off" placeholder="请输入Work" class="layui-input">
+                                            </div>
+                                        </div>
+                                        <!--                            工作邮编 workEmail-->
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">工作邮编:</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" readonly style="background:#fdfafa" id="workEmail" name="workEmail" autocomplete="off" placeholder="请输入Email" class="layui-input">
+                                            </div>
+                                        </div>
+                                        <!--                            联系地址 letterAddress-->
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">联系地址:</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" readonly="true" style="background:#fdfafa" id="letterAddress" name="letterAddress" autocomplete="off" placeholder="请输入Address" class="layui-input">
+                                            </div>
+                                        </div>
+                                        <!--                            联系地址邮编 addressEmail-->
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">联系地址邮编:</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" readonly="true" style="background:#fdfafa"  id="addressEmail" name="addressEmail" autocomplete="off" placeholder="请输入Email-No" class="layui-input">
+                                            </div>
+                                        </div>
+                                        <!--                            常住地址 homeAddress-->
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">常驻地址:</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" readonly="true" style="background:#fdfafa" id="homeAddress" name="homeAddress" autocomplete="off" placeholder="请输入Home" class="layui-input">
+                                            </div>
+                                        </div>
+                                        <!--                            户籍地址 houRegAddress-->
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">户籍地址:</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" readonly="true" style="background:#fdfafa" id="houRegAddress" name="houRegAddress" autocomplete="off" placeholder="CensusRegisterAddress" class="layui-input">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </form>
+                                    <!--信访件 基本信息-->
+                                    <div style="color: #fff9f9;background-color: #1e9fff;height: 22px"> 信访件基本信息</div>
+                                    <form name="lettersform" id="letterform">
+                                        <div class="layui-form-item" style="margin-top: 10px">
+                                            <!--                                登记人 letterRegistration-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">登记人:</label>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" readonly id="letterRegistrationName" value="" class="layui-input">
+                                                    <input type="text" disabled name="letterRegistration" id="letterRegistrationId" value="" class="layui-input layui-hide">
+                                                </div>
+                                            </div>
+                                            <!--                                标题 letterTitle-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">信访标题:</label>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" lay-verify="required" id="letterTitle" autocomplete name="letterTitle" value="" placeholder="请输入标题" class="layui-input">
+                                                </div>
+                                            </div>
+                                            <!--                                信访来源 letterSource-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">信访来源:</label>
+                                                <div class="layui-input-inline">
+                                                    <select disabled id="letterSource" name="letterSource"><option value="">letterSource</option></select>
+                                                </div>
+                                            </div>
+                                            <!--                                是否公开 isPublic-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">是否公开:</label>
+                                                <div class="layui-input-inline">
+                                                    <input type="radio" disabled readonly="true" style="background:#fdfafa" name="isPublic" value="1" title="是" checked="">
+                                                    <input type="radio" disabled readonly="true" style="background:#fdfafa" name="isPublic" value="0" title="否">
+                                                </div>
+                                            </div>
+                                            <!--                                性质分类 natureType-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">性质分类:</label>
+                                                <div class="layui-input-inline">
+                                                    <select id="natureType" disabled name="natureType"><option value="">natureType</option></select>
+                                                </div>
+                                            </div>
+                                            <!--                                信访次数 letterCount-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">信访次数:</label>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" readonly style="background:#fdfafa" id="letterCount" name="letterCount" autocomplete="off" placeholder="请输入次数" class="layui-input">
+                                                </div>
+                                            </div>
+                                            <!--                                曾访部门 visitedDept-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">曾访部门:</label>
+                                                <div class="layui-input-inline">
+                                                    <select disabled id="visitedDept" name="visitedDept"><option value="">visitedDept</option></select>
+                                                </div>
+                                            </div>
+                                            <!--                                来访规模 visitScope-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">来访规模:</label>
+                                                <div class="layui-input-block">
+                                                    <input disabled style="background:#fdfafa" type="checkbox"  name="visitScope"  value="个访" title="个人访">
+                                                    <input disabled style="background:#fdfafa" type="checkbox" name="visitScope" value="集体访"  title="集体访">
+                                                </div>
+                                            </div>
+                                            <!--                                来访人数 visitCount-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">来访人数:</label>
+                                                <div class="layui-input-inline">
+                                                    <input readonly style="background:#fdfafa" type="text" id="visitCount" name="visitCount" autocomplete="off" placeholder="请输入人数" class="layui-input">
+                                                </div>
+                                            </div>
+                                            <!--                                责任地区 responsibleArea-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">责任地区:</label>
+                                                <div class="layui-input-inline">
+                                                    <select disabled id="responsibleArea" name="responsibleArea"><option value="">responsibleArea</option></select>
+                                                </div>
+                                            </div>
+                                            <!--                                事发单位或地址 happenAddress-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">事发单位或地址:</label>
+                                                <div class="layui-input-inline">
+                                                    <input readonly style="background:#fdfafa" type="text" id="happenAddress" name="happenAddress" autocomplete="off" placeholder="happenAddress" class="layui-input">
+                                                </div>
+                                            </div>
+                                            <!--                                问题分类 questionType-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">问题分类:</label>
+                                                <div class="layui-input-inline">
+                                                    <input readonly style="background:#fdfafa" type="text" id="questionType" name="questionType" autocomplete="off" placeholder="请输入问题" class="layui-input">
+                                                </div>
+                                            </div>
+                                            <!--                                突出问题 standQuestion-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">突出问题:</label>
+                                                <div class="layui-input-inline">
+                                                    <select disabled name="standQuestion" id="standQuestion"><option value="">standQuestion</option></select>
+                                                </div>
+                                            </div>
+                                            <!--                                来访异常情况 exceptionCase-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">来访异常情况:</label>
+                                                <div class="layui-input-inline">
+                                                    <select disabled id="exceptionCase" name="exceptionCase"><option value="">exceptionCase</option></select>
+                                                </div>
+                                            </div>
+                                            <!--                                越级上访 overVisit-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">越级上访:</label>
+                                                <div class="layui-input-inline">
+                                                    <select disabled id="overVisit" name="overVisit"><option value="">overVisit</option></select>
+                                                </div>
+                                            </div>
+                                            <!--                                问题所属单位 questionDept-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">问题所属单位:</label>
+                                                <div class="layui-input-inline">
+                                                    <input readonly style="background:#fdfafa" type="text" id="questionDept" name="questionDept" autocomplete="off" placeholder="请输入问题所属单位" class="layui-input">
+                                                </div>
+                                            </div>
+                                            <!--                                批示领导 leader-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">批示领导:</label>
+                                                <div class="layui-input-inline">
+                                                    <select disabled id="leader" name="leader"><option value="">leader</option></select>
+                                                </div>
+                                            </div>
+                                            <!--                                转/交来单位 passDept-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">转/交来单位:</label>
+                                                <div class="layui-input-inline">
+                                                    <input readonly style="background:#fdfafa" type="text" id="passDept" name="passDept" autocomplete="off" placeholder="请输入单位" class="layui-input">
+                                                </div>
+                                            </div>
+                                            <!--                                来文号 documentNo-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">来文号:</label>
+                                                <div class="layui-input-inline">
+                                                    <input readonly style="background:#fdfafa" type="text" id="documentNo" name="documentNo" autocomplete="off" placeholder="请输入来文号" class="layui-input">
+                                                </div>
+                                            </div>
+                                            <!--                                转/交来时间 passTime-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">转/交来时间:</label>
+                                                <div class="layui-input-inline">
+                                                    <input readonly style="background:#fdfafa" type="text" class="layui-input" id="passTime" name="passTime" placeholder="yyyy-MM-dd">
+                                                </div>
+                                            </div>
+                                            <!--                                来信形式 letterType-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">来信形式:</label>
+                                                <div class="layui-input-inline">
+                                                    <select disabled id="letterType" name="letterType"><option value="">letterType</option></select>
+                                                </div>
+                                            </div>
+                                            <!--                                受信人 receiver-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">受信人:</label>
+                                                <div class="layui-input-inline">
+                                                    <select disabled id="receiver" name="receiver"><option value="">receiver</option></select>
+                                                </div>
+                                            </div>
+                                            <!--                                收信日期 receiveTime-->
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">收信日期:</label>
+                                                <div class="layui-input-inline">
+                                                    <input readonly style="background:#fdfafa" type="text" class="layui-input" id="receiveTime" name="receiveTime" placeholder="yyyy-MM-dd">
+                                                </div>
+                                            </div>
+
+                                            <!--                                信访事项 letterItem-->
+                                            <div class="layui-form-item layui-form-text">
+                                                <label class="layui-form-label">信访事项:</label>
+                                                <div class="layui-input-block">
+                                                    <textarea readonly style="background:#fdfafa" id="letterItem" name="letterItem" placeholder="请输入信访事项" class="layui-textarea"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <!--处理情况-->
+                                    <div style="color: #ffffff;background-color: #1e9fff;height: 22px">处理情况</div>
+                                    <div class="layui-form-item  " style="margin-top: 10px" >
+                                        <label class="layui-form-label">受理形式:</label>
+                                        <!--                                 <div class="layui-input-block "></div>-->
+                                        <div class="layui-input-block ">
+                                            1、
+                                            <div class="layui-inline">
+                                                <input type="radio" disabled name="isRegist" value="0" title="不立案">
+                                                <input type="radio" disabled name="isRegist" value="1" title="立案">
+                                                <input type="radio" disabled name="isRegist" value="2" title="延迟">
+                                                <!--                                         <input type="radio" name="sex" value="禁" title="禁用" disabled="">-->
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <!--处理意见-->
+                                <div class="layui-tab-item">
+                                    信访人:<input type="text" class="noborder">
+                                    信访来源:<input type="text" class="noborder">
+                                    <br><br>
+                                    登记时间:<input type="date" class="noborder">
+                                    转/交来单位:<input type="text" class="noborder">
+                                    <br><br>
+                                    来文号:<input type="text" class="noborder">
+                                    转/交来时间:<input type="date" class="noborder">
+                                    <br><br>
+                                    标题:<input type="text" class="noborder"><br><br>
+                                    信访事项:<input type="text" class="noborder"><br><br>
+                                    协办意见:<input type="text" class="noborder"><br><br>
+                                    科长审核意见:<input type="text" class="noborder"><br>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!--                    附件 attachmentTabs-->
+                    <div class="layui-tab-item">
+                        <div class="layui-tab layui-tab-brief" lay-filter="attachmentTabs">
+                            <ul class="layui-tab-title">
+                                <li class="layui-this">附件</li>
+                            </ul>
+                            <div class="layui-tab-content" style="height: 720px;">
+                                <div class="layui-tab-item layui-show">
+<!--                                    attachmentTabs 工具栏-->
+                                    <script type="text/html" id="attachmentToolbar">
+                                        <!-- 文件上传-->
+                                        <div class="layui-inline">
+                                        <div class="layui-input-inline">
+                                            <button type="button" class="layui-btn layui-btn-normal" id="fileUpload">选择文件</button>
+                                            <button type="button" class="layui-btn" id="startUpload">开始上传</button>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">选择文件类型:</label>
+                                            <div class="layui-input-inline">
+                                                <input type="radio" name="aType" value="正文" title="正文" CHECKED>
+                                                <input type="radio" name="aType" value="附件" title="附件">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </script>
+
+                                    <!--        显示数据的 表格 attachmentTableId-->
+                                    <table class="layui-hide" id="attachmentTableId" lay-filter="attachmentTableId"></table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!--                    流程日志 processLogTabs-->
+                    <div class="layui-tab-item">
+                        <div class="layui-tab layui-tab-brief" lay-filter="processLogTabs">
+                            <ul class="layui-tab-title">
+                                <li class="layui-this">流程日志</li>
+                            </ul>
+                            <div class="layui-tab-content" style="height: 720px;">
+<!--                                流程日志表 processLog-->
+                                <table class="layui-hide" id="processLogTableId" lay-filter="processLogTableId"></table>
+                            </div>
+                    </div>
+                </div>
+<!--                    发送 sendTabs-->
+                    <div class="layui-tab-item">
+                        <div class="layui-tab layui-tab-brief" lay-filter="sendTabs">
+                            <ul class="layui-tab-title">
+                                <li class="layui-this">提交到下一环节</li>
+                            </ul>
+                            <div class="layui-tab-content" style="height: 720px;">
+                                    <div id="yc">
+                                        <div class="layui-row layui-col-space10">
+                                            <div class="layui-col-md1"></div>
+                                            <div class="layui-col-md6" style="text-align: left">
+                                                下一环节:
+                                            </div>
+                                            <div class="layui-col-md5"></div>
+                                        </div>
+                                        <hr/>
+                                        <!--   部门   -->
+                                        <div class="layui-inline" style="margin-bottom: 15px;">
+                                            <label class="layui-form-label">部门:</label>
+                                            <div class="layui-input-inline" style="width:150px">
+                                                <select name="dept" id="dept"  lay-filter="deptFilter" lay-search="">
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!--   职位   -->
+                                        <div class="layui-inline" style="margin-bottom: 15px;">
+                                            <label class="layui-form-label" style="color: black">人员职位:</label>
+                                            <div class="layui-input-inline" style="width:150px">
+                                                <select name="personnel" id="personnel" lay-filter="personnelFilter" lay-search="">
+                                                    <option value="">请先选择部门</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                    </div>
+                                    <!-- 拟办意见 suggestion-->
+                                    <div class="layui-form-item layui-form-text">
+                                        <label class="layui-form-label">拟办意见:</label>
+                                        <div class="layui-input-block">
+                                            <textarea id="suggestion" name="suggestion" placeholder="请输入拟办意见" class="layui-textarea"></textarea>
+                                        </div>
+                                    </div>
+                                    <!--  备注  isSend-->
+                                    <div class="layui-inline" id="sendDiv">
+                                        <label class="layui-form-label">是否办结:</label>
+                                        <div class="layui-input-inline">
+                                            <input type="radio" lay-verify="otherReq" name="isSend" value="1" title="办结">
+                                            <input type="radio" lay-verify="otherReq" name="isSend" value="0" title="不办结" checked>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <!--  是否  isAgree-->
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">是否同意:</label>
+                                        <div class="layui-input-inline">
+                                            <input type="radio" lay-verify="otherReq" name="isAgree" value="1" title="是">
+                                            <input type="radio" lay-verify="otherReq" name="isAgree" value="0" title="否">
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <!--  提交 send -->
+                                    <div class="layui-row layui-col-space10">
+                                        <div class="layui-col-md4"></div>
+                                        <div class="layui-col-md4" style="text-align: center">
+                                            <button class="layui-btn layui-btn-normal layui-btn" lay-submit lay-filter="send"> 提交 </button>
+                                        </div>
+                                        <div class="layui-col-md4"></div>
+                                    </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+
+        </div>
+
+
+        </div>
+    </div>
+    <script>
+
+            layui.use(['form', 'layer', 'table', 'laydate', 'upload', 'element'], function () {
+                var form = layui.form,
+                layer = layui.layer,
+                table = layui.table,
+                laydate=layui.laydate,
+                upload = layui.upload,
+                element = layui.element
+                var $=layui.jquery
+
+
+                //给文件上传时新增附件表使用
+           var id = document.cookie.split("=")[1];
+           date();
+           loading();
+           getDept();
+           queryRegistration();
+
+           $.ajax({
+               url: "zxy/info/getUser.ph",
+               type: "post",
+               success: function (obj) {
+                   console.log(obj.uidf);
+
+                   if (obj.uidf == 1) {
+                       $("#yc").addClass("layui-hide");
+                   }else {
+                       $("#sendDiv").addClass("layui-hide");
+                   }
+
+               }
+           })
+
+            //form.render();
+
+            // 联动
+           form.on('select(deptFilter)', function(data){
+               getPersonnel(data);
+               form.render();
+           });
+
+
+            /**
+             * 初始化表单，要加上，不然刷新部分组件可能会不加载
+             */
+            form.render();
+
+            // 当前弹出层，防止ID被覆盖
+            var parentIndex = layer.index;
+
+            var id = document.cookie.split("=")[1];
+            console.log(id);
+
+            // 附件 表格加载
+            table.render({
+                elem: '#attachmentTableId',    //  需要显示数据表格的table标签
+                url: '/zxy/info/Attachment.ph',      //  请求地址
+                toolbar: '#attachmentToolbar',    //  表格上方工具栏
+                method: 'post',          //  请求方式
+                where: {'id':id},
+                defaultToolbar: ['filter', 'exports', 'print', {        //表格上方默认 工具栏
+                    title: '提示',
+                    layEvent: 'LAYTABLE_TIPS',
+                    icon: 'layui-icon-tips'
+                }],
+                cellMinWidth: 180,
+                title: '用户数据表',
+                cols: [[
+                    {type: "checkbox", width: 50},
+                    {type: 'numbers', width: 60, title:'序号', sort: true},
+                    {field: 'truename', width: 120, title: '上传人'},
+                    {field: 'aname', title: '文件名', sort: true},
+                    {field: 'atype', width: 80, title: '类型'},
+                    {field: 'asize', width: 80, title: '大小', sort: true},
+                    {field: 'atime', title: '上传时间', sort: true}
+                ]],
+                page: true, //开启分页
+                totalRow : true,// 开启合计行
+                limit: 5,
+                // skin: 'line',                    //  列边框
+                limits: ['5', '10', '15', '20'], //  分页每页显示数据条数（页面选择）
+                parseData: function (res) {
+                    var result;
+                    // console.log(res);
+                    if (this.page.curr) {  //前端处理数据，以适合table格式
+                        result = res.data.slice(this.limit*(this.page.curr-1),this.limit*this.page.curr);
+                    }
+                    else {
+                        result = res.data.slice(0, this.limit);
+                    }
+                    return {
+                        "code": res.code, //解析接口状态
+                        "msg": res.msg, //解析提示文本
+                        "count": res.count, //解析数据长度
+                        "data": result //解析数据列表
+                    };
+                },
+                //处理数据格式，>5000单元格背景颜色设定
+                done: function (res, curr, count) {
+                    res.data.forEach(function (item, index) {
+                        if (Number(item.amount) > 5000)
+                            $('#qua').find('tr[data-index="' + index + '"]').find('td[data-field="amount"]').css({ 'background-color': '#FF5722', 'color': 'white' });
+                    });
+                }
+            });
+
+            // 流程日志 表格加载
+            table.render({
+                elem: '#processLogTableId',    //  需要显示数据表格的table标签
+                url: '/zxy/info/processLog.ph',      //  请求地址
+                // toolbar: '#toolbarTest01',    //  表格上方工具栏
+                method: 'post',          //  请求方式
+                where: {'id':id},
+                defaultToolbar: ['filter', 'exports', 'print', {        //表格上方默认 工具栏
+                    title: '提示',
+                    layEvent: 'LAYTABLE_TIPS',
+                    icon: 'layui-icon-tips'
+                }],
+                cellMinWidth: 100,
+                title: '用户数据表',
+                cols: [[
+                    {type: "checkbox", width: 50},
+                    {type: 'numbers', width: 80, title:'序号', sort: true},
+                    {field: 'truename', width: 120, title: '办理人'},
+                    {field: 'fillTimef', title: '待办日期', sort: true},
+                    {field: 'endtime', title: '完成日期', sort: true},
+                ]],
+                page: true, //开启分页
+                totalRow : true,// 开启合计行
+                limit: 5,
+                limits: ['5', '10', '15', '20'], //  分页每页显示数据条数（页面选择）
+                parseData: function (res) {
+                    var result;
+                    // console.log(res);
+                    if (this.page.curr) {  //前端处理数据，以适合table格式
+                        result = res.data.slice(this.limit*(this.page.curr-1),this.limit*this.page.curr);
+                    }
+                    else {
+                        result = res.data.slice(0, this.limit);
+                    }
+                    return {
+                        "code": res.code, //解析接口状态
+                        "msg": res.msg, //解析提示文本
+                        "count": res.count, //解析数据长度
+                        "data": result //解析数据列表
+                    };
+                },
+                //处理数据格式，>5000单元格背景颜色设定
+                done: function (res, curr, count) {
+                    res.data.forEach(function (item, index) {
+                        if (Number(item.amount) > 5000)
+                            $('#qua').find('tr[data-index="' + index + '"]').find('td[data-field="amount"]').css({ 'background-color': '#FF5722', 'color': 'white' });
+                    });
+                }
+            });
+
+            //选完文件后不自动上传
+            upload.render({
+                elem: '#fileUpload'
+                ,url: "DBJ/fileUpload" //改成您自己的上传接口
+                ,accept: 'file'                 //允许上传的文件类型
+                ,auto: false                    //取消自动上传
+                ,bindAction: '#startUpload'     //按钮控制上传
+                ,size: 1024*40                  //限制文件大小   单位 KB
+                ,done: function(result){        //上传后的回调
+                    if(result.success == true){
+                        //文件上传 成功后  向数据库 （附件表）添加 信息
+                        // $.ajax({
+                        //     url:"DBJ/InsertAcc",
+                        //     data:{
+                        //         idf:id,
+                        //         userid:window.sessionStorage.getItem("uidf"),
+                        //         aname:result.fileName,
+                        //         asize:result.fileSize,
+                        //         atype:$("input[name='aType']:checked").val(),
+                        //         path:result.pathName
+                        //     },
+                        //     success:function () {
+                        //         table.reload("attachmentTableId");
+                        //         layer.msg("上传成功!",{icon:1, anim:6, time:1000});
+                        //     }
+                        // })
+                        alert("上传成功")
+                    }else{
+                        layer.msg("上传失败!",{icon:1});
+                    }
+                }
+            });
+
+
+
+
+            //监听提交  发送
+            form.on('submit(send)', function(data) {
+                var field =data.field;
+                console.log(field)
+                $.ajax({
+                    url:"/zxy/petitionAgency/insertApproveinfo.ph",
+                    data:{
+                        idf:field.idf,
+                        letIdf:Number(id),
+                        suggestionContentf:$("#suggestion").val(),
+                        isAgreef:field.isAgree,
+                        letterPropertiesf:field.letterProperties,
+                        isend:field.isSend,
+                        personnel:Number(field.personnel),
+
+                    },
+                    success : function(res) {
+                        if (res.success == true) {
+                            layer.msg(res.msg,{icon: 1, time: 1000},function () {
+                                table.reload('toDoItemTableId')
+                            });
+                        } else if(res.success == false){
+                            layer.msg(res.msg, {icon : 5,time: 1000});
+                        }
+                    },
+                    error:function(){
+                        layer.msg("网络错误！",{icon: 5});
+                    }
+                })
+
+                // 关闭弹出层
+                layer.close(parentIndex);
+
+                return false;
+            });
+
+            //自定义验证规则
+            form.verify({
+                otherReq: function(value,item){
+                    var $ = layui.$;
+                    var verifyName=$(item).attr('name')
+                        , verifyType=$(item).attr('type')
+                        ,formElem=$(item).parents('.layui-form')//获取当前所在的form元素，如果存在的话
+                        ,verifyElem=formElem.find('input[name='+verifyName+']')//获取需要校验的元素
+                        ,isTrue= verifyElem.is(':checked')//是否命中校验
+                        ,focusElem = verifyElem.next().find('i.layui-icon');//焦点元素
+                    if(!isTrue || !value){
+                        //定位焦点
+                        focusElem.css(verifyType=='radio'?{"color":"#FF5722"}:{"border-color":"#FF5722"});
+                        //对非输入框设置焦点
+                        focusElem.first().attr("tabIndex","1").css("outline","0").blur(function() {
+                            focusElem.css(verifyType=='radio'?{"color":""}:{"border-color":""});
+                        }).focus();
+                        return '必填项不能为空';
+                    }
+                }
+            });
+
+
+        });
+
+        //重新渲染表单
+        function renderForm() {
+            layui.use('form', function(){
+                var form = layui.form;
+                form.render();
+            });
+        }
+
+        // Loading 加载下拉框
+        function loading() {
+
+            // 证件类型
+            // $.ajax({
+            //     url: "/data/info/CardType.ph",
+            //     type: "post",
+            //     success: function (obj) {
+            //         // console.log("证件类型:"+obj);
+            //         $.each(obj, function (index, data) {
+            //             // console.log(data.dataValue);
+            //             let opt = $("<option value='"+ data.id +"'>"+ data.dataValue +"</option>");
+            //             $("#cardType").append(opt);
+            //         })
+            //         renderForm();
+            //     }
+            // })
+
+            //信访来源
+            $.ajax({
+                url: "DBJ/JCXX",
+                type: "post",
+                dataType:"json",
+                data:{baseValue:"信访来源"},
+                success: function (obj) {
+                    // console.log("信访来源:"+obj);
+                    $.each(obj, function (index, data) {
+                        $("#letterSource").append("<option value='"+ data.id +"'>"+ data.dataValue +"</option>");
+                    })
+                    renderForm();
+                }
+            })
+
+            //性质分类
+            $.ajax({
+                url: "DBJ/JCXX",
+                type: "post",
+                dataType: "json",
+                data:{baseValue:"性质分类"},
+                success: function (obj) {
+                    // console.log("性质分类:"+obj);
+                    $.each(obj, function (index, data) {
+                        $("#natureType").append("<option value='"+ data.id +"'>"+ data.dataValue +"</option>");
+                    })
+                    renderForm();
+                }
+            })
+
+            //曾访部门
+            $.ajax({
+                url: "DBJ/JCXX",
+                type: "post",
+                dataType: "json",
+                data:{baseValue:"曾访部门"},
+                success: function (obj) {
+                    // console.log("曾访部门:"+obj);
+                    $.each(obj, function (index, data) {
+                        $("#visitedDept").append("<option value='"+ data.id +"'>"+ data.dataValue +"</option>");
+                    })
+                    renderForm();
+                }
+            })
+
+            //责任地区
+            $.ajax({
+                url: "DBJ/JCXX",
+                type: "post",
+                dataType: "json",
+                data:{baseValue:"责任地区"},
+                success: function (obj) {
+                    // console.log("责任地区:"+obj);
+                    $.each(obj, function (index, data) {
+                        $("#responsibleArea").append("<option value='"+ data.id +"'>"+ data.dataValue +"</option>");
+                    })
+                    renderForm();
+                }
+            })
+
+            //突出问题
+            $.ajax({
+                url: "DBJ/JCXX",
+                type: "post",
+                dataType: "json",
+                data:{baseValue:"突出问题"},
+                success: function (obj) {
+                    // console.log("突出问题:"+obj);
+                    $.each(obj, function (index, data) {
+                        $("#standQuestion").append("<option value='"+ data.id +"'>"+ data.dataValue +"</option>");
+                    })
+                    renderForm();
+                }
+            })
+
+            //来访异常情况
+            $.ajax({
+                url: "DBJ/JCXX",
+                type: "post",
+                dataType: "json",
+                data:{baseValue:"来访异常情况"},
+                success: function (obj) {
+                    // console.log("来访异常情况:"+obj);
+                    $.each(obj, function (index, data) {
+                        $("#exceptionCase").append("<option value='"+ data.id +"'>"+ data.dataValue +"</option>");
+                    })
+                    renderForm();
+                }
+            })
+
+            //越级上访
+            $.ajax({
+                url: "DBJ/JCXX",
+                type: "post",
+                dataType: "json",
+                data:{baseValue:"越级上访"},
+                success: function (obj) {
+                    // console.log("越级上访:"+obj);
+                    $.each(obj, function (index, data) {
+                        $("#overVisit").append("<option value='"+ data.id +"'>"+ data.dataValue +"</option>");
+                    })
+                    renderForm();
+                }
+            })
+
+            //来信形式
+            $.ajax({
+                url: "DBJ/JCXX",
+                type: "post",
+                dataType: "json",
+                data:{baseValue:"来信形式"},
+                success: function (ooo) {
+                    // console.log(ooo+"来信形式")
+                    $.each(ooo, function (index, data) {
+                        // console.log(data+"来信形式")
+                        $("#letterType").append("<option value='"+ data.id +"'>"+ data.dataValue +"</option>");
+                    })
+                    renderForm();
+                }
+            })
+
+            //越秀区信访局编号
+            $.ajax({
+                url: "DBJ/JCXX",
+                type: "post",
+                dataType: "json",
+                data:{baseValue:"越秀区信访局编号"},
+                success: function (obj) {
+                    // console.log("越秀区信访局编号:"+obj);
+                    $.each(obj, function (index, data) {
+                        // console.log(data.dataValue)
+                        $("#letterNum").append("<option value='"+ data.id +"'>"+ data.dataValue +"</option>");
+                    })
+                    renderForm();
+                }
+            })
+
+            //批示领导**
+            $.ajax({
+                url: "DBJ/SysUser",
+                type: "post",
+                dataType: "json",
+                success: function (obj) {
+                    // console.log(obj)
+                    $.each(obj, function (index, data) {
+                        // console.log(data)
+                        $("#leader").append("<option value='"+ data.uidf +"'>"+ data.truename +"</option>");
+                    });
+                    renderForm();
+                }
+            })
+
+            //受信人**
+            $.ajax({
+                url: "DBJ/SysUser",
+                type: "post",
+                dataType: "json",
+                success: function (obj) {
+                    // console.log("批示领导:"+obj);
+                    $.each(obj, function (index, data) {
+                        // console.log(data);
+                        $("#receiver").append("<option value='"+ data.uidf +"'>"+ data.truename +"</option>");
+                    })
+                    renderForm();
+                }
+            })
+
+        }
+
+        //加载 日期
+        function date() {
+                laydate = layui.laydate;
+                laydate.render({
+                    //开始时间和结束时间所在 input 框的父选择器
+                    elem: '#passTime',
+                    format: 'yyyy-MM-dd',
+                    theme: '#1e9fff'
+                });
+                laydate.render({
+                    elem: '#receiveTime',
+                    theme: '#1e9fff'
+                });
+                laydate.render({
+                    elem: '#replyDate',
+                    theme: '#1e9fff'
+                });
+        }
+
+        // 得到部门
+        function getDept() {
+            $.ajax({
+                url: "/data/info/Dept.ph",
+                dataType: 'json',
+                type: 'post',
+                success: function (obj) {
+                    // console.log(obj);
+                    $.each(obj, function (index, data) {
+                        $('#dept').append(new Option(data.dname, data.did));// 下拉菜单里添加元素
+                    });
+                    renderForm();
+                }
+            });
+        };
+        // 得到人员职位
+        function getPersonnel(data) {
+            // console.log(data.value);
+            //检查项目添加到下拉框中
+            $.ajax({
+                url: "/data/info/Personnel.ph",
+                dataType: 'json',
+                data: {
+                    "personnel":data.value
+                },
+                type: 'post',
+                success: function (obj) {
+                    // console.log(obj);
+                    $("#personnel").empty();//清空下拉框的值
+                    $.each(obj, function (index, data) {
+                        $('#personnel').append(new Option(data.username, data.uidf));// 下拉菜单里添加元素
+                    });
+                    renderForm();
+                }
+            });
+        };
+
+
+
+        //信访登记数据回显
+        function queryRegistration() {
+            var id = document.cookie.split("=")[1];
+            // console.log(id);
+            $.ajax({
+                url: "DBJ/XFRXX",
+                type: "post",
+                data:{"idf":id},
+                success: function (obj) {
+                    console.log(obj)
+                    //信访人
+                    $("#personform #letterName").val(obj.letterNamef);
+                    $("#idCard").val(obj.letterCardNof);
+                    $("#phone").val(obj.letterMobilef);
+                    $("#work").val(obj.workDept);
+                    $("#workEmail").val(obj.letterPostNof);
+                    $("#letterAddress").val(obj.letterAddressf);
+                    $("#addressEmail").val(obj.letterAdsPostNof);
+                    $("#homeAddress").val(obj.letterHomeAddrf);
+                    $("#houRegAddress").val(obj.letterOriRegAdsf);
+                    //信访件
+                    $("#letterform #letterSource").val(obj.letterSource);
+                    $("#letterform #letterTitle").val(obj.letterTitlef);
+                    $('input[name="isPublic"][value="'+obj.isPublic+'"]').prop('checked','checked');
+                    $("#letterform #natureType").val(obj.natureType);
+                    $("#letterCount").val(obj.letterCount);
+                    $("#visitedDept").val(obj.visitedDept);
+                    $('input[name="visitScope"][value="'+obj.visitScope+'"]').prop('checked','checked');
+                    $("#visitCount").val(obj.visiterCount);
+                    $("#responsibleArea").val(obj.dutyArea);
+                    $("#happenAddress").val(obj.happenAddressf);
+                    $("#questionType").val(obj.thirdQuestionType);
+                    $("#standQuestion").val(obj.standQuestion);
+                    $("#exceptionCase").val(obj.visitExeceptionCasef);
+                    $("#overVisit").val(obj.overVisitf);
+                    $("#questionDept").val(obj.questionAffiliations);
+                    $("#leader").val(obj.approveLeader);
+                    $("#passDept").val(obj.toPassDept);
+                    $("#documentNo").val(obj.documentNof);
+                    $("#passTime").val(obj.toPassTimef);
+                    $("#letterType").val(obj.letterStylef);
+                    $("#receiver").val(obj.letterReceiverf);
+                    $("#receiveTime").val(obj.letterReceiveTimef);
+                    $("#letterItem").val(obj.letterItemf);
+                    //处理情况
+                    $('input[name="isRegist"][value="'+obj.thirdAccept+'"]').prop('checked','checked');
+                    //属性类别
+                    $('input[name="letterProperties"][value="'+obj.letterPropertiesf+'"]').prop('checked','checked');
+                    //登记人
+                    $("#letterRegistrationId").val(obj.letterRegisterIdf);//信访登记人编号
+                    $("#letterRegistrationName").val(obj.letterRegisterName);//名字
+
+                    renderForm();
+                }
+            })
+        }
+
+
+
+    </script>
+</body>
+
+
+
+
+</html>
+

@@ -75,6 +75,14 @@ public class DBGLDaoImpl implements DBGLDao {
             return asv;
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally{
+            try{
+                if(conn!=null){
+                    DbUtils.close(conn);
+                }
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         }
         return asv;
     }
@@ -89,6 +97,14 @@ public class DBGLDaoImpl implements DBGLDao {
             return update;
         } catch (Exception e) {
             e.printStackTrace();
+        }finally{
+            try{
+                if(conn!=null){
+                    DbUtils.close(conn);
+                }
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         }
         return 0;
     }

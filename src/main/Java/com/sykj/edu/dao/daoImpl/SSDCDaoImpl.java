@@ -102,6 +102,14 @@ public      class SSDCDaoImpl implements SSDCDao {
             return list;
         } catch (Exception e) {
             e.printStackTrace();
+        }finally{
+            try{
+                if(conn!=null){
+                    DbUtils.close(conn);
+                }
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         }
         return null;
     }
@@ -116,6 +124,14 @@ public      class SSDCDaoImpl implements SSDCDao {
             return update;
         } catch (Exception e) {
             e.printStackTrace();
+        }finally{
+            try{
+                if(conn!=null){
+                    DbUtils.close(conn);
+                }
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         }
         return 0;
     }
