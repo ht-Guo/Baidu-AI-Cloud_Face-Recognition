@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+import javax.naming.event.ObjectChangeListener;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.Iterator;
@@ -98,10 +99,15 @@ public class DBJController {
                 } else if( file != null ){
                     try {
                         //得到服务器的路径, getRealPath:返回一个指定虚拟路径的真实路径（完整路径）的字符串,构建文件路径
-                        String path =request.getServletContext().getRealPath("/")+"/Resources/"+originalFilename;
+                        String path =request.getServletContext().getRealPath("/")+"File\\"+originalFilename;
+                        File f=new File(path);
+//                        不存在就创建
+                        if(!f.exists()){
+                            f.mkdirs();
+                        }
                         //保存文件到服务器
                         //将文件上传保存指定文件
-                        file.transferTo(new File(path));
+                        file.transferTo(f);
                         jsonObject.put("msg", "上传成功!");
                         jsonObject.put("success", true);
                         jsonObject.put("fileSize", file.getSize());
@@ -126,6 +132,27 @@ public class DBJController {
         return i;
     }
 
+
+    /**
+     * 查询附件信息
+     * */
+
+    @RequestMapping("FindAcc")
+    @ResponseBody
+    public Object FindAcc(Integer idf,Integer page,Integer limit){
+        Object o = dao.FindAccessories(idf, page, limit);
+        return o;
+    }
+
+    /**
+     * 查询审批流程
+     * */
+    @RequestMapping("FindLC")
+    @ResponseBody
+    public Object Find(Integer idf,Integer page,Integer limit){
+        Object o = dao.FindLC(idf, page, limit);
+        return o;
+    }
 
 
 }

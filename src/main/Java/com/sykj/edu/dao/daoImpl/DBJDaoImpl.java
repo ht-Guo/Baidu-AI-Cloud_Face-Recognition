@@ -2,6 +2,7 @@ package com.sykj.edu.dao.daoImpl;
 
 import com.sykj.edu.dao.DBJDao;
 import com.sykj.edu.util.ConnUtil;
+import com.sykj.edu.util.SqlUtil;
 import com.sykj.edu.vo.ApproveLetterBaseInfo;
 import org.apache.commons.dbutils.DbUtils;
 import org.apache.commons.dbutils.QueryRunner;
@@ -10,7 +11,6 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -59,17 +59,14 @@ public class DBJDaoImpl implements DBJDao {
         if(registerTimef!=null && !registerTimef.equals("")){
             sql+=" and l.registerTimef= '"+registerTimef+"' ";
         }
-        String sql2="select count(*) count from ("+sql+")a ";
-        sql="select * from ("+sql+")a limit "+((page*limit)-limit)+","+limit+"   ";
+        Object count = SqlUtil.getCount(ApproveLetterBaseInfo.class, sql);
+        sql=SqlUtil.limitSql(sql,page,limit);
         try {
             List<ApproveLetterBaseInfo> query = qr.query(conn, sql, new BeanListHandler<>(ApproveLetterBaseInfo.class));
-            ApproveLetterBaseInfo query1 = qr.query(conn, sql2, new BeanHandler<>(ApproveLetterBaseInfo.class));
             List list=new ArrayList();
             list.add(query);
-            System.out.println(query1.getCount());
-            list.add(query1.getCount());
+            list.add(count);
             return list;
-
         } catch (Exception e) {
             e.printStackTrace();
         }finally{
@@ -193,18 +190,18 @@ public class DBJDaoImpl implements DBJDao {
     @Override
     public int InsertAcc(Integer idf, String aname, Integer asize,String atype, String path,Integer userid) {
         Connection conn = ConnUtil.getConn();
-        String sql="select let_idf from approveinfo where a.idf='"+idf+"'";
+        String sql="select let_idf idf from approveinfo where idf='"+idf+"'";
         try {
             //根据信访流程编号查询信访件号
             ApproveLetterBaseInfo query = qr.query(conn, sql, new BeanHandler<>(ApproveLetterBaseInfo.class));
             int let_idf= query.getIdf();
 
             //增加数据
-            String inSql="inser into accessories values(null,?,?,?,?,?,?,?,null)";
+            String inSql="insert into accessories values(null,?,?,?,?,?,?,?,null)";
             Date date=new Date();
             SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String format = sdf.format(date);
-            int update = qr.update(conn, sql, let_idf, aname, asize, atype, userid, format, path);
+            int update = qr.update(conn, inSql, let_idf, aname, asize, atype, userid, format, path);
             return update;
         } catch (Exception e) {
             e.printStackTrace();
@@ -212,9 +209,56 @@ public class DBJDaoImpl implements DBJDao {
         return 0;
     }
 
+    @Override
+    public Object FindAccessories(Integer idf,Integer page,Integer limit) {
+        Connection conn = ConnUtil.getConn();
+        String sql="select a.aid ,s.truename,a.aname,a.asize,a.atype,a.atime from " +
+                "accessories a inner join " +
+                "sys_user s on " +
+                "a.userId=s.uidf where  " +
+                "a.letterBaseId in  " +
+                "(select let_idf from approveinfo where idf='"+idf+"' ) ";
+        //查询总数
+        Object count = SqlUtil.getCount(ApproveLetterBaseInfo.class, sql);
 
+        sql=SqlUtil.limitSql(sql,page,limit);
+        //分页
+        try {
+            //根据信访流程编号查询信访件号
+            List<ApproveLetterBaseInfo> query = qr.query(conn, sql, new BeanListHandler<>(ApproveLetterBaseInfo.class));
+            List list=new ArrayList();
+            list.add(count);
+            list.add(query);
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
-
-
-
+    /**
+     * 办理流程
+     * */
+    @Override
+    public Object FindLC(Integer idf,Integer page,Integer limit) {
+        Connection conn=ConnUtil.getConn();
+        String sql="select a.idf,s.truename,a.fillTimef ,a.endtime " +
+                "from approveinfo a  " +
+                "inner join sys_user s  " +
+                "on s.uidf=a.userid " +
+                "where a.let_idf " +
+                "in (select let_idf from approveinfo where idf='"+idf+"') ";
+        Object count = SqlUtil.getCount(ApproveLetterBaseInfo.class, sql);
+                sql= SqlUtil.limitSql(sql,page,limit);
+        try {
+            List<ApproveLetterBaseInfo> query = qr.query(conn, sql, new BeanListHandler<>(ApproveLetterBaseInfo.class));
+            List list=new ArrayList();
+            list.add(count);
+            list.add(query);
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

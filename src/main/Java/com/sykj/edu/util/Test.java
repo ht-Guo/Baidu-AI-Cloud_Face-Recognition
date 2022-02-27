@@ -37,4 +37,8 @@ public class Test {
         list.add(3);
 //       list.stream().reduce();
     }
+
+    public String get(String name) {
+        return name;
+    }
 }

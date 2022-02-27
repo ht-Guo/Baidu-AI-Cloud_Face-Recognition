@@ -149,6 +149,7 @@
         table.on('tool(currentTableFilter)', function (obj) {
             alert(obj.event)
             var data = obj.data;
+            console.log(data)
             if (obj.event === 'transact') {
                 document.cookie="id="+data.idf;
                 var content = miniPage.getHrefContent('Moudel2/letter-transact.html');

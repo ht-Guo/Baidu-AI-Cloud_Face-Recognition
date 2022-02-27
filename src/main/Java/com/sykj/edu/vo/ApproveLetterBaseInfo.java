@@ -131,11 +131,19 @@ public class ApproveLetterBaseInfo {
    private String info;
    private int userid;
 
+   /**
+    *流程日志
+    * fillTimef：完成日期
+    * endtime：办理期限
+    * */
+   private String fillTimef;
+   private String endtime;
+
 
     public ApproveLetterBaseInfo() {
     }
 
-    public ApproveLetterBaseInfo(int idf, String dataValue, String letterNamef, String letterMobilef, String letterTitlef, String truename, String registerTimef, String letterPropertiesf, int count, String letterCardNof, String workDept, String letterPostNof, String letterAddressf, String letterAdsPostNof, String letterHomeAddrf, String letterOriRegAdsf, String letterRegisterName, int letterSource, int isPublic, int natureType, int letterCount, int visitedDept, String visitScope, int visiterCount, int dutyArea, String happenAddressf, String thirdQuestionType, int standQuestion, int visitExeceptionCasef, int overVisitf, String questionAffiliations, int approveLeader, String toPassDept, String documentNof, String toPassTimef, int letterStylef, int letterReceiverf, String letterReceiveTimef, String letterItemf, int thirdAccept, int id, int uidf, int letterRegisterIdf, int aid, int letterBaseId, String aname, int asize, String atype, String atime, String path, String info, int userid) {
+    public ApproveLetterBaseInfo(int idf, String dataValue, String letterNamef, String letterMobilef, String letterTitlef, String truename, String registerTimef, String letterPropertiesf, int count, String letterCardNof, String workDept, String letterPostNof, String letterAddressf, String letterAdsPostNof, String letterHomeAddrf, String letterOriRegAdsf, String letterRegisterName, int letterSource, int isPublic, int natureType, int letterCount, int visitedDept, String visitScope, int visiterCount, int dutyArea, String happenAddressf, String thirdQuestionType, int standQuestion, int visitExeceptionCasef, int overVisitf, String questionAffiliations, int approveLeader, String toPassDept, String documentNof, String toPassTimef, int letterStylef, int letterReceiverf, String letterReceiveTimef, String letterItemf, int thirdAccept, int id, int uidf, int letterRegisterIdf, int aid, int letterBaseId, String aname, int asize, String atype, String atime, String path, String info, int userid, String fillTimef, String endtime) {
         this.idf = idf;
         this.dataValue = dataValue;
         this.letterNamef = letterNamef;
@@ -188,6 +196,8 @@ public class ApproveLetterBaseInfo {
         this.path = path;
         this.info = info;
         this.userid = userid;
+        this.fillTimef = fillTimef;
+        this.endtime = endtime;
     }
 
     public int getCount() {
@@ -604,5 +614,21 @@ public class ApproveLetterBaseInfo {
 
     public void setUserid(int userid) {
         this.userid = userid;
+    }
+
+    public String getFillTimef() {
+        return fillTimef;
+    }
+
+    public void setFillTimef(String fillTimef) {
+        this.fillTimef = fillTimef;
+    }
+
+    public String getEndtime() {
+        return endtime;
+    }
+
+    public void setEndtime(String endtime) {
+        this.endtime = endtime;
     }
 }

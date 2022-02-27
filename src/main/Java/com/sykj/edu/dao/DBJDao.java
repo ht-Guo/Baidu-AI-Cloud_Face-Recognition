@@ -44,5 +44,14 @@ public interface DBJDao {
      * */
     public int InsertAcc(Integer idf,String aname,Integer asize,String atype,String path,Integer userid);
 
+    /**
+     * 查询当前待办件附件信息
+     * */
+    public Object FindAccessories(Integer idf,Integer page,Integer limit);
+
+    /**
+     * 办理流程
+     * */
+    public Object FindLC(Integer idf,Integer page,Integer limit);
 
 }

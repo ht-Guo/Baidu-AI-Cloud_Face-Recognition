@@ -543,10 +543,18 @@
             // 附件 表格加载
             table.render({
                 elem: '#attachmentTableId',    //  需要显示数据表格的table标签
-                url: '/zxy/info/Attachment.ph',      //  请求地址
+                url: 'DBJ/FindAcc',      //  请求地址
                 toolbar: '#attachmentToolbar',    //  表格上方工具栏
+                parseData:function(data){
+                    return {
+                        "code":0,
+                        "msg":"",
+                        "count":data[0],
+                        "data":data[1]
+                    }
+                },
                 method: 'post',          //  请求方式
-                where: {'id':id},
+                where: {'idf':id},
                 defaultToolbar: ['filter', 'exports', 'print', {        //表格上方默认 工具栏
                     title: '提示',
                     layEvent: 'LAYTABLE_TIPS',
@@ -556,34 +564,34 @@
                 title: '用户数据表',
                 cols: [[
                     {type: "checkbox", width: 50},
-                    {type: 'numbers', width: 60, title:'序号', sort: true},
+                    {field: 'aid', width: 60, title:'序号',sort:true},
                     {field: 'truename', width: 120, title: '上传人'},
                     {field: 'aname', title: '文件名', sort: true},
                     {field: 'atype', width: 80, title: '类型'},
                     {field: 'asize', width: 80, title: '大小', sort: true},
                     {field: 'atime', title: '上传时间', sort: true}
                 ]],
+                limits: [1,3,5], //  分页每页显示数据条数（页面选择）
+                limit: 3,
+                // skin: 'line',                    //  列边框
                 page: true, //开启分页
                 totalRow : true,// 开启合计行
-                limit: 5,
-                // skin: 'line',                    //  列边框
-                limits: ['5', '10', '15', '20'], //  分页每页显示数据条数（页面选择）
-                parseData: function (res) {
-                    var result;
-                    // console.log(res);
-                    if (this.page.curr) {  //前端处理数据，以适合table格式
-                        result = res.data.slice(this.limit*(this.page.curr-1),this.limit*this.page.curr);
-                    }
-                    else {
-                        result = res.data.slice(0, this.limit);
-                    }
-                    return {
-                        "code": res.code, //解析接口状态
-                        "msg": res.msg, //解析提示文本
-                        "count": res.count, //解析数据长度
-                        "data": result //解析数据列表
-                    };
-                },
+                // parseData: function (res) {
+                //     var result;
+                //     // console.log(res);
+                //     if (this.page.curr) {  //前端处理数据，以适合table格式
+                //         result = res.data.slice(this.limit*(this.page.curr-1),this.limit*this.page.curr);
+                //     }
+                //     else {
+                //         result = res.data.slice(0, this.limit);
+                //     }
+                //     return {
+                //         "code": res.code, //解析接口状态
+                //         "msg": res.msg, //解析提示文本
+                //         "count": res.count, //解析数据长度
+                //         "data": result //解析数据列表
+                //     };
+                // },
                 //处理数据格式，>5000单元格背景颜色设定
                 done: function (res, curr, count) {
                     res.data.forEach(function (item, index) {
@@ -596,10 +604,18 @@
             // 流程日志 表格加载
             table.render({
                 elem: '#processLogTableId',    //  需要显示数据表格的table标签
-                url: '/zxy/info/processLog.ph',      //  请求地址
+                url: 'DBJ/FindLC',      //  请求地址
                 // toolbar: '#toolbarTest01',    //  表格上方工具栏
                 method: 'post',          //  请求方式
-                where: {'id':id},
+                where: {'idf':id},
+                parseData:function(data){
+                    return {
+                        "code":0,
+                        "msg":"",
+                        "count":data[0],
+                        "data":data[1]
+                    }
+                },
                 defaultToolbar: ['filter', 'exports', 'print', {        //表格上方默认 工具栏
                     title: '提示',
                     layEvent: 'LAYTABLE_TIPS',
@@ -616,24 +632,24 @@
                 ]],
                 page: true, //开启分页
                 totalRow : true,// 开启合计行
-                limit: 5,
-                limits: ['5', '10', '15', '20'], //  分页每页显示数据条数（页面选择）
-                parseData: function (res) {
-                    var result;
-                    // console.log(res);
-                    if (this.page.curr) {  //前端处理数据，以适合table格式
-                        result = res.data.slice(this.limit*(this.page.curr-1),this.limit*this.page.curr);
-                    }
-                    else {
-                        result = res.data.slice(0, this.limit);
-                    }
-                    return {
-                        "code": res.code, //解析接口状态
-                        "msg": res.msg, //解析提示文本
-                        "count": res.count, //解析数据长度
-                        "data": result //解析数据列表
-                    };
-                },
+                limit: 3,
+                limits: [1,3,5], //  分页每页显示数据条数（页面选择）
+                // parseData: function (res) {
+                //     var result;
+                //     // console.log(res);
+                //     if (this.page.curr) {  //前端处理数据，以适合table格式
+                //         result = res.data.slice(this.limit*(this.page.curr-1),this.limit*this.page.curr);
+                //     }
+                //     else {
+                //         result = res.data.slice(0, this.limit);
+                //     }
+                //     return {
+                //         "code": res.code, //解析接口状态
+                //         "msg": res.msg, //解析提示文本
+                //         "count": res.count, //解析数据长度
+                //         "data": result //解析数据列表
+                //     };
+                // },
                 //处理数据格式，>5000单元格背景颜色设定
                 done: function (res, curr, count) {
                     res.data.forEach(function (item, index) {
@@ -654,22 +670,21 @@
                 ,done: function(result){        //上传后的回调
                     if(result.success == true){
                         //文件上传 成功后  向数据库 （附件表）添加 信息
-                        // $.ajax({
-                        //     url:"DBJ/InsertAcc",
-                        //     data:{
-                        //         idf:id,
-                        //         userid:window.sessionStorage.getItem("uidf"),
-                        //         aname:result.fileName,
-                        //         asize:result.fileSize,
-                        //         atype:$("input[name='aType']:checked").val(),
-                        //         path:result.pathName
-                        //     },
-                        //     success:function () {
-                        //         table.reload("attachmentTableId");
-                        //         layer.msg("上传成功!",{icon:1, anim:6, time:1000});
-                        //     }
-                        // })
-                        alert("上传成功")
+                        $.ajax({
+                            url:"DBJ/InsertAcc",
+                            data:{
+                                idf:id,
+                                userid:window.sessionStorage.getItem("uidf"),
+                                aname:result.fileName,
+                                asize:result.fileSize,
+                                atype:$("input[name='aType']:checked").val(),
+                                path:result.pathName
+                            },
+                            success:function () {
+                                table.reload("attachmentTableId");
+                                layer.msg("上传成功!",{icon:1, anim:6, time:1000});
+                            }
+                        })
                     }else{
                         layer.msg("上传失败!",{icon:1});
                     }
