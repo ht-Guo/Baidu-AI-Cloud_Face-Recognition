@@ -1,20 +1,17 @@
 package com.sykj.edu.dao;
 
-import com.sykj.edu.vo.ApproveLetterBaseInfo;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
  *
  * @User: guohaotian
- * @Date: 2022/2/25 14:51
+ * @Date: 2022/2/28 15:35
  * @package_Name: com.sykj.edu.dao
- * @Class_Name: DBJDao
+ * @Class_Name: FZCSFDao
  * To change this template use File | Settings | File Templates.
  */
-public interface DBJDao {
+public interface FZCSFDao {
     //当前操作人员进行办理的事项（排除属性类型为：非正常上访、敏感时期上访）
     /**
      *  当前操作人: userId
@@ -22,7 +19,7 @@ public interface DBJDao {
      *  信访人姓名：letterNamef
      *  提交时间：registerTimef
      * */
-    public List FindAll(Integer userId,String letterTitlef,String letterNamef,String registerTimef,Integer page,Integer limit);
+    public List FindAll(Integer userId, String letterTitlef, String letterNamef, String registerTimef, Integer page, Integer limit);
     /**
      * 信访人基本信息，信访件基本信息
      * */
@@ -73,5 +70,4 @@ public interface DBJDao {
      * 根据信访流程id查询信访件中的登记人id
      * */
     public Object FindLetterRegisterIdf(Integer idf);
-
 }

@@ -15,7 +15,7 @@ import java.sql.DriverManager;
 public class ConnUtil {
     public static Connection getConn(){
         Connection conn=null;
-        String url="jdbc:mysql://localhost/project?characterEncoding=utf-8&serverTimezone=GMT&useSSL=false";
+        String url="jdbc:mysql://localhost/projecttest?characterEncoding=utf-8&serverTimezone=GMT&useSSL=false";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn= DriverManager.getConnection(url,"root","root");

@@ -447,12 +447,11 @@
                                             <textarea id="suggestion" name="suggestion" placeholder="请输入拟办意见" class="layui-textarea"></textarea>
                                         </div>
                                     </div>
-                                    <!--  备注  isSend-->
+                                    <!--  是否办结  isSend-->
                                     <div class="layui-inline" id="sendDiv">
                                         <label class="layui-form-label">是否办结:</label>
                                         <div class="layui-input-inline">
-                                            <input type="radio" lay-verify="otherReq" name="isSend" value="1" title="办结">
-                                            <input type="radio" lay-verify="otherReq" name="isSend" value="0" title="不办结" checked>
+                                            <input type="radio" lay-verify="otherReq" name="isSend" value="2" title="办结" checked readonly>
                                         </div>
                                     </div>
                                     <br/>
@@ -498,6 +497,8 @@
                 var $=layui.jquery
 
 
+
+
                 //给文件上传时新增附件表使用
            var id = document.cookie.split("=")[1];
            date();
@@ -505,20 +506,39 @@
            getDept();
            queryRegistration();
 
-           $.ajax({
-               url: "zxy/info/getUser.ph",
-               type: "post",
-               success: function (obj) {
-                   console.log(obj.uidf);
+                /**
+                 * 判断当前用户是否是信访件登记人
+                 * */
+                $.ajax({
+                    dataType:"json",
+                    url:"DBJ/FindLetterRegisterIdf",
+                    data:{idf:id},
+                    success:function(data){
+                        console.log(data.letterRegisterIdf+"信访登记人id")
+                        var uidf = window.sessionStorage.getItem("uidf");
+                        console.log(uidf+"登录人id")
+                        console.log(data.letterRegisterIdf!=uidf);
+                        if(data.letterRegisterIdf!=uidf){
+                            //是否办结
+                            $("#sendDiv").remove();
+                        }
+                    }
+                })
 
-                   if (obj.uidf == 1) {
-                       $("#yc").addClass("layui-hide");
-                   }else {
-                       $("#sendDiv").addClass("layui-hide");
-                   }
-
-               }
-           })
+           // $.ajax({
+           //     url: "zxy/info/getUser.ph",
+           //     type: "post",
+           //     success: function (obj) {
+           //         console.log(obj.uidf);
+           //
+           //         if (obj.uidf == 1) {
+           //
+           //         }else {
+           //
+           //         }
+           //
+           //     }
+           // })
 
             //form.render();
 
@@ -537,6 +557,7 @@
             // 当前弹出层，防止ID被覆盖
             var parentIndex = layer.index;
 
+            //审批流程编号
             var id = document.cookie.split("=")[1];
             console.log(id);
 
@@ -697,36 +718,29 @@
             //监听提交  发送
             form.on('submit(send)', function(data) {
                 var field =data.field;
-                console.log(field)
                 $.ajax({
-                    url:"/zxy/petitionAgency/insertApproveinfo.ph",
+                    url:"DBJ/FS",
                     data:{
-                        idf:field.idf,
-                        letIdf:Number(id),
-                        suggestionContentf:$("#suggestion").val(),
-                        isAgreef:field.isAgree,
-                        letterPropertiesf:field.letterProperties,
-                        isend:field.isSend,
-                        personnel:Number(field.personnel),
-
+                        idf:Number(id),//审批流程编号
+                        suggestionContentf:$("#suggestion").val(),//审批意见
+                        isAgreef:field.isAgree,//是否同意
+                        letterPropertiesf:field.letterProperties,//建议属性类别
+                        isend:field.isSend,//是否办结
+                        personnel:Number(field.personnel),//办理人编号
                     },
                     success : function(res) {
-                        if (res.success == true) {
-                            layer.msg(res.msg,{icon: 1, time: 1000},function () {
-                                table.reload('toDoItemTableId')
-                            });
-                        } else if(res.success == false){
-                            layer.msg(res.msg, {icon : 5,time: 1000});
-                        }
+                            layer.msg("处理成功")
                     },
                     error:function(){
-                        layer.msg("网络错误！",{icon: 5});
+                        layer.msg("处理失败");
                     }
                 })
 
+
                 // 关闭弹出层
                 layer.close(parentIndex);
-
+                window.parent.location.reload();
+                // window.parent.layer.table.reload('currentTableId');
                 return false;
             });
 
@@ -759,7 +773,7 @@
         function renderForm() {
             layui.use('form', function(){
                 var form = layui.form;
-                form.render();
+                form.render('');
             });
         }
 
@@ -972,7 +986,7 @@
         // 得到部门
         function getDept() {
             $.ajax({
-                url: "/data/info/Dept.ph",
+                url: "DBJ/Department",
                 dataType: 'json',
                 type: 'post',
                 success: function (obj) {
@@ -986,20 +1000,20 @@
         };
         // 得到人员职位
         function getPersonnel(data) {
-            // console.log(data.value);
+            console.log(data.value);
             //检查项目添加到下拉框中
             $.ajax({
-                url: "/data/info/Personnel.ph",
+                url: "DBJ/FindSysUser",
                 dataType: 'json',
                 data: {
-                    "personnel":data.value
+                    "did":data.value
                 },
                 type: 'post',
                 success: function (obj) {
                     // console.log(obj);
                     $("#personnel").empty();//清空下拉框的值
                     $.each(obj, function (index, data) {
-                        $('#personnel').append(new Option(data.username, data.uidf));// 下拉菜单里添加元素
+                        $('#personnel').append(new Option(data.truename, data.uidf));// 下拉菜单里添加元素
                     });
                     renderForm();
                 }

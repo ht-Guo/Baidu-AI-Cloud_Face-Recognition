@@ -1,7 +1,7 @@
 package com.sykj.edu.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.sykj.edu.dao.DBJDao;
+import com.sykj.edu.dao.FZCSFDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,19 +19,16 @@ import java.util.List;
  * Created by IntelliJ IDEA.
  *
  * @User: guohaotian
- * @Date: 2022/2/25 15:53
+ * @Date: 2022/2/28 15:39
  * @package_Name: com.sykj.edu.controller
- * @Class_Name: DBJController
+ * @Class_Name: FZCSFController
  * To change this template use File | Settings | File Templates.
  */
-
-//待办件
-
-@RequestMapping("DBJ")
+@RequestMapping("FZCSF")
 @Controller
-public class DBJController {
+public class FZCSFController {
     @Autowired
-    private DBJDao dao;
+    private FZCSFDao dao;
 
     /**
      * 待办列出需要当前操作人员进行办理的事项（排除属性类型为：非正常上访、敏感时期上访）
@@ -80,7 +77,7 @@ public class DBJController {
     @ResponseBody
     public JSONObject fileUpload(HttpServletRequest request){
         CommonsMultipartResolver multipartResolver =
-       new CommonsMultipartResolver(request.getSession().getServletContext());
+                new CommonsMultipartResolver(request.getSession().getServletContext());
         //检查form中是否有enctype="multipart/form-data"
         JSONObject jsonObject = new JSONObject();
         if(multipartResolver.isMultipart(request)) {
@@ -193,6 +190,5 @@ public class DBJController {
         Object o1 = dao.UpdateApproveInfo(idf, suggestionContentf, isAgreef, letterPropertiesf, isend, personnel);
         return o1;
     }
-
 
 }

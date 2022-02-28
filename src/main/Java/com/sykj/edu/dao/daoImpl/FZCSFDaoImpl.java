@@ -1,6 +1,6 @@
 package com.sykj.edu.dao.daoImpl;
 
-import com.sykj.edu.dao.DBJDao;
+import com.sykj.edu.dao.FZCSFDao;
 import com.sykj.edu.util.ConnUtil;
 import com.sykj.edu.util.SqlUtil;
 import com.sykj.edu.vo.ApproveLetterBaseInfo;
@@ -20,22 +20,21 @@ import java.util.List;
  * Created by IntelliJ IDEA.
  *
  * @User: guohaotian
- * @Date: 2022/2/25 14:51
+ * @Date: 2022/2/28 15:35
  * @package_Name: com.sykj.edu.dao.daoImpl
- * @Class_Name: DBJDaoImpl
+ * @Class_Name: FZCSFDaoImpl
  * To change this template use File | Settings | File Templates.
  */
 
-
 @Repository
-public class DBJDaoImpl implements DBJDao {
+public class FZCSFDaoImpl implements FZCSFDao {
     private QueryRunner qr = new QueryRunner();
 
     /**
      * 待办件
      * */
     @Override
-    public List FindAll(Integer userId, String letterTitlef, String letterNamef, String registerTimef,Integer page,Integer limit) {
+    public List FindAll(Integer userId, String letterTitlef, String letterNamef, String registerTimef, Integer page, Integer limit) {
         Connection conn= ConnUtil.getConn();
         String sql="select a.idf,b.dataValue,c.letterNamef,c.letterMobilef,l.letterTitlef,s.truename,l.registerTimef,l.letterPropertiesf  from  " +
                 "approveinfo a inner join " +
@@ -47,7 +46,7 @@ public class DBJDaoImpl implements DBJDao {
                 "and b.id=l.letterSource " +
                 "and l.letterIDf=c.idf " +
                 "and l.letterRegisterIdf=s.uidf " +
-                "and l.letterpropertiesf not in('非正常上访','敏感时期个访','敏感时期上访','敏感时期集访') "+
+                "and l.letterpropertiesf not in('列入排查','领导批示','领导包案') "+
                 "and a.state='待办理' "+
                 "and a.userid='"+userId+"' ";
         if(letterTitlef!=null && !letterTitlef.equals("")){
@@ -71,9 +70,9 @@ public class DBJDaoImpl implements DBJDao {
             e.printStackTrace();
         }finally{
             try{
-            if(conn!=null){
-                DbUtils.close(conn);
-            }
+                if(conn!=null){
+                    DbUtils.close(conn);
+                }
             }catch(Exception e){
                 e.printStackTrace();
             }
@@ -81,9 +80,9 @@ public class DBJDaoImpl implements DBJDao {
         return null;
     }
 
-/**
- * 信访人基本信息，信访件基本信息
- * */
+    /**
+     * 信访人基本信息，信访件基本信息
+     * */
     @Override
     public Object FindApp(Integer idf){
         Connection conn=ConnUtil.getConn();
@@ -249,7 +248,7 @@ public class DBJDaoImpl implements DBJDao {
                 "where a.let_idf " +
                 "in (select let_idf from approveinfo where idf='"+idf+"') ";
         Object count = SqlUtil.getCount(ApproveLetterBaseInfo.class, sql);
-                sql= SqlUtil.limitSql(sql,page,limit);
+        sql= SqlUtil.limitSql(sql,page,limit);
         try {
             List<ApproveLetterBaseInfo> query = qr.query(conn, sql, new BeanListHandler<>(ApproveLetterBaseInfo.class));
             List list=new ArrayList();
