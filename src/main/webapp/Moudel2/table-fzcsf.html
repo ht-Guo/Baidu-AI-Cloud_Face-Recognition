@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>对象管理信息</title>
+    <style>
+        radio{
+            color: red;
+        }
+    </style>
 </head>
 <body>
 <div class="layuimini-container layuimini-page-anim">
     <div class="layuimini-main">
-
         <fieldset class="table-search-fieldset">
             <legend>查询信息</legend>
             <div style="margin: 10px 10px 10px 10px">
@@ -38,12 +42,6 @@
                 </form>
             </div>
         </fieldset>
-
-        <!--<script type="text/html" id="toolbarDemo">-->
-        <!--<div class="layui-btn-container">-->
-        <!--<button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 添加 </button>-->
-        <!--</div>-->
-        <!--</script>-->
 
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
 
@@ -116,34 +114,6 @@
             return false;
         });
 
-        /**
-         * toolbar事件监听
-         */
-        // table.on('toolbar(currentTableFilter)', function (obj) {
-        //     if (obj.event === 'add') {   // 监听添加操作
-        //         var content = miniPage.getHrefContent('page/table/add.html');
-        //         var openWH = miniPage.getOpenWidthHeight();
-        //
-        //         var index = layer.open({
-        //             title: '添加用户',
-        //             type: 1,
-        //             shade: 0.2,
-        //             maxmin:true,
-        //             shadeClose: true,
-        //             area: [openWH[0] + 'px', openWH[1] + 'px'],
-        //             offset: [openWH[2] + 'px', openWH[3] + 'px'],
-        //             content: content,
-        //         });
-        //         $(window).on("resize", function () {
-        //             layer.full(index);
-        //         });
-        //     } else if (obj.event === 'delete') {  // 监听删除操作
-        //         var checkStatus = table.checkStatus('currentTableId')
-        //             , data = checkStatus.data;
-        //         layer.alert(JSON.stringify(data));
-        //     }
-        // });
-
 
         //办理
         table.on('tool(currentTableFilter)', function (obj) {
@@ -194,7 +164,6 @@
                 return false;
             }
         })
-
     });
 </script>
 </body>

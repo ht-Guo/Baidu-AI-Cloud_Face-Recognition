@@ -70,7 +70,7 @@ public class InitController {
 //        非正常上访
                 final   Childs fZCCSF=new  Childs("非正常上访","Moudel2/table-fzcsf.html","fa fa-tachometer","_self",null);
 //        已办件
-                final   Childs yBJ=new  Childs("已办件","table-CompletedParts.html","fa fa-tachometer","_self",null);
+                final   Childs yBJ=new  Childs("已办件","Moudel2/YBJ.html","fa fa-tachometer","_self",null);
                 List xFList=new ArrayList(){
                     {
                         add(dBJ);

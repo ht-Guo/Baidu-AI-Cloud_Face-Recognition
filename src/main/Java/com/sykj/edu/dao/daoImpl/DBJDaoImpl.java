@@ -126,6 +126,7 @@ public class DBJDaoImpl implements DBJDao {
                 "l.letterIDf=b.idf and  " +
                 "l.letterRegisterIdf=s.uidf " +
                 "where a.idf= ? ";
+        System.out.println(sql);
         try {
             ApproveLetterBaseInfo query = qr.query(conn, sql, new BeanHandler<>(ApproveLetterBaseInfo.class),idf);
             return query;

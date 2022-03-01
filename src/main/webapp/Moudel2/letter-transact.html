@@ -2,27 +2,25 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <style>
-        .noborder{
-            border: 0px;
-            font-family:"等线 Light" ;
-            color: #1e9fff;
+        select[disabled=disabled]{
+            opacity: 1;
+            color: #0C0C0C;
         }
-
+        radio[disabled=disabled],checkbox[disabled=disabled]{
+            opacity: 1;
+            color: #00a2d4;
+        }
     </style>
     <script src="../js/jquery-3.3.1.min.js"></script>
     <meta charset="UTF-8">
     <title>办理</title>
 </head>
 <body>
-
     <div class="layuimini-main">
-
         <div class="layui-form layuimini-form">
-
             <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
                 <legend>信访办理</legend>
             </fieldset>
-
 <!--            卡片 选项卡-->
             <div class="layui-tab layui-tab-card">
                 <ul class="layui-tab-title">
@@ -165,7 +163,7 @@
                                             <div class="layui-inline">
                                                 <label class="layui-form-label">信访来源:</label>
                                                 <div class="layui-input-inline">
-                                                    <select disabled id="letterSource" name="letterSource"><option value="">letterSource</option></select>
+                                                    <select disabled="disabled" id="letterSource" name="letterSource"><option value="">letterSource</option></select>
                                                 </div>
                                             </div>
                                             <!--                                是否公开 isPublic-->
@@ -180,7 +178,7 @@
                                             <div class="layui-inline">
                                                 <label class="layui-form-label">性质分类:</label>
                                                 <div class="layui-input-inline">
-                                                    <select id="natureType" disabled name="natureType"><option value="">natureType</option></select>
+                                                    <select id="natureType" disabled="disabled" name="natureType"><option value="">natureType</option></select>
                                                 </div>
                                             </div>
                                             <!--                                信访次数 letterCount-->
@@ -194,15 +192,15 @@
                                             <div class="layui-inline">
                                                 <label class="layui-form-label">曾访部门:</label>
                                                 <div class="layui-input-inline">
-                                                    <select disabled id="visitedDept" name="visitedDept"><option value="">visitedDept</option></select>
+                                                    <select disabled="disabled" id="visitedDept" name="visitedDept"><option value="">visitedDept</option></select>
                                                 </div>
                                             </div>
                                             <!--                                来访规模 visitScope-->
                                             <div class="layui-inline">
                                                 <label class="layui-form-label">来访规模:</label>
                                                 <div class="layui-input-block">
-                                                    <input disabled style="background:#fdfafa" type="checkbox"  name="visitScope"  value="个访" title="个人访">
-                                                    <input disabled style="background:#fdfafa" type="checkbox" name="visitScope" value="集体访"  title="集体访">
+                                                    <input disabled style="background:#3f46fd" type="checkbox" name="visitScope" value="个访" title="个人访">
+                                                    <input disabled style="background:#4d5efd" type="checkbox" name="visitScope" value="集体访" title="集体访">
                                                 </div>
                                             </div>
                                             <!--                                来访人数 visitCount-->
@@ -216,7 +214,7 @@
                                             <div class="layui-inline">
                                                 <label class="layui-form-label">责任地区:</label>
                                                 <div class="layui-input-inline">
-                                                    <select disabled id="responsibleArea" name="responsibleArea"><option value="">responsibleArea</option></select>
+                                                    <select disabled="disabled" id="responsibleArea" name="responsibleArea"><option value="">responsibleArea</option></select>
                                                 </div>
                                             </div>
                                             <!--                                事发单位或地址 happenAddress-->
@@ -237,21 +235,21 @@
                                             <div class="layui-inline">
                                                 <label class="layui-form-label">突出问题:</label>
                                                 <div class="layui-input-inline">
-                                                    <select disabled name="standQuestion" id="standQuestion"><option value="">standQuestion</option></select>
+                                                    <select disabled="disabled" name="standQuestion" id="standQuestion"><option value="">standQuestion</option></select>
                                                 </div>
                                             </div>
                                             <!--                                来访异常情况 exceptionCase-->
                                             <div class="layui-inline">
                                                 <label class="layui-form-label">来访异常情况:</label>
                                                 <div class="layui-input-inline">
-                                                    <select disabled id="exceptionCase" name="exceptionCase"><option value="">exceptionCase</option></select>
+                                                    <select disabled="disabled" id="exceptionCase" name="exceptionCase"><option value="">exceptionCase</option></select>
                                                 </div>
                                             </div>
                                             <!--                                越级上访 overVisit-->
                                             <div class="layui-inline">
                                                 <label class="layui-form-label">越级上访:</label>
                                                 <div class="layui-input-inline">
-                                                    <select disabled id="overVisit" name="overVisit"><option value="">overVisit</option></select>
+                                                    <select disabled="disabled" id="overVisit" name="overVisit"><option value="">overVisit</option></select>
                                                 </div>
                                             </div>
                                             <!--                                问题所属单位 questionDept-->
@@ -265,7 +263,7 @@
                                             <div class="layui-inline">
                                                 <label class="layui-form-label">批示领导:</label>
                                                 <div class="layui-input-inline">
-                                                    <select disabled id="leader" name="leader"><option value="">leader</option></select>
+                                                    <select disabled="disabled" id="leader" name="leader"><option value="">leader</option></select>
                                                 </div>
                                             </div>
                                             <!--                                转/交来单位 passDept-->
@@ -293,14 +291,14 @@
                                             <div class="layui-inline">
                                                 <label class="layui-form-label">来信形式:</label>
                                                 <div class="layui-input-inline">
-                                                    <select disabled id="letterType" name="letterType"><option value="">letterType</option></select>
+                                                    <select id="letterType" name="letterType" disabled="disabled"><option value="">letterType</option></select>
                                                 </div>
                                             </div>
                                             <!--                                受信人 receiver-->
                                             <div class="layui-inline">
                                                 <label class="layui-form-label">受信人:</label>
                                                 <div class="layui-input-inline">
-                                                    <select disabled id="receiver" name="receiver"><option value="">receiver</option></select>
+                                                    <select disabled="disabled" id="receiver" name="receiver"><option value="">receiver</option></select>
                                                 </div>
                                             </div>
                                             <!--                                收信日期 receiveTime-->
@@ -525,23 +523,6 @@
                     }
                 })
 
-           // $.ajax({
-           //     url: "zxy/info/getUser.ph",
-           //     type: "post",
-           //     success: function (obj) {
-           //         console.log(obj.uidf);
-           //
-           //         if (obj.uidf == 1) {
-           //
-           //         }else {
-           //
-           //         }
-           //
-           //     }
-           // })
-
-            //form.render();
-
             // 联动
            form.on('select(deptFilter)', function(data){
                getPersonnel(data);
@@ -597,22 +578,6 @@
                 // skin: 'line',                    //  列边框
                 page: true, //开启分页
                 totalRow : true,// 开启合计行
-                // parseData: function (res) {
-                //     var result;
-                //     // console.log(res);
-                //     if (this.page.curr) {  //前端处理数据，以适合table格式
-                //         result = res.data.slice(this.limit*(this.page.curr-1),this.limit*this.page.curr);
-                //     }
-                //     else {
-                //         result = res.data.slice(0, this.limit);
-                //     }
-                //     return {
-                //         "code": res.code, //解析接口状态
-                //         "msg": res.msg, //解析提示文本
-                //         "count": res.count, //解析数据长度
-                //         "data": result //解析数据列表
-                //     };
-                // },
                 //处理数据格式，>5000单元格背景颜色设定
                 done: function (res, curr, count) {
                     res.data.forEach(function (item, index) {
@@ -655,22 +620,6 @@
                 totalRow : true,// 开启合计行
                 limit: 3,
                 limits: [1,3,5], //  分页每页显示数据条数（页面选择）
-                // parseData: function (res) {
-                //     var result;
-                //     // console.log(res);
-                //     if (this.page.curr) {  //前端处理数据，以适合table格式
-                //         result = res.data.slice(this.limit*(this.page.curr-1),this.limit*this.page.curr);
-                //     }
-                //     else {
-                //         result = res.data.slice(0, this.limit);
-                //     }
-                //     return {
-                //         "code": res.code, //解析接口状态
-                //         "msg": res.msg, //解析提示文本
-                //         "count": res.count, //解析数据长度
-                //         "data": result //解析数据列表
-                //     };
-                // },
                 //处理数据格式，>5000单元格背景颜色设定
                 done: function (res, curr, count) {
                     res.data.forEach(function (item, index) {
@@ -910,7 +859,7 @@
                     // console.log(ooo+"来信形式")
                     $.each(ooo, function (index, data) {
                         // console.log(data+"来信形式")
-                        $("#letterType").append("<option value='"+ data.id +"'>"+ data.dataValue +"</option>");
+                        $("#letterType").append("<option value='"+ data.id +"'>"+ data.dataValue+"</option>");
                     })
                     renderForm();
                 }
@@ -1032,6 +981,7 @@
                 data:{"idf":id},
                 success: function (obj) {
                     console.log(obj)
+                    console.log(obj.letterStylef)
                     //信访人
                     $("#personform #letterName").val(obj.letterNamef);
                     $("#idCard").val(obj.letterCardNof);
@@ -1063,6 +1013,7 @@
                     $("#documentNo").val(obj.documentNof);
                     $("#passTime").val(obj.toPassTimef);
                     $("#letterType").val(obj.letterStylef);
+                    // $("#letterType option[value='"+obj.letterStylef+"']").attr("selected","selected");
                     $("#receiver").val(obj.letterReceiverf);
                     $("#receiveTime").val(obj.letterReceiveTimef);
                     $("#letterItem").val(obj.letterItemf);

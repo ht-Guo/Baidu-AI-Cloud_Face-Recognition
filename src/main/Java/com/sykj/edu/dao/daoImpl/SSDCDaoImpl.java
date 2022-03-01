@@ -64,8 +64,10 @@ public      class SSDCDaoImpl implements SSDCDao {
         "l.letterTitlef ,"+
         "d.dname ,"+
         "s.truename , "+
-        "a.userid userid "+
-        "from letterBaseInfo l inner join approveinfo a inner join Sys_user s inner join department d	on l.idf=a.let_idf and s.uidf=a.userId and s.depid= d.did where l.letterRegisteridf ='"+letterRegisteridf+"' ";
+        "a.userid userid, "+
+         "a.endtime "+
+        "from letterBaseInfo l inner join approveinfo a inner join Sys_user s inner join department d	on l.idf=a.let_idf and s.uidf=a.userId and s.depid= d.did where l.letterRegisteridf ='"+letterRegisteridf+"' and a.state='待办理'";
+        System.out.println(sql);
         if(letterSource!=null && !"".equals(letterSource)){
             sql+=" and l.letterSource='"+letterSource+"' ";
         }
@@ -86,11 +88,9 @@ public      class SSDCDaoImpl implements SSDCDao {
             sql+=" and s.truename='"+truename+"' ";
         }
 
-        sql="select * from ("+sql+")a ";
-        System.out.println(sql);
+        sql="select * from ("+sql+")a order by a.endtime asc ";
 //        查询总条数
         String sql2="select count(*) as count from ("+sql+")b";
-        System.out.println(sql2);
 //        分页
         sql="select * from ("+sql+")b limit "+((page*limit)-limit)+","+limit+" " ;
         try {
