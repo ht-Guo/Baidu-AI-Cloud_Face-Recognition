@@ -11,6 +11,7 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -178,6 +179,14 @@ public class FZCSFDaoImpl implements FZCSFDao {
             return query;
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            try {
+                if(conn!=null){
+                    DbUtils.close(conn);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }
@@ -204,6 +213,14 @@ public class FZCSFDaoImpl implements FZCSFDao {
             return update;
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            try {
+                if(conn!=null){
+                    DbUtils.close(conn);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return 0;
     }
@@ -231,6 +248,14 @@ public class FZCSFDaoImpl implements FZCSFDao {
             return list;
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            try {
+                if(conn!=null){
+                    DbUtils.close(conn);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }
@@ -257,6 +282,14 @@ public class FZCSFDaoImpl implements FZCSFDao {
             return list;
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            try {
+                if(conn!=null){
+                    DbUtils.close(conn);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }
@@ -410,6 +443,14 @@ public class FZCSFDaoImpl implements FZCSFDao {
             return query;
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            try {
+                if(conn!=null){
+                    DbUtils.close(conn);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }

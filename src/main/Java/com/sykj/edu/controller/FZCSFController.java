@@ -118,6 +118,7 @@ public class FZCSFController {
         return jsonObject;
     }
 
+
     /**
      * 增加附件信息
      * */
@@ -132,13 +133,13 @@ public class FZCSFController {
     /**
      * 查询附件信息
      * */
-
     @RequestMapping("FindAcc")
     @ResponseBody
     public Object FindAcc(Integer idf,Integer page,Integer limit){
         Object o = dao.FindAccessories(idf, page, limit);
         return o;
     }
+
 
     /**
      * 查询审批流程
@@ -150,6 +151,7 @@ public class FZCSFController {
         return o;
     }
 
+
     /**
      * 查询所有部门
      * */
@@ -159,8 +161,6 @@ public class FZCSFController {
         Object o = dao.FindAllDepartment();
         return o;
     }
-
-
     /**
      *根据部门id查询人员
      * */
@@ -170,6 +170,7 @@ public class FZCSFController {
         Object o = dao.FindSysUser(did);
         return o;
     }
+
 
     /**
      * 根据流程id查询信访登记人
@@ -181,6 +182,7 @@ public class FZCSFController {
         return o;
     }
 
+
     /**
      * 发送
      * */
@@ -190,5 +192,4 @@ public class FZCSFController {
         Object o1 = dao.UpdateApproveInfo(idf, suggestionContentf, isAgreef, letterPropertiesf, isend, personnel);
         return o1;
     }
-
 }

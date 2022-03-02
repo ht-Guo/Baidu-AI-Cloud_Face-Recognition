@@ -30,6 +30,10 @@ public class Test {
 //        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //        String format = sdf.format(d);
 //        System.out.println(format);
+//        Date d=new Date();
+//        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        String format = sdf.format(d);
+//        System.out.println(format);
 
         ArrayList<Integer> list=new ArrayList();
         list.add(1);
