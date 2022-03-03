@@ -21,10 +21,8 @@ public class VipManageDaolmpl implements VipManageDao {
         Connection conn = ConnUtil.getConn();
         QueryRunner qr = new QueryRunner();
         String sql = "select le.*,vip.recordDatef from lettersinfo le,vipmanage vip where le.idf=vip.idf;";
-        System.out.println(sql);
         if(letterOriRegAdsf != null && !"".equals(letterOriRegAdsf)){
             sql += " and le.letterOriRegAdsf like '%"+letterOriRegAdsf+"%'";
-            System.out.println(sql);
         }
         if(letterNamef != null && !"".equals(letterNamef)){
             sql += " and vip.letterNamef like '%"+letterNamef+"%'";

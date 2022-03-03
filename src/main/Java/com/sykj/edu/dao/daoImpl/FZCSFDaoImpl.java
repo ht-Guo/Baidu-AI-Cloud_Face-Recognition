@@ -358,7 +358,6 @@ public class FZCSFDaoImpl implements FZCSFDao {
      * */
     @Override
     public Object UpdateApproveInfo(Integer idf,String suggestionContentf,Integer isAgreef,String letterPropertiesf,Integer isend,Integer personnel) {
-        System.out.println(isend+"IsSend");
         Connection conn=ConnUtil.getConn();
         if(isend==null){
             Date date=new Date();

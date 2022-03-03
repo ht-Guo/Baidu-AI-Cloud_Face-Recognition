@@ -1,0 +1,72 @@
+项目开发规范：
+
+1、项目包：
+com.st2002.team01.学生姓名.功能模块
+例如：
+com.st2002.team01.xinmintian.handler
+com.st2002.team01.xinmintian.dao
+
+com.st2002.team01.wangjinfeng.handler
+com.st2002.team01.wangjinfeng.dao
+
+公共模块：
+com.st2002.team01.base.db--连接数据库类
+com.st2002.team01.base.vo--系统所有数据库表对应的vo对象
+
+2、类的命名：
+要求
+1、所有类的首字母必须大写。
+2、如果一个类名称由多个单词组成，每个单词的首字母大写。
+3、所有类的类名都以类的类型结尾
+例如：hanlerl类     UserHandler
+                    DengjiHandler
+      Dao类     接口 IUserDao
+              实现类 UserDaoImp   
+3、类中方法名
+   类中所有方法名要求必须以小写的字母开头。
+   通常情况一个业务流程的方法名，在handler中的名称与dao中对应名称相同       
+
+4、变量名
+   在类所有的变量，变量名必须以小写的字母开头。
+   类中所有的常量，必须全部以大写的字母组成。
+
+
+前台页面命名规范：
+    要求，所有的html文件名必须以小写的字母和数字组成。必须以小写的字母开头。
+
+----------------------------------------------
+
+
+项目编码：
+项目统一使用UTF-8编码
+
+ <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>
+            org.springframework.web.filter.CharacterEncodingFilter
+        </filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -27,7 +27,6 @@ public class DBGLDaoImpl implements DBGLDao {
                 "when 2 then '<font color=#003BFF>已读</font>' " +
                 "when 3 then '<font color=#00E9FF >已回复</font>' " +
                 "else '' end 'status',a.Supervisorstatusf,a.SupervisorReplyIDf  from archivesupervisor a,sys_user s2,sys_user s3 where a.Supervisorf=s2.UIDF and a.beenSupervisorf=s3.UIDF and (s2.uidf ='"+userId+"' or s3.uidf ='"+userId+"'))dc    where 1=1  order by dc.supervisorTimef desc ";
-        System.out.println(sql);
 //        信访标题
         sql+=(SupervisorTitlef!=null  && !SupervisorTitlef.equals("") )? " and dc.SupervisorTitlef like '%"+SupervisorTitlef+"%' ":" ";
 //        督办人

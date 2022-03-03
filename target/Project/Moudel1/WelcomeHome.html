@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>信访首页</title>
+    <style>
+        .background{
+            background:linear-gradient(#A5CFE9,#A4CDE7,#ABD5EB,#C1E1F0,#C3E4EF,#D4EAF5,#DFF1F5,#ECF5FA,#E6F4F7,#F0F8FB,#F1F8FB);
+            text-align: center;
+        }
+        .tit {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            padding: 10px;
+            line-height: 24px;
+            font-size: 14px;
+            box-sizing: border-box;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+        }
+        .click{
+            cursor: pointer;
+        }
+        .center{
+            text-align: center;
+            margin-left: -200px;
+        }
+        .left{
+            margin-left: 150px;
+        }
+        #d1{
+            position:relative;
+            top: -330px;
+            left: 700px;
+            width: 500px;
+            height: 200px;
+            background-color: #FAFAFA;
+            box-shadow: 1px 1px 5px 1px #999999;
+        }
+        #d2{
+            height: 110px;
+            background-color: #FAFAFA;
+            box-shadow: 1px 1px 5px 1px #999999;
+            width: 500px;
+            position: relative;
+            top: -315px;
+            left: 700px;
+            overflow: scroll;
+        }
+    </style>
+</head>
+<body>
+<div>
+<div class="background">
+    <div>
+    <img src="../imgs/Welcome.jpg" />
+    </div>
+</div>
+<div class="center">
+    <img src="../imgs/title-01.png">
+</div>
+<div class="layui-carousel left" id="test10" >
+    <div carousel-item="">
+        <div onclick=window.location.href="http://www.gov.cn/xinwen/2022-03/01/content_5676282.htm"; >
+            <img src="../imgs/1128428431_1646181172658_title0h.jpg" tppabs="http://res.layui.com/static/images/layui/demo/5.png">
+            <div class="tit"> 习近平在中央党校（国家行政学院）中青年干部培训班开班式上发表重要讲话 </div>
+        </div>
+        <div onclick=window.location.href="http://www.gov.cn/xinwen/2022-02/28/content_5676110.htm">
+            <img src="../imgs/1128425018_1646094918723_title0h.jpg" tppabs="http://res.layui.com/static/images/layui/demo/4.png">
+            <div class="tit"> 习近平主持召开中央全面深化改革委员会第二十四次会议（资料图） </div>
+        </div>
+        <div onclick=window.location.href="http://www.gov.cn/xinwen/2022-02/21/content_5674807.htm">
+            <img src="../imgs/1128401384_1645402928399_title0h.jpg" tppabs="http://res.layui.com/static/images/layui/demo/3.png">
+            <div class="tit"> 习近平出席第二十四届冬季奥林匹克运动会闭幕式 </div>
+        </div>
+        <div onclick=window.location.href="http://www.gov.cn/xinwen/2022-02/15/content_5673677.htm">
+            <img src="../imgs/1128378725_1644971652078_title0h.jpg" tppabs="http://res.layui.com/static/images/layui/demo/2.png">
+            <div class="tit"> 《求是》杂志发表习近平总书记重要文章（资料图） </div>
+        </div>
+        <div onclick=window.location.href="http://www.gov.cn/xinwen/2022-02/05/content_5672094.htm">
+            <img src="../imgs/1128336157_1644147544720_title0h.jpg" tppabs="http://res.layui.com/static/images/layui/demo/1.png">
+            <div class="tit"> 习近平和彭丽媛设宴欢迎出席北京2022年冬奥会开幕式的国际贵宾 </div>
+        </div>
+    </div>
+</div>
+        <!-- 新闻   -->
+        <div id="d1">
+            <div style="margin-top: 10px">
+                <h2 style="text-align: center;font-size: 24px"><a href="http://www.hubeixf.gov.cn/web/Content.aspx?chn=521&amp;id=7888" style="color: #0000FF">中共中央政治局召开会议 习近平主持会议</a></h2>
+                <p style="font-size: 16px; margin-top: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新华社北京1月24日电 中共中央政治局1月24日召开会议，审议《中央政治局常委会听取和研究全国人大常委会、国务院、全国政协、最高人民法院、最高人民检察院党组工作汇报和中央书记处工作报告的综合情况报告》、《信访工作条例》。中共中央总书记习近平主持会议。会议对全国人大常委会、国务院、全国政协、最高人民法院、最高人民检察院党组和...</p>
+            </div>
+        </div>
+    <div id="d2" >
+        <!--            流加载-->
+        <ul class="flow-default" id="LAY_demo1" style="font-size: 16px"></ul>
+    </div>
+</div>
+
+<script>
+    layui.use(['carousel', 'form','flow'], function(){
+        var $=layui.$,
+            carousel = layui.carousel,
+            form = layui.form,
+            flow=layui.flow;
+
+        //流加载
+        flow.load({
+            elem: '#LAY_demo1' //流加载容器
+            ,scrollElem: '#d2' //滚动条所在元素，一般不用填，此处只是演示需要。
+           ,isAuto:true
+            ,mb:10
+            ,done: function(page, next){ //执行下一页的回调
+
+                //模拟数据插入
+                setTimeout(function(){
+                    $.ajax({
+                        url:"../api/XWDT.json",
+                        dataType:"json",
+                        method:"post",
+                        success:function(data){
+                            // console.log(page);
+                            let lis = []
+                            for(var i=0;i<5;i++){
+                                let a;
+                                switch (page){
+                                    case 1:a=0; break;
+                                    case 2:a=5;break;
+                                    case 3:a=10;break;
+                                    case 4: a=15;break;
+                                    case 5: a=20;break;
+                                }
+                                a+=i;
+                                lis.push(data[a]);
+                                // //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+                                // //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+                            }
+                            next(lis.join(''), page <4);
+                        }
+                    })
+
+                }, 1);
+            }
+        });
+
+        //图片轮播
+        carousel.render({
+            elem: '#test10'//元素
+            ,width: '480px'//宽
+            ,height: '330px'//高
+            ,interval: 5000
+            ,autoplay:true//是否轮播
+        });
+
+        //鼠标划入时间
+        $("#test10 div div").on("mouseover",function(){
+            $(this).addClass("click");
+        })
+
+    });
+</script>
+</body>
+</html>

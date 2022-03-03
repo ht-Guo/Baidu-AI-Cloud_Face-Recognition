@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象管理信息</title>
+    <script></script>
+</head>
+<body>
+<div class="layuimini-container layuimini-page-anim">
+    <div class="layuimini-main">
+
+        <fieldset class="table-search-fieldset">
+            <legend>查询信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="" id="form">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><font size="2">信访标题</font>&nbsp;:&nbsp;</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="SupervisorTitlef" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><font size="2">督办人</font>&nbsp;:&nbsp;</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="dbr" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><font size="2">被督办人</font>&nbsp;:&nbsp;</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="bdbr" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><font size="2">督办日期</font>&nbsp;:&nbsp;</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="lay_date1" name="beginTime" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><font size="2">截止到</font>&nbsp;:&nbsp;</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="lay_date2" name="finishTime" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item" pane style="width: 500px">
+                            <label class="layui-form-label"><font size="2">状态</font>&nbsp;:&nbsp;</label>
+                            <div class="layui-input-block">
+                                <input type="radio" name="Supervisorstatusf"  value="" title="全部">
+                                <input type="radio" name="Supervisorstatusf"  value="1" title="未读">
+                                <input type="radio" name="Supervisorstatusf"  value="2" title="已读">
+                                <input type="radio" name="Supervisorstatusf"  value="3" title="已回复">
+                            </div>
+                        </div>
+
+
+                        <div class="layui-inline">
+                            <button type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+
+
+
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter1"></table>
+
+        <!--<script type="text/html" id="currentTableBar">-->
+            <!--<a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">修改</a>-->
+            <!--<a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>-->
+        <!--</script>-->
+
+    </div>
+</div>
+
+<script>
+    layui.use(['form', 'table','miniPage','element','laydate'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            laydate=layui.laydate,
+            table = layui.table,
+            // lay
+            miniPage = layui.miniPage;
+
+        //日期初始化
+        laydate.render({
+            elem:"#lay_date1",
+            type:'datetime',
+            range:false,//双面板
+            format: 'yyyy-MM-dd HH:mm:ss'
+        })
+        laydate.render({
+            elem:"#lay_date2",
+            type:'datetime',
+            range:false,//双面板
+            format: 'yyyy-MM-dd HH:mm:ss'
+        })
+
+        var userId=window.sessionStorage.getItem("uidf");
+        table.render({
+            elem: '#currentTableId',
+            url: 'DcdbController/findall/',
+            parseData:function(res){
+                return {
+                    "code": 0,
+                    "msg": "",
+                    "count": res[1],
+                    "data":res[0]
+                }
+            },
+            method:"post",
+            where:{"userId":userId},
+            toolbar: '#toolbarDemo',
+            defaultToolbar: ['filter', 'exports', 'print', {
+                title: '提示',
+                layEvent: 'LAYTABLE_TIPS',
+                icon: 'layui-icon-tips'
+            }],
+            cols: [[
+                // {type: "checkbox",width:200},
+                {field: 'idf',width:150,title:'编号'},
+                {field: 'supervisorTitlef',width:250,title:'信访标题'},
+                {field: 'dbr', width:230,title:'督办人'},
+                {field: 'bdbr', width:230,title:'被督办人'},
+                {field: 'supervisorTimef',width:230,title:'督办日期'},
+                {field: 'status',width:210,title:'状态'}
+            ]],
+            //一页多少条数据
+            limits: [1, 3, 5,],
+            //默认一页放几条数据
+            limit: 3,
+            //开启分页
+            page: true,
+            skin: 'line'
+        });
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+            // var result = JSON.stringify(data.field);
+            var result=data.field;
+            // layer.alert(result, {
+            //     title: '最终的搜索信息'
+            // });
+
+            //执行搜索重载
+
+        table.reload('currentTableId',{
+                // url:'DcdbController/findall',
+                // method:"post",
+                where:result
+                    // {
+                        // "SupervisorTitlef":result.SupervisorTitlef,
+                        // "dbr":result.dbr,
+                        // "bdbr":result.bdbr,
+                        // "beginTime":result.beginTime,
+                        // "finishTime":result.finishTime,
+                        // "Supervisorstatusf":result.Supervisorstatusf,
+                        // "userId":userId
+                // }
+        })
+            //     },page: {
+            //     curr: 1//重新从第一页开始
+            // }
+            // },'data');
+            // table.render();
+
+            //查询完之后清除表单中的值
+            //     $("#form")[0].reset();
+            //     layui.form.render()
+
+
+            //刷新页面（true刷新，falase不刷新）
+            return false;
+        });
+
+        /**
+         * toolbar事件监听
+         */
+        // table.on('toolbar(currentTableFilter)', function (obj) {
+        //     if (obj.event === 'add') {   // 监听添加操作
+        //         var content = miniPage.getHrefContent('page/table/add.html');
+        //         var openWH = miniPage.getOpenWidthHeight();
+        //
+        //         var index = layer.open({
+        //             title: '添加用户',
+        //             type: 1,
+        //             shade: 0.2,
+        //             maxmin:true,
+        //             shadeClose: true,
+        //             area: [openWH[0] + 'px', openWH[1] + 'px'],
+        //             offset: [openWH[2] + 'px', openWH[3] + 'px'],
+        //             content: content,
+        //         });
+        //         $(window).on("resize", function () {
+        //             layer.full(index);
+        //         });
+        //     } else if (obj.event === 'delete') {  // 监听删除操作
+        //         var checkStatus = table.checkStatus('currentTableId')
+        //             , data = checkStatus.data;
+        //         layer.alert(JSON.stringify(data));
+        //     }
+        // });
+
+        //监听表格复选框选择
+        // table.on('checkbox(currentTableFilter)', function (obj) {
+        //     console.log(obj)
+        // });
+
+        // table.on('tool(currentTableFilter)', function (obj) {
+        //     var data = obj.data;
+        //     if (obj.event === 'edit') {
+        //
+        //         var content = miniPage.getHrefContent('page/table/add.html');
+        //         var openWH = miniPage.getOpenWidthHeight();
+        //
+        //         var index = layer.open({
+        //             title: '编辑用户',
+        //             type: 1,
+        //             shade: 0.2,
+        //             maxmin:true,
+        //             shadeClose: true,
+        //             area: [openWH[0] + 'px', openWH[1] + 'px'],
+        //             offset: [openWH[2] + 'px', openWH[3] + 'px'],
+        //             content: content,
+        //         });
+        //         $(window).on("resize", function () {
+        //             layer.full(index);
+        //         });
+        //         return false;
+        //     } else if (obj.event === 'delete') {
+        //         layer.confirm('真的删除行么', function (index) {
+        //             obj.del();
+        //             layer.close(index);
+        //         });
+        //     }
+        // });
+
+
+        //渲染初始化单选按钮
+        form.render("radio");
+
+    /**
+     * 行双击事件（lay-filter的值）
+     * **/
+    var a=table.on('row(currentTableFilter1)',function(obj){
+    // 查看消息
+    //     var idf=obj.data.idf;
+    //     $.ajax({
+    //         dateType:"json",
+    //         url:"DcdbController/findall",
+    //         data:{"idf":idf},
+    //         success:function(data){
+    //             layer.open({
+    //                 type:"Login.jsp",
+    //             })
+    //         }
+    //     })
+
+        layer.open({
+            type:2,
+            title:false,
+            content:"Moudel3/NBXX.html?"+obj.data.idf,
+            area: ['700px', '450px'],
+            //右上角关闭时自定义状态
+            cancel:function(){
+                table.reload("currentTableId")//刷新表格数据
+                // window.location.reload();刷新页面
+                // parent.layer.getFrameIndex(window.name);//获取当前窗口的name
+            }
+        })
+    })
+        console.log(a);
+    //     var status="yes";
+    // function close(status){
+    //     if(status=="yes") {
+    //         window.parent.location.reload();//刷新父页面
+    //         var index=parent.location.getFrameIndex(window.name);//获取窗口索引
+    //         parent.layer.close(index);
+    //     }
+    //     var index=parent.layer.getFrameIndex(window.name);
+    //     parent.layer.close(index);
+    // }
+    // close(status);
+
+    });
+</script>
+</body>
+</html>

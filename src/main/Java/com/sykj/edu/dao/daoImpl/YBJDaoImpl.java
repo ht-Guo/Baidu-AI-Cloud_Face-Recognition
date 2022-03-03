@@ -69,7 +69,6 @@ public class YBJDaoImpl implements YBJDao {
         if(letterSource!=null && !letterSource.equals("")){
             sql+=" and l.letterSource = '"+letterSource+"'";
         }
-        System.out.println(sql);
         Object count = SqlUtil.getCount(YBJVo.class, sql);
         sql="select * from ("+sql+")a order by a.fillTimef desc limit "+((page*limit)-limit)+","+limit+" ";
         try {

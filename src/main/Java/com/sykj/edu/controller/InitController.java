@@ -52,7 +52,7 @@ public class InitController {
         List xFGNMK=new ArrayList();
 
         //        首页
-        final Childs sY=new Childs("首页","page/menu.html","fa fa-home","_self",null);
+        final Childs sY=new Childs("首页","Moudel1/WelcomeHome.html","fa fa-home","_self",null);
         xFGNMK.add(sY);
 
         for(int i=0;i<allInit.size();i++){
@@ -78,7 +78,7 @@ public class InitController {
                         add(yBJ);
                     }
                 };
-                final   Childs xFCL=new  Childs("信访处理","page/setting.html","fa fa-gears","_self",xFList);
+                final   Childs xFCL=new  Childs("信访处理","","fa fa-gears","_self",xFList);
                 xFGNMK.add(xFCL);
                 break;
 

@@ -67,7 +67,6 @@ public      class SSDCDaoImpl implements SSDCDao {
         "a.userid userid, "+
          "a.endtime "+
         "from letterBaseInfo l inner join approveinfo a inner join Sys_user s inner join department d	on l.idf=a.let_idf and s.uidf=a.userId and s.depid= d.did where l.letterRegisteridf ='"+letterRegisteridf+"' and a.state='待办理'";
-        System.out.println(sql);
         if(letterSource!=null && !"".equals(letterSource)){
             sql+=" and l.letterSource='"+letterSource+"' ";
         }

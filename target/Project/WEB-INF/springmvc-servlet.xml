@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<!--自动扫描包-->
+	<context:component-scan base-package="com.sykj.edu"/>
+	<!--mvc注解支持-->
+	<mvc:annotation-driven/>
+	<!--mvc静态资源支持-->
+	<mvc:default-servlet-handler/>
+	<!--视图解析器-->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="resolver">
+		<!--前缀-->
+		<property name="prefix" value="/"/>
+		<!--后缀-->
+		<property name="suffix" value=".jsp"/>
+	</bean>
+
+	<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+		<!-- 请求的编码格式，必须和jSP的pageEncoding属性一致，以便正确读取表单的内容，默认为ISO-8859-1 -->
+		<property name="defaultEncoding" value="utf-8"/>
+		<!-- 上传文件大小上限，单位为字节（10485760=10M） -->
+		<property name="maxUploadSize" value="10485760"/>
+		<property name="maxInMemorySize" value="40960"/>
+	</bean>
+
+</beans>

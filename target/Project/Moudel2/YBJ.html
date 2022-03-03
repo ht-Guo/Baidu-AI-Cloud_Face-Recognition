@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>已办件</title>
+</head>
+<body>
+<div class="layuimini-container layuimini-page-anim">
+    <div class="layuimini-main">
+        <fieldset class="table-search-fieldset">
+            <legend>查询信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><font size="2">信访人姓名</font>&nbsp;:&nbsp;</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="letterNamef" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><font size="2">标题</font>&nbsp;:&nbsp;</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="letterTitlef" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><font size="2">信访来源</font>&nbsp;:&nbsp;</label>
+                            <div class="layui-input-inline">
+                                <select name="letterSource">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <button type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+
+        <script type="text/html" id="toolbarDemo">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 添加 </button>
+            </div>
+        </script>
+
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">修改</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+        </script>
+
+    </div>
+</div>
+
+<script>
+    layui.use(['form', 'table','miniPage','element'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table,
+            miniPage = layui.miniPage;
+
+        $.ajax({
+            dataType:"json",
+            url:"YBJ/FindAll",
+            success:function(data){
+                $.each(data,function(i,v){
+                    $("select[name=letterSource]").append("<option value='"+v.id+"'>"+v.dataValue+"</option>")
+                })
+                //刷新表单
+                form.render();
+            }
+        })
+
+        table.render({
+            elem: '#currentTableId',
+            url: 'YBJ/Find',
+            toolbar: '#toolbarDemo',
+            method:"post",
+            defaultToolbar: ['filter', 'exports', 'print', {
+                title: '提示',
+                layEvent: 'LAYTABLE_TIPS',
+                icon: 'layui-icon-tips'
+            }],
+            where:{
+                userId:window.sessionStorage.getItem("uidf")
+            },
+            parseData:function(data){
+                return {
+                    "code":0,
+                    "msg":"",
+                    "count":data[0],
+                    "data":data[1]
+                }
+            },
+            cols: [[
+                {field: 'letterSource',width:250,title:'信访来源'},
+                {field: 'letterTitlef',width:280,title:'标题'},
+                {field: 'state', width:270,title:'当前环节'},
+                {field: 'truename', width:250,title:'当前办理人'},
+                {field: 'letterPropertiesf',width:250,title:'备注'},
+            ]],
+            limits: [1,3,5],
+            limit: 3,
+            page: true,
+            skin: 'line'
+        });
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+            var result = data.field
+
+            //执行搜索重载
+            table.reload('currentTableId', {
+                where:result
+            });
+            return false;
+        });
+
+    });
+</script>
+</body>
+</html>

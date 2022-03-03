@@ -33,11 +33,9 @@ public class SysUserDaoImpl implements SysUserDao {
         String sql = "select * from sys_user where uidf = uidf";
         if(truename != null && !"".equals(truename)){
             sql += "and truename like '%"+truename+"%'";
-            System.out.println(sql);
         }
         if(state != null && !"".equals(state)){
             sql+="and state like '%"+state+"%'";
-            System.out.println(sql);
         }
         try {
             userControls = qr.query(conn,sql,new BeanListHandler<SysUserVo>(SysUserVo.class));

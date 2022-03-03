@@ -2,7 +2,6 @@ package com.sykj.edu.dao;
 
 import com.sykj.edu.vo.LoginVo;
 
-import java.util.List;
 
 /*
   Created by IntelliJ IDEA.
