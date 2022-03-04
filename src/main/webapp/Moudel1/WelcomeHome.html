@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>信访首页</title>
+    <link rel="stylesheet" href="../css/font-awesome.css">
     <style>
         .background{
             background:linear-gradient(#A5CFE9,#A4CDE7,#ABD5EB,#C1E1F0,#C3E4EF,#D4EAF5,#DFF1F5,#ECF5FA,#E6F4F7,#F0F8FB,#F1F8FB);
@@ -50,6 +51,22 @@
             left: 700px;
             overflow: scroll;
         }
+        #d3  li{
+            margin-top: 10px;
+        }
+        #d4  li{
+            margin-top: 10px;
+        }
+        .li{
+            cursor: pointer;
+            color: #999999;
+        }
+        #u1 li{
+            margin-top: 10px;
+        }
+        #u2 li{
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -94,17 +111,192 @@
             </div>
         </div>
     <div id="d2" >
-        <!--            流加载-->
+        <!-- 流加载-->
         <ul class="flow-default" id="LAY_demo1" style="font-size: 16px"></ul>
     </div>
+
+    <div style="width:1200px; position: relative;top: -300px;">
+        <img src="../imgs/title-03.png" style="margin-left: 70px"/>
+    </div>
+
+    <div class="layui-tab" style=" position: relative;top: -270px;left: 150px; width: 480px;background-color: #FAFAFA;box-shadow: 1px 1px 5px 1px #999999;">
+        <ul class="layui-tab-title">
+            <li class="layui-this">法律法规</li>
+            <li>信访条例</li>
+            <li>规范性文件</li>
+        </ul>
+        <div class="layui-tab-content" style="background-color:#F2F2F2;font-size: 14px" id="d3">
+            <div class="layui-tab-item layui-show">
+<!--                法律法规-->
+                <ul>
+                    <li></li>
+                    <li><img src='imgs/arr1.png'/><a style="margin-left: 10px" href="https://www.gjxfj.gov.cn/2018-03/11/c_139957579.htm">中华人民共和国宪法（2018年修正文本）</a></li>
+                    <li><img src='imgs/arr1.png'/><a style="margin-left: 10px;" href="https://www.gjxfj.gov.cn/2020-05/28/c_139952976.htm">中华人民共和国民法典</a></li>
+                    <li><img src='imgs/arr1.png'/><a style="margin-left: 10px;" href="https://www.gjxfj.gov.cn/2009-08/27/c_139953427.htm">中华人民共和国刑法</a></li>
+                    <li><img src='imgs/arr1.png'/><a style="margin-left: 10px;" href="https://www.gjxfj.gov.cn/2012-12/28/c_139960029.htm">中华人民共和国劳动合同法</a></li>
+                    <li><img src='imgs/arr1.png'/><a style="margin-left: 10px;" href="https://www.gjxfj.gov.cn/2019-04/23/c_139959991.htm">中华人民共和国行政许可法</a></li>
+                </ul>
+            </div>
+            <div class="layui-tab-item">
+<!--                信访条例-->
+                <ul>
+                    <li><img src='imgs/arr1.png'/><a style="margin-left: 10px" href="https://www.gjxfj.gov.cn/2021-10/19/c_1310255259.htm">江苏省信访条例</a></li>
+                    <li><img src='imgs/arr1.png'/><a style="margin-left: 10px" href="https://www.gjxfj.gov.cn/2017-09/28/c_139958259.htm">云南省公民信访条例</a></li>
+                    <li><img src='imgs/arr1.png'/><a style="margin-left: 10px" href="https://www.gjxfj.gov.cn/2001-12/01/c_139958224.htm">吉林省信访条例</a></li>
+                    <li><img src='imgs/arr1.png'/><a style="margin-left: 10px" href="https://www.gjxfj.gov.cn/2021-05/20/c_139958285.htm">辽宁省信访条例</a></li>
+                    <li><img src='imgs/arr1.png'/><a style="margin-left: 10px" href="https://www.gjxfj.gov.cn/2021-05/20/c_139958265.htm">甘肃省信访条例</a></li>
+                </ul>
+            </div>
+            <div class="layui-tab-item">
+<!--                规范性文件-->
+                <ul>
+                    <li><img src='imgs/arr1.png'/><a style="margin-left: 10px" href="https://www.gjxfj.gov.cn/gjxfj/fgwj/gfxwj/webinfo/2020/01/1590610484714623.htm">国家信访局办公室印发《国家信访局关于进一步加强....</a></li>
+                    <li><img src='imgs/arr1.png'/><a style="margin-left: 10px" href="https://www.gjxfj.gov.cn/gjxfj/fgwj/gfxwj/webinfo/2020/01/1590610484724251.htm">国家信访局办公室关于印发《国家信访局协调解决....</a></li>
+                    <li><img src='imgs/arr1.png'/><a style="margin-left: 10px" href="https://www.gjxfj.gov.cn/gjxfj/fgwj/gfxwj/webinfo/2019/12/1590610484729761.htm">国家信访局办公室印发《国家信访局关于让群众“最...</a></li>
+                    <li><img src='imgs/arr1.png'/><a style="margin-left: 10px" href="https://www.gjxfj.gov.cn/gjxfj/fgwj/gfxwj/webinfo/2019/11/1590610484734142.htm">国家信访局所属企业工资总额管理暂行办法</a></li>
+                    <li><img src='imgs/arr1.png'/><a style="margin-left: 10px" href="https://www.gjxfj.gov.cn/gjxfj/fgwj/gfxwj/webinfo/2019/08/1590610484745915.htm">国家信访局法律审核工作办法(试行)</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-tab" style=" position: relative;top: -480px;left: 700px; width: 500px;background-color: #FAFAFA;box-shadow: 1px 1px 5px 1px #999999;">
+        <ul class="layui-tab-title">
+            <li class="layui-this">政策解读</li>
+            <li>国务院文件</li>
+        </ul>
+        <div class="layui-tab-content" style="background-color:#F2F2F2;font-size: 14px" id="d4">
+            <div class="layui-tab-item layui-show">
+                <!--                政策解读-->
+                <ul >
+                        <li><img src='imgs/arr1.png'/><a style="margin-left: 10px" href="https://www.gjxfj.gov.cn/gjxfj/fgwj/zcjd/webinfo/2020/01/1590610485179485.htm">《国家信访局关于进一步加强和完善信访事项统筹实地督查工作的规...</a></li>
+                        <li><img src='imgs/arr1.png'/><a style="margin-left: 10px" href="https://www.gjxfj.gov.cn/gjxfj/fgwj/zcjd/webinfo/2017/08/1590610485181837.htm">国家信访局召开新闻通气会解读《依法分类处理信访诉求工作规则》</a></li>
+                        <li><img src='imgs/arr1.png'/><a style="margin-left: 10px" href="https://www.gjxfj.gov.cn/gjxfj/fgwj/zcjd/webinfo/2016/10/1590610485186969.htm">国家信访局召开新闻通气会解读《信访工作责任制实施办法》</a></li>
+                        <li><img src='imgs/arr1.png'/><a style="margin-left: 10px" href="https://www.gjxfj.gov.cn/gjxfj/fgwj/zcjd/webinfo/2014/12/1590610485191793.htm">国家信访局负责人就贯彻落实《信访事项办理群众满意度评价工作...</a></li>
+                        <li><img src='imgs/arr1.png'/><a style="margin-left: 10px" href="https://www.gjxfj.gov.cn/gjxfj/fgwj/zcjd/webinfo/2014/10/1590610485195141.htm">国家信访局负责人就贯彻落实《国家信访局关于进一步加强初信初...</a></li>
+                </ul>
+            </div>
+            <div class="layui-tab-item">
+                <!--                国务院文件-->
+                <ul>
+                    <li><img src='imgs/arr1.png'/><a style="margin-left: 10px" href="http://www.gov.cn/zhengce/content/2022-03/02/content_5676459.htm" target="_blank">国务院办公厅印发关于加强入河入海排污口监督管理工作的实施意见</a></li>
+                    <li><img src='imgs/arr1.png'/><a style="margin-left: 10px" href="http://www.gov.cn/zhengce/content/2022-03/01/content_5676259.htm" target="_blank">国务院发文部署加快推进政务服务标准化规范化便利化</a></li>
+                    <li><img src='imgs/arr1.png'/><a style="margin-left: 10px" href="http://www.gov.cn/zhengce/content/2022-02/28/content_5676054.htm" target="_blank">中华人民共和国水下文物保护管理条例</a></li>
+                    <li><img src='imgs/arr1.png'/><a style="margin-left: 10px" href="http://www.gov.cn/zhengce/content/2022-02/22/content_5674998.htm" target="_blank">国办发文部署加快推进电子证照扩大应用领域和全国互通互认</a></li>
+                    <li><img src='imgs/arr1.png'/><a style="margin-left: 10px" href="http://www.gov.cn/zhengce/content/2022-02/21/content_5674844.htm" target="_blank">国务院印发《“十四五”国家老龄事业发展和养老服务体系规划》</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--    内部短消息-->
+    <div style="width:1200px; position: relative;top: -450px;left: 70px;">
+        <img src="../imgs/title-05.png"/>
+    </div>
+
+    <div class="layui-tab" style="  position: relative;top: -420px;left: 150px; width: 480px;background-color: #FAFAFA;box-shadow: 1px 1px 5px 1px #999999;">
+        <ul class="layui-tab-title">
+            <li class="layui-this">内部短消息</li>
+            <li class="layui-this">通知通告</li>
+        </ul>
+        <div class="layui-tab-content" style="background-color:#F2F2F2;font-size: 14px" id="d5">
+            <div class="layui-tab-item layui-show">
+                <!--内部短消息-->
+                    <ul id="u1">
+                    </ul>
+            </div>
+            <div class="layui-tab-item">
+                <!--通知通告-->
+                <ul id="u2">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div style=" background-color:#FFFFFF; width: 500px;height: 210px;position: relative;top: -630px;left: 700px">
+        <div>
+            <a href="#"><img src="../imgs/icon3_03.png" width="135" height="165px"></a>
+        </div>
+        <div>
+            <div style="position: relative;top: -162px;left: 140px">
+                <a style="margin-left: 20px" target="_blank" href="http://www.caac.gov.cn/index.html"><img src="../imgs/icon3_04.png" width="92" height="78"></a>
+                <a style="margin-left: 20px" target="_blank" href="http://www.12306.cn/mormhweb/"><img src="../imgs/icon3_05.png" width="87" height="78"></a>
+                <a style="margin-left: 20px" target="_blank" href="http://www.chinahighway.gov.cn/chinahighway/index.do"><img src="../imgs/icon3_06.png" width="85" height="78"></a>
+            </div>
+            <div style="position: relative;top: -157px;left: 140px">
+                <a style="margin-left: 20px" target="_blank" href="http://www.weather.com.cn/"><img src="../imgs/icon3_08.png" width="92" height="80"></a>
+                <a style="margin-left: 20px" target="_blank" href="http://map.baidu.com/"><img src="../imgs/icon3_09.png" width="87" height="80"></a>
+                <a style="margin-left: 20px" target="_blank" href="http://www.ems.com.cn/"><img src="../imgs/icon3_10.png" width="85" height="80"></a>
+            </div>
+        </div>
+        <div style=" position: relative;top: -154px;">
+            <a href="http://www.gov.cn"><img src="../imgs/1126610356_1602659035951_title0h.png"></a>
+            <a  href="http://www.xinhuanet.com" style="margin-left: 36px"><img src="../imgs/1126610357_1602659054247_title0h.png"></a>
+            <a  href="http://www.people.com.cn" style="margin-left: 36px"><img src="../imgs/1126610359_1602994618000_title0h.png"></a>
+            <a  href="https://www.cctv.com" style="margin-left: 36px"><img src="../imgs/1126610363_1602994622811_title0h.png"></a>
+        </div>
+    </div>
+
 </div>
 
 <script>
-    layui.use(['carousel', 'form','flow'], function(){
+    layui.use(['element','carousel', 'form','flow'], function(){
         var $=layui.$,
+            element=layui.element,
             carousel = layui.carousel,
             form = layui.form,
             flow=layui.flow;
+
+        //加载内部短消息
+        $.ajax({
+            url:"NBXX/FindFive",
+            dataType:"json",
+            data:{uidf:window.sessionStorage.getItem("uidf")},
+            success:function(data){
+                // console.log(data)
+                $.each(data,function(i,v){
+                    var li=$("<li><img src='imgs/arr1.png'/><span style='margin-left: 10px'>"+v.title+"</span><span style='position: absolute;left: 320px;color:#C4C3C3;'>"+v.sendtime+"</span></li>")
+                    li.on({"click":function(){
+                        console.log(v);
+                        layer.open({
+                            title:"信息内容",
+                            content:v.content
+                        })
+                        },mouseover:function(){
+                        $(this).addClass("li");
+                        },mouseout:function(){
+                        $(this).removeClass("li")
+                        }})
+                    $("#u1").append(li)
+                })
+            }
+        })
+
+
+        //通知通告
+        $.ajax({
+            url:"NBXX/TZGG",
+            dataType:"json",
+            success:function(data){
+                // console.log(data)
+                $.each(data,function(i,v){
+                    var li=$("<li><img src='imgs/arr1.png'/><span style='margin-left: 10px'>"+v.titlef+"</span><span style='position: absolute;left: 320px;color:#C4C3C3;'>"+v.pubTime+"</span></li>")
+                    li.on({"click":function(){
+                            console.log(v);
+                            layer.open({
+                                title:"通知内容",
+                                content:v.contentf
+                            })
+                        },mouseover:function(){
+                            $(this).addClass("li");
+                        },mouseout:function(){
+                            $(this).removeClass("li")
+                        }})
+                    $("#u2").append(li)
+                })
+            }
+        })
+
 
         //流加载
         flow.load({
