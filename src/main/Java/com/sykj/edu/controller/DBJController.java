@@ -5,6 +5,7 @@ import com.sykj.edu.dao.DBJDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -26,9 +27,8 @@ import java.util.List;
  */
 
 //待办件
-
-@RequestMapping("DBJ")
 @Controller
+@RequestMapping("DBJ")
 public class DBJController {
     @Autowired
     private DBJDao dao;
@@ -46,7 +46,7 @@ public class DBJController {
     /**
      * 信访人基本信息
      * */
-    @RequestMapping("XFRXX")
+    @RequestMapping( "XFRXX")
     @ResponseBody
     public Object FindApp(Integer idf){
         Object o = dao.FindApp(idf);

@@ -107,7 +107,7 @@
         // 监听搜索操作
         form.on('submit(data-search-btn)', function (data) {
             var result=data.field;
-            console.log(result)
+            // console.log(result)
             table.reload('currentTableId',{
                 where:result
             })
@@ -119,12 +119,12 @@
         table.on('tool(currentTableFilter)', function (obj) {
             alert(obj.event)
             var data = obj.data;
-            console.log(data)
+            // console.log(data)
             if (obj.event === 'transact') {
                 document.cookie="id="+data.idf;
                 var content = miniPage.getHrefContent('Moudel2/letter-transact.html');
                 var openWH = miniPage.getOpenWidthHeight();
-                console.log(openWH);
+                // console.log(openWH);
                 var index = layer.open({
                     title: '处理',
                     type: 1,
@@ -142,12 +142,12 @@
                 return false;
             } else if(obj.event === 'rowClick') {
                 var data = obj.data;
-                console.log(data.idf);
+                // console.log(data.idf);
                 document.cookie="id="+data.idf;
 
                 var content = miniPage.getHrefContent('Moudel2/letter-transact.html');
                 var openWH = miniPage.getOpenWidthHeight();
-                console.log(openWH)
+                // console.log(openWH)
                 var index = layer.open({
                     title: '处理',
                     type: 1,

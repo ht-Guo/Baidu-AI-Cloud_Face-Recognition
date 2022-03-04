@@ -18,7 +18,7 @@
                 method:"post",
                 data:{"idf":idf},
                 success:function(date){
-                    console.log(date)
+                    // console.log(date)
                             $("input[name=jsr]").val(date.bdbr);
                             $("input[name=bt]").val(date.supervisorTitlef);
                             $("input[name=xxnr]").val(date.supervisorMsgf);
@@ -140,11 +140,11 @@
         //监听提交
         form.on('submit(data-search-btn)', function(data){
             var idf=window.location.href.split("?")[1];//获取idf
-            console.log(data.elem) //被执行事件的元素DOM对象，一般为button对象
-            console.log(data.form) //被执行提交的form对象，一般在存在form标签时才会返回
-            console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+            // console.log(data.elem) //被执行事件的元素DOM对象，一般为button对象
+            // console.log(data.form) //被执行提交的form对象，一般在存在form标签时才会返回
+            // console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
             var result=data.field;
-            console.log(result)
+            // console.log(result)
             //当点击回复时
             $.ajax({
                 dateType:"json",

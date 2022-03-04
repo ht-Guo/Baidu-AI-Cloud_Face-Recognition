@@ -9,60 +9,127 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4880a246-273b-4176-8f14-d893517de631" name="Default Changelist" comment="新增首页">
-      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/controller/WelcomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/dao/WelcomeDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/dao/daoImpl/WelcomeDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/vo/Infoissue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/vo/OAInnernote.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/imgs/1126610356_1602659035951_title0h.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/imgs/1126610357_1602659054247_title0h.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/imgs/1126610359_1602994618000_title0h.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/imgs/1126610363_1602994622811_title0h.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/imgs/icon3_03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/imgs/icon3_04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/imgs/icon3_05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/imgs/icon3_06.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/imgs/icon3_08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/imgs/icon3_09.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/imgs/icon3_10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/imgs/list_hdjl.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/imgs/title-03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/imgs/title-05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/WelcomeController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/WelcomeDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/daoImpl/WelcomeDaoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/Infoissue.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/OAInnernote.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/Project/imgs/1126610356_1602659035951_title0h.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/Project/imgs/1126610357_1602659054247_title0h.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/Project/imgs/1126610359_1602994618000_title0h.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/Project/imgs/1126610363_1602994622811_title0h.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/Project/imgs/icon3_03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/Project/imgs/icon3_04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/Project/imgs/icon3_05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/Project/imgs/icon3_06.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/Project/imgs/icon3_08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/Project/imgs/icon3_09.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/Project/imgs/icon3_10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/Project/imgs/list_hdjl.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/Project/imgs/title-03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/Project/imgs/title-05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/WelcomeController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/WelcomeDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/daoImpl/WelcomeDaoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/Infoissue.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/OAInnernote.class" afterDir="false" />
+    <list default="true" id="4880a246-273b-4176-8f14-d893517de631" name="Default Changelist" comment="删除无用图片">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/File/需求规格说明书.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/imgs/down.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/controller/DBJController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/controller/DBJController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/Moudel1/WelcomeHome.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Moudel1/WelcomeHome.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/api/XWDT.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/api/XWDT.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/imgs/arrow_05.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/imgs/arrow_0501.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/imgs/arrow_06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/imgs/arrow_0601.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/imgs/xfdt.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Moudel2/letter-transact.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Moudel2/letter-transact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Moudel2/table-dbj.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Moudel2/table-dbj.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Moudel2/table-fzcsf.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Moudel2/table-fzcsf.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Moudel3/NBXX.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Moudel3/NBXX.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Moudel3/ssdb.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Moudel3/ssdb.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Moudel3/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Moudel3/table.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/Login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Project/Moudel1/WelcomeHome.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/Moudel1/WelcomeHome.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/api/XWDT.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/api/XWDT.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/Moudel2/letter-transact.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/Moudel2/letter-transact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/Moudel2/table-dbj.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/Moudel2/table-dbj.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/Moudel2/table-fzcsf.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/Moudel2/table-fzcsf.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/Moudel3/NBXX.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/Moudel3/NBXX.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/Moudel3/ssdb.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/Moudel3/ssdb.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/Moudel3/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/Moudel3/table.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/DBJController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/DBJController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/images/login.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/Email.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/Email.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/Email_s.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/arrow_05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/arrow_0501.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/arrow_06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/arrow_0601.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/ba.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/banner_bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bb_tb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bg_bc.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bg_bc1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bg_fs.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bg_fs1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bg_gb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bg_gb1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bg_lc.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bg_lc1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bt_1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bt_2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bt_g.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/btl_bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/btn_bg.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/btn_bg7.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/cc_a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/cc_bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/cg_a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/cz_an.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/czlb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/daohang_sy.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/daohang_sy.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/db_tt.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/dbsx.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/ddd.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/dh_bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/dh_bg1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/dh_gg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/dl_an.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/fff.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/fhsiy.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/fy.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/fy_t.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/fy_t1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/fy_y.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/fy_y1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/fy_yy.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/fy_yy1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/fy_z.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/fy_z1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/htmlicon2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/hy2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/jj.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/jjj.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/lihang_bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/lihang_y.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/lihang_yy.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/lihang_yyy.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/lihang_z.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/login.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/nb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/pc.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/ps.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/sy_dl.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t2_s.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t7_s.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t_1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t_2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t_3.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t_4.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t_5.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t_6.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t_7.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t_8.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/tb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/tb_bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/tb_bg1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/tb_fj.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/tb_fj1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/tq.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/x_an.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/xfdt.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/xz_an.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/xz_g.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/xz_y.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/xz_z.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/xzbb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/yb.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/yj.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/imgs/zb.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/DBJController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/DBJController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +138,9 @@
   </component>
   <component name="CompilerWorkspaceConfiguration">
     <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Project$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1645401981839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
@@ -394,17 +464,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Login.html" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 8.5.31" ALTERNATIVE_JRE_ENABLED="false">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Login.html" />
       <option name="BROWSER_ID" value="b2a9dca7-9d0b-4e1e-98a8-afb19c1328d2" />
@@ -579,7 +638,10 @@
       <workItem from="1646265495774" duration="763000" />
       <workItem from="1646266290508" duration="9026000" />
       <workItem from="1646278117090" duration="16311000" />
-      <workItem from="1646305118545" duration="14567000" />
+      <workItem from="1646305118545" duration="14811000" />
+      <workItem from="1646373534469" duration="1131000" />
+      <workItem from="1646374710943" duration="3108000" />
+      <workItem from="1646379835048" duration="3179000" />
     </task>
     <task id="LOCAL-00001" summary="修改">
       <created>1645264743953</created>
@@ -658,7 +720,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646301284433</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="删除无用图片">
+      <created>1646359851405</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1646359851405</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -816,7 +885,8 @@
     <MESSAGE value="更新" />
     <MESSAGE value="新增" />
     <MESSAGE value="新增首页" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增首页" />
+    <MESSAGE value="删除无用图片" />
+    <option name="LAST_COMMIT_MESSAGE" value="删除无用图片" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

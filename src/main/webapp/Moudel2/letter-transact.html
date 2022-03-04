@@ -58,8 +58,8 @@
                                         <div class="layui-col-md8" style="text-align: center">
                                             <!--                        属性类别 letterProperties-->
                                             <div class="layui-inline">
-                                                <input type="radio" name="letterProperties" disabled value="列入排查" title="列入排查" style="opacity: 1;color: #00a2d4;">
-                                                <input type="radio" name="letterProperties" disabled value="领导包案" title="领导包案" style="opacity: 1;color: #00a2d4;">
+                                                <input type="radio" name="letterProperties" disabled value="列入排查" title="列入排查" style="color: #000000;">
+                                                <input type="radio" name="letterProperties" disabled value="领导包案" title="领导包案" style="color: #000000;">
                                                 <input type="radio" name="letterProperties" disabled value="代接代访件" title="代接代访件" style="opacity: 1;color: #00a2d4;">
                                                 <input type="radio" name="letterProperties" disabled value="非正常上访" title="非正常上访" style="opacity: 1;color: #00a2d4;">
                                                 <input type="radio" name="letterProperties" disabled value="敏感时期" title="敏感时期" style="opacity: 1;color: #00a2d4;">
@@ -162,8 +162,8 @@
                                             <!--                                信访来源 letterSource-->
                                             <div class="layui-inline">
                                                 <label class="layui-form-label">信访来源:</label>
-                                                <div class="layui-input-inline">
-                                                    <select disabled="disabled" id="letterSource" name="letterSource"><option value="">letterSource</option></select>
+                                                <div class="layui-input-inline" >
+                                                    <select disabled id="letterSource" name="letterSource"  ><option value="">letterSource</option></select>
                                                 </div>
                                             </div>
                                             <!--                                是否公开 isPublic-->
@@ -499,6 +499,7 @@
 
                 //给文件上传时新增附件表使用
            var id = document.cookie.split("=")[1];
+                console.log(id)
            date();
            loading();
            getDept();
@@ -512,9 +513,9 @@
                     url:"DBJ/FindLetterRegisterIdf",
                     data:{idf:id},
                     success:function(data){
-                        console.log(data.letterRegisterIdf+"信访登记人id")
+                        // console.log(data.letterRegisterIdf+"信访登记人id")
                         var uidf = window.sessionStorage.getItem("uidf");
-                        console.log(uidf+"登录人id")
+                        // console.log(uidf+"登录人id")
                         console.log(data.letterRegisterIdf!=uidf);
                         if(data.letterRegisterIdf!=uidf){
                             //是否办结
