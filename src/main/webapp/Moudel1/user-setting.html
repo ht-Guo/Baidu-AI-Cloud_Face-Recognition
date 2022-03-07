@@ -1,0 +1,263 @@
+<style>
+    .layui-form-item .layui-input-company {width: auto;padding-right: 10px;line-height: 38px;}
+</style>
+<div class="layuimini-container layuimini-page-anim">
+    <div class="layuimini-main">
+        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+            <ul class="layui-tab-title">
+                <li class="layui-this">删除人脸</li>
+                <li id="l1">更新人脸</li>
+                <li id="l2">录入人脸</li>
+            </ul>
+            <div class="layui-tab-content" style="height: 500px;">
+                <div class="layui-tab-item layui-show">
+<!--                    删除人脸-->
+                </div>
+                <div id="d1" class="layui-tab-item">
+<!--                    更改人脸-->
+                    <div>
+                        <video id="video2"></video>
+                        <!-- 尽量在canvas标签上设置宽高 -->
+                        <canvas hidden="hidden" id="canvas2" width="300px" height="300px"></canvas>
+                    </div>
+                    <div id="play2" class="layui-btn admin-button btn" style="padding-top: 5px">人脸更新</div>
+                </div>
+                <div id="d2"  class="layui-tab-item">
+                    <h2 style="color: red">人脸一旦录入,不可更改</h2>
+<!--                    录入人脸-->
+                    <div>
+                        <video id="video1"></video>
+                        <!-- 尽量在canvas标签上设置宽高 -->
+                        <canvas hidden="hidden" id="canvas1" width="300px" height="300px"></canvas>
+                    </div>
+                    <div id="play1" class="layui-btn admin-button btn" style="padding-top: 5px">人脸录入</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<script>
+    layui.use(['form','miniPage'], function () {
+        var $=layui.$,
+            form = layui.form,
+            layer = layui.layer,
+            miniPage = layui.miniPage;
+
+        //是否录入
+        console.log(window.sessionStorage.getItem("uidf"))
+        $.post("Face/FindUser",{uidf:window.sessionStorage.getItem("uidf")},function(oo){
+            console.log(oo)
+            if(oo==true){
+                console.log("false"+true)
+                $("#l2").remove();
+                $("#d2").remove();
+            }else{
+                console.log("false"+123)
+                $("#l1").remove();
+                $("#d1").remove();
+            }
+        })
+
+
+        //人脸录入时
+        document.getElementById('play1').onclick = () => {
+            let constraints = {
+                // video属性设置
+                video: {
+                    width: 300,
+                    height: 300
+                },
+                // audio属性设置
+                //audio: true
+            }
+            var mediaStreamTrack;
+            navigator.mediaDevices.getUserMedia(constraints)
+                .then(mediaStream => {
+                    // mediaStreamTrack = typeof mediaStream.stop === 'function' ? mediaStream : mediaStream.getTracks()[1];
+                    mediaStreamTrack = mediaStream.getTracks()[0]
+                    // 成功返回promise对象，接收一个mediaStream参数与video标签进行对接
+                    document.getElementById('video1').srcObject = mediaStream
+                    document.getElementById('video1').play()
+
+                }).catch(function(err) {
+                console.log(err);
+            })
+            //获取人脸失败
+            function getFace(){
+                let canvas = document.getElementById("canvas1");
+                let ctx = document.getElementById("canvas1").getContext('2d')
+                ctx.drawImage(document.getElementById("video1"), 0, 0, 300, 300)
+
+                let img = canvas.toDataURL('image/jpg')
+                // console.log(img)
+
+                sendBase64(img)
+            }
+            //重复执行某个方法
+            var t1 = window.setInterval(getFace,500);
+            // var t2 = window.setInterval("hello()",3000);
+            //去掉定时器的方法
+            //window.clearInterval(t1);
+            let ctx = document.getElementById("canvas1").getContext('2d')
+            ctx.drawImage(document.getElementById("video1"), 0, 0, 300, 300)
+
+            // 关闭摄像头
+            $("#take1").on("click",function(){
+                window.clearInterval(t1)
+                mediaStreamTrack.stop();
+                $("#canvas1").text("");
+            })
+
+            function sendBase64(img){
+                $.ajax({
+                    url: 'Face/LoginFace',
+                    data:{
+                        imagebase64:img,
+                    },
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function(res){
+                        console.log(res)
+                        var sum=0;
+                        $.each(res,function(i,v){
+                            //转换为json串
+                            v=eval("("+v+")")
+                            // console.log(v)
+                            if(v.error_msg== 'SUCCESS'){
+                                console.log(v.result.user_list[0].score>=90)
+                                if(v.result.user_list[0].score>=90) {
+                                    sum++;
+                                }
+                            }
+                        })
+                        if(sum>0){
+                            layer.msg("人脸不可重复")
+                        }else if(sum<=0){
+                                console.log("人脸录入")
+                                $.ajax({
+                                    datatype:"json",
+                                    url:"Face/InsertFace",
+                                    type:"post",
+                                    data:{imagebase64:img,uidf:window.sessionStorage.getItem("uidf")},
+                                    success:function(data){
+                                        data=eval("("+data+")");
+                                        if(data.result!=null){
+                                            layer.msg("人脸录入成功");
+                                            clearInterval(t1);
+                                                // //关闭摄像头
+                                            mediaStreamTrack.stop();
+                                            $.ajax({
+                                                dataType:"json",
+                                                url:"Face/InsertDatabase",
+                                                data:{"uidf":window.sessionStorage.getItem("uidf")},
+                                                success:function(data){
+                                                    if(data>0){
+                                                        layer.msg("人脸录入成功")
+                                                    }else{
+                                                        layer.msg("人脸录入失败")
+                                                    }
+                                                }
+                                            })
+                                        }else{
+                                            layer.msg("人脸录入失败");
+                                        }
+                                    }
+                                })
+                        }
+                    },
+                    error: function(res){
+                    }
+                });
+            }
+        }
+
+
+
+    //    人脸更新时
+
+        document.getElementById('play2').onclick = () => {
+            let constraints = {
+                // video属性设置
+                video: {
+                    width: 300,
+                    height: 300
+                },
+                // audio属性设置
+                //audio: true
+            }
+            var mediaStreamTrack;
+            navigator.mediaDevices.getUserMedia(constraints)
+                .then(mediaStream => {
+                    // mediaStreamTrack = typeof mediaStream.stop === 'function' ? mediaStream : mediaStream.getTracks()[1];
+                    mediaStreamTrack = mediaStream.getTracks()[0]
+                    // 成功返回promise对象，接收一个mediaStream参数与video标签进行对接
+                    document.getElementById('video2').srcObject = mediaStream
+                    document.getElementById('video2').play()
+
+                }).catch(function(err) {
+            })
+            //获取人脸失败
+            function getFace(){
+                let canvas = document.getElementById("canvas2");
+                let ctx = document.getElementById("canvas2").getContext('2d')
+                ctx.drawImage(document.getElementById("video2"), 0, 0, 300, 300)
+
+                let img = canvas.toDataURL('image/jpg')
+                // console.log(img)
+                sendBase64(img)
+            }
+            //重复执行某个方法
+            var t1 = window.setInterval(getFace,500);
+            // var t2 = window.setInterval("hello()",3000);
+            //去掉定时器的方法
+            //window.clearInterval(t1);
+            let ctx = document.getElementById("canvas2").getContext('2d')
+            ctx.drawImage(document.getElementById("video2"), 0, 0, 300, 300)
+
+            // 关闭摄像头
+            $("#take2").on("click",function(){
+                window.clearInterval(t1)
+                mediaStreamTrack.stop();
+                $("#canvas2").text("");
+            })
+
+            function sendBase64(img){
+                $.ajax({
+                    url:'Face/isTong',
+                    dataType:'json',
+                    type:'POST',
+                    data:{
+                        imagebase64:img,
+                        uidf:window.sessionStorage.getItem("uidf")
+                    },
+                    success:function(abc){
+                        // console.log(abc)
+                        if(abc.result.user_list[0].score>90){
+                            $.ajax({
+                                dataType:"json",
+                                url:"Face/UpdateFace",
+                                type:"POST",
+                                data:{uidf:window.sessionStorage.getItem("uidf"),
+                                    imagebase64:img},
+                                success:function(a){
+                                    window.clearInterval(t1)
+                                    mediaStreamTrack.stop();
+                                    layer.msg("人脸更新成功")
+                                }
+                            })
+                        }else{
+                            layer.msg("人脸只可更新,不可更改")
+                            window.clearInterval(t1)
+                            mediaStreamTrack.stop();
+                        }
+                    },
+                    error: function(res){
+                        // console.log(res)
+                    }
+                });
+            }
+        }
+
+    });
+</script>

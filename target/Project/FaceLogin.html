@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理-登陆</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="lib/layui-v2.5.5/css/layui.css" media="all">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        body {background-image:url("images/bg.jpg");height:100%;width:100%;}
+        #container{height:100%;width:100%;}
+        input:-webkit-autofill {-webkit-box-shadow:inset 0 0 0 1000px #fff;background-color:transparent;}
+        .admin-login-background {width:300px;height:300px;position:absolute;left:50%;top:40%;margin-left:-150px;margin-top:-100px;}
+        .admin-header {text-align:center;margin-bottom:20px;color:#ffffff;font-weight:bold;font-size:40px}
+        .admin-input {border-top-style:none;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;height:50px;width:300px;padding-bottom:0px;}
+        .admin-input::-webkit-input-placeholder {color:#a78369}
+        .layui-icon-username {color:#a78369 !important;}
+        .layui-icon-username:hover {color:#9dadce !important;}
+        .layui-icon-password {color:#a78369 !important;}
+        .layui-icon-password:hover {color:#9dadce !important;}
+        .admin-input-username {border-top-style:solid;border-radius:10px 10px 0 0;}
+        .admin-input-verify {border-radius:0 0 10px 10px;}
+        .admin-button {margin-top:20px;font-weight:bold;font-size:18px;width:300px;height:50px;border-radius:5px;background-color:#a78369;border:1px solid #d8b29f}
+        .admin-icon {margin-left:260px;margin-top:10px;font-size:30px;}
+        i {position:absolute;}
+        .admin-captcha {position:absolute;margin-left:205px;margin-top:-40px;}
+        .cursor{
+            cursor:pointer;
+            color: #0000cc;
+        }
+    </style>
+</head>
+<body>
+<div id="container layui-anim layui-anim-upbit">
+    <div></div>
+    <div class="admin-login-background">
+        <div class="admin-header">
+            <span>###信访</span>
+        </div>
+        <form class="layui-form" action="">
+            <div>
+                <video id="video"></video>
+                <!-- 尽量在canvas标签上设置宽高 -->
+                <canvas hidden="hidden" id="canvas" width="300px" height="300px"></canvas>
+            </div>
+<!--            <button style="margin-top: -1px" id="play" class="layui-btn admin-button">人脸 登录</button>-->
+            <div id="play" class="layui-btn admin-button btn" style="padding-top: 5px">人 脸  登 录</div>
+<!--            <div id="take" class="layui-btn admin-button btn" style="padding-top: 5px">关闭</div>-->
+        </form>
+    </div>
+</div>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="js/lay-config.js?v=2.0.0" charset="utf-8"></script>
+<script>
+    layui.use(['layer'],function(){
+        var $=layui.$,
+            layer=layui.layer
+
+
+        document.getElementById('play').onclick = () => {
+            let constraints = {
+                // video属性设置
+                video: {
+                    width: 300,
+                    height: 300
+                },
+                // audio属性设置
+                //audio: true
+            }
+            var mediaStreamTrack;
+            navigator.mediaDevices.getUserMedia(constraints)
+                .then(mediaStream => {
+                    // mediaStreamTrack = typeof mediaStream.stop === 'function' ? mediaStream : mediaStream.getTracks()[1];
+                    mediaStreamTrack = mediaStream.getTracks()[0]
+                    // 成功返回promise对象，接收一个mediaStream参数与video标签进行对接
+                    document.getElementById('video').srcObject = mediaStream
+                    document.getElementById('video').play()
+                }).catch(function(err) {
+                console.log(err);
+            })
+            //获取人脸失败
+            function getFace(){
+                let canvas = document.getElementById("canvas");
+                let ctx = document.getElementById("canvas").getContext('2d')
+                ctx.drawImage(document.getElementById("video"), 0, 0, 300, 300)
+
+                let img = canvas.toDataURL('image/jpg')
+                // console.log(img)
+
+                sendBase64(img)
+            }
+            //重复执行某个方法
+            var t1 = window.setInterval(getFace,500);
+            // var t2 = window.setInterval("hello()",3000);
+            //去掉定时器的方法
+            //window.clearInterval(t1);
+            let ctx = document.getElementById("canvas").getContext('2d')
+            ctx.drawImage(document.getElementById("video"), 0, 0, 300, 300)
+
+            // 关闭摄像头
+            // $("#take").on("click",function(){
+            //     window.clearInterval(t1)
+            //     mediaStreamTrack.stop();
+            //     $("#canvas").text("");
+            // })
+
+            function sendBase64(img){
+                $.ajax({
+                    url: 'Face/LoginFace',
+                    data:{
+                        imagebase64:img,
+                    },
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function(res){
+                        // console.log(res)
+                        $.each(res,function(i,v){
+                            //转换为json串
+                            v=eval("("+v+")")
+                            console.log(v)
+                            if(v.error_msg== 'SUCCESS'){
+                                if(v.result.user_list[0].score>=90){
+                                    var bdy_userId=v.result.user_list[0].user_id;
+                                    console.log(bdy_userId)
+                                    $.post("Face/findUIDF",{"bdy_userId":bdy_userId},function(o){
+                                        window.sessionStorage.setItem("username",o.username)
+                                        window.sessionStorage.setItem("truename",o.truename)
+                                        window.sessionStorage.setItem("uidf",o.uidf)
+                                        window.location.href="index.html";
+                                    })
+                                    // window.clearInterval(t1);
+                                    // //关闭摄像头
+                                    // mediaStreamTrack.stop();
+                                    // console.log("登录成功")
+                                }else{
+                                    layer.msg("登录失败")
+                                }
+                            }else{
+                                layer.msg("未检测到人脸")
+                            }
+                        })
+                    },
+                    error: function(res){
+                        console.log(res)
+                    }
+                });
+            }
+        }
+    })
+</script>
+</body>
+</html>

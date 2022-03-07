@@ -33,10 +33,11 @@
         .admin-icon {margin-left:260px;margin-top:10px;font-size:30px;}
         i {position:absolute;}
         .admin-captcha {position:absolute;margin-left:205px;margin-top:-40px;}
+        .cursor{
+            cursor:pointer;
+            color: #0000cc;
+        }
     </style>
-    <script>
-
-    </script>
 </head>
 <body>
 <div id="container layui-anim layui-anim-upbit">
@@ -60,7 +61,10 @@
                 <!--验证码-->
                 <canvas id="canvas" class="admin-captcha" width="90" height="30"></canvas>
             </div>
-            <button class="layui-btn admin-button" lay-submit="" lay-filter="login">登 陆</button>
+            <div>
+                <h5 id="face" style="margin-left: 140px;">已录入人脸,使用人脸登录</h5>
+            </div>
+            <button style="margin-top: -1px" class="layui-btn admin-button" lay-submit="" lay-filter="login">登 陆</button>
         </form>
     </div>
 </div>
@@ -195,6 +199,17 @@
                 return false;
             });
         });
+
+
+        $("#face").on({
+            click:function(){
+            window.location.href="FaceLogin.html";
+            },mouseover:function(){
+                $(this).addClass("cursor");
+            },mouseout:function(){
+                $(this).removeClass("cursor");
+            }
+        })
 
     })
 </script>

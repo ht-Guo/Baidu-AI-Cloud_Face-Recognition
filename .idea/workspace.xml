@@ -10,126 +10,142 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4880a246-273b-4176-8f14-d893517de631" name="Default Changelist" comment="删除无用图片">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/File/需求规格说明书.doc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/imgs/down.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/controller/FaceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/dao/FaceDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/dao/daoImpl/FaceDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/util/Base64Util.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/util/FaceSpot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/util/FileUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/util/HttpUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/vo/FaceVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/FaceLogin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Moudel1/user-setting.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/controller/DBJController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/controller/DBJController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/util/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/util/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Moudel1/WelcomeHome.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Moudel1/WelcomeHome.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Moudel2/letter-transact.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Moudel2/letter-transact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Moudel2/table-dbj.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Moudel2/table-dbj.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Moudel2/table-fzcsf.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Moudel2/table-fzcsf.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Moudel3/NBXX.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Moudel3/NBXX.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Moudel3/ssdb.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Moudel3/ssdb.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Moudel3/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Moudel3/table.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Project/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/Login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/Moudel1/WelcomeHome.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/Moudel1/WelcomeHome.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/Moudel2/letter-transact.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/Moudel2/letter-transact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/Moudel2/table-dbj.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/Moudel2/table-dbj.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/Moudel2/table-fzcsf.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/Moudel2/table-fzcsf.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/Moudel3/NBXX.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/Moudel3/NBXX.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/Moudel3/ssdb.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/Moudel3/ssdb.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/Moudel3/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/Moudel3/table.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/DBJController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/DBJController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/images/login.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/Email.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/Email.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/Email_s.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/arrow_05.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/arrow_0501.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/arrow_06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/arrow_0601.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/ba.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/banner_bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bb_tb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bg_bc.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bg_bc1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bg_fs.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bg_fs1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bg_gb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bg_gb1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bg_lc.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bg_lc1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bt_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bt_2.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/bt_g.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/btl_bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/btn_bg.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/btn_bg7.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/cc_a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/cc_bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/cg_a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/cz_an.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/czlb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/daohang_sy.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/daohang_sy.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/db_tt.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/dbsx.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/ddd.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/dh_bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/dh_bg1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/dh_gg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/dl_an.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/fff.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/fhsiy.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/fy.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/fy_t.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/fy_t1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/fy_y.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/fy_y1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/fy_yy.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/fy_yy1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/fy_z.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/fy_z1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/htmlicon2.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/hy2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/jj.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/jjj.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/lihang_bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/lihang_y.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/lihang_yy.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/lihang_yyy.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/lihang_z.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/login.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/nb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/pc.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/ps.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/sy_dl.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t2_s.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t7_s.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t_1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t_2.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t_3.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t_4.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t_5.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t_6.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t_7.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/t_8.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/tb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/tb_bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/tb_bg1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/tb_fj.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/tb_fj1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/tq.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/x_an.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/xfdt.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/xz_an.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/xz_g.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/xz_y.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/xz_z.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/xzbb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/yb.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/yj.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/imgs/zb.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/DCDBController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/DCDBController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/FZCSFController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/FZCSFController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/InitController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/InitController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/InitController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/InitController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/InitController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/InitController$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/InitController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/InitController$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/InitController$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/InitController$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/InitController$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/InitController$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/InitController$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/InitController$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/InitController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/InitController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/SSDCController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/SSDCController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/SysUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/SysUserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/VipManageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/VipManageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/WelcomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/WelcomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/YBJController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/YBJController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/DBGLDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/DBGLDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/DBJDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/DBJDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/FZCSFDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/FZCSFDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/InitDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/InitDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/LoginDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/LoginDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/SSDCDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/SSDCDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/SysUserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/SysUserDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/VipManageDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/VipManageDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/WelcomeDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/WelcomeDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/YBJDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/YBJDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/daoImpl/DBGLDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/daoImpl/DBGLDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/daoImpl/DBJDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/daoImpl/DBJDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/daoImpl/FZCSFDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/daoImpl/FZCSFDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/daoImpl/InitDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/daoImpl/InitDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/daoImpl/Login_DaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/daoImpl/Login_DaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/daoImpl/SSDCDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/daoImpl/SSDCDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/daoImpl/SysUserDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/daoImpl/SysUserDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/daoImpl/VipManageDaolmpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/daoImpl/VipManageDaolmpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/daoImpl/WelcomeDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/daoImpl/WelcomeDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/daoImpl/YBJDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/dao/daoImpl/YBJDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/util/ConnUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/util/ConnUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/util/DateUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/util/DateUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/util/DemoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/util/DemoTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/util/Encryption.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/util/Encryption.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/util/SqlUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/util/SqlUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/util/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/util/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/ApproveLetterBaseInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/ApproveLetterBaseInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/ArchiveSupervisorVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/ArchiveSupervisorVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/BaseVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/BaseVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/BasicDataTypeVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/BasicDataTypeVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/Childs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/Childs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/Home.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/Home.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/Infoissue.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/Infoissue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/InitVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/InitVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/LoginVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/LoginVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/OAInnernote.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/OAInnernote.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/SSDCVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/SSDCVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/SysUserVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/SysUserVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/VipManageVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/VipManageVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/YBJVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/YBJVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/DBJController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/DBJController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/DCDBController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/DCDBController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/FZCSFController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/FZCSFController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/InitController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/InitController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/InitController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/InitController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/InitController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/InitController$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/InitController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/InitController$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/InitController$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/InitController$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/InitController$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/InitController$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/InitController$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/InitController$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/InitController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/InitController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/SSDCController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/SSDCController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/SysUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/SysUserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/VipManageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/VipManageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/WelcomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/WelcomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/YBJController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/YBJController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/DBGLDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/DBGLDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/DBJDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/DBJDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/FZCSFDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/FZCSFDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/InitDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/InitDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/LoginDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/LoginDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/SSDCDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/SSDCDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/SysUserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/SysUserDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/VipManageDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/VipManageDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/WelcomeDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/WelcomeDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/YBJDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/YBJDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/daoImpl/DBGLDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/daoImpl/DBGLDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/daoImpl/DBJDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/daoImpl/DBJDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/daoImpl/FZCSFDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/daoImpl/FZCSFDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/daoImpl/InitDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/daoImpl/InitDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/daoImpl/Login_DaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/daoImpl/Login_DaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/daoImpl/SSDCDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/daoImpl/SSDCDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/daoImpl/SysUserDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/daoImpl/SysUserDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/daoImpl/VipManageDaolmpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/daoImpl/VipManageDaolmpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/daoImpl/WelcomeDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/daoImpl/WelcomeDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/daoImpl/YBJDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/dao/daoImpl/YBJDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/util/ConnUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/util/ConnUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/util/DateUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/util/DateUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/util/DemoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/util/DemoTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/util/Encryption.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/util/Encryption.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/util/SqlUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/util/SqlUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/util/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/util/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/ApproveLetterBaseInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/ApproveLetterBaseInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/ArchiveSupervisorVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/ArchiveSupervisorVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/BaseVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/BaseVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/BasicDataTypeVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/BasicDataTypeVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/Childs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/Childs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/Home.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/Home.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/Infoissue.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/Infoissue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/InitVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/InitVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/LoginVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/LoginVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/OAInnernote.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/OAInnernote.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/SSDCVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/SSDCVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/SysUserVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/SysUserVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/VipManageVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/VipManageVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/YBJVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/YBJVo.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,8 +167,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="package.json" />
+        <option value="HTML File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -206,6 +223,9 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://D:/tools/Java/jdk1.8.0_112/jre/lib/rt.jar!/sun/net/www/protocol/http/HttpURLConnection.class" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -409,28 +429,32 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1646203745132" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/imgs" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/Moudel1" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+  </component>
+  <component name="ReaderModeSettings">
+    <option name="enabled" value="false" />
   </component>
   <component name="RebelAgentSelection">
     <selection>jr</selection>
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\二期项目\team1\Project\src\main\webapp\Moudel1" />
+      <recent name="F:\二期项目\team1\Project\src\main\Java\com\sykj\edu\util" />
       <recent name="F:\二期项目\team1\Project\src\main\webapp\imgs" />
       <recent name="F:\二期项目\team1\Project\src\main\webapp\Moudel2" />
       <recent name="F:\二期项目\team1\Project\src\main\webapp\Moudel3" />
-      <recent name="F:\二期项目\team1\Project\src\main\Java\com\sykj\edu\dao\daoImpl" />
-      <recent name="F:\二期项目\team1\Project\src\main\Java\com\sykj\edu\dao" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\二期项目\team1\Project\src\main\webapp\less" />
@@ -460,6 +484,17 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -595,8 +630,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Tomcat Server.Login.html" />
-        <item itemvalue="Application.SqlUtil" />
         <item itemvalue="Application.Test" />
+        <item itemvalue="Application.SqlUtil" />
       </list>
     </recent_temporary>
   </component>
@@ -642,6 +677,15 @@
       <workItem from="1646373534469" duration="1131000" />
       <workItem from="1646374710943" duration="3108000" />
       <workItem from="1646379835048" duration="3179000" />
+      <workItem from="1646391899760" duration="59000" />
+      <workItem from="1646404770946" duration="396000" />
+      <workItem from="1646405190383" duration="4000" />
+      <workItem from="1646439987857" duration="6092000" />
+      <workItem from="1646446231893" duration="2905000" />
+      <workItem from="1646449179108" duration="11414000" />
+      <workItem from="1646614364979" duration="7883000" />
+      <workItem from="1646622825844" duration="2124000" />
+      <workItem from="1646624999137" duration="640000" />
     </task>
     <task id="LOCAL-00001" summary="修改">
       <created>1645264743953</created>
@@ -727,7 +771,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646359851405</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="删除无用图片">
+      <created>1646391933178</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1646391933179</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
