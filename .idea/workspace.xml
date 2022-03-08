@@ -9,45 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4880a246-273b-4176-8f14-d893517de631" name="Default Changelist" comment="新增人脸识别等功能">
-      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/controller/InquiryStatistics_Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/controller/XTYJServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/dao/InquiryStatisticsDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/dao/SystemDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/dao/daoImpl/BaseDaoImp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/dao/daoImpl/InquiryStatisticsDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/dao/daoImpl/SystemImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/util/DBHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/util/MyThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/util/VCommList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/vo/InquiryStatistics.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/vo/IntegratedQuery.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/vo/ListOftheMasses.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/vo/PublicList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/vo/Xtyj2Vo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/vo/XtyjVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Moudel3/xtyj.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Moudel4/table1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Moudel4/table2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Moudel4/table3.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Moudel4/zhcx.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Project.iml" afterDir="false" />
+    <list default="true" id="4880a246-273b-4176-8f14-d893517de631" name="Default Changelist" comment="新增">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/controller/DCDBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/controller/DCDBController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/controller/InitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/controller/InitController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/vo/BaseVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/vo/BaseVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/DCDBController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/DCDBController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/InitController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/InitController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/InitController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/InitController$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/InitController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/InitController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/BaseVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/vo/BaseVo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/DCDBController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/DCDBController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/InitController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/InitController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/InitController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/InitController$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/InitController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/InitController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/BaseVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/vo/BaseVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/controller/FaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Java/com/sykj/edu/controller/FaceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/FaceLogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/FaceLogin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Moudel1/user-setting.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Moudel1/user-setting.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/FaceLogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/FaceLogin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/Moudel1/user-setting.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/Moudel1/user-setting.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/FaceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project/WEB-INF/classes/com/sykj/edu/controller/FaceController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/FaceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sykj/edu/controller/FaceController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -65,6 +65,8 @@
     layui.use(['layer'],function(){
         var $=layui.$,
             layer=layui.layer
+        var bool=null;
+        var t1=null;
 
 
         document.getElementById('play').onclick = () => {
@@ -90,6 +92,15 @@
             })
             //获取人脸失败
             function getFace(){
+                // if(bool==true){
+                    // $.post("Face/findUIDF",{"bdy_userId":userid},function(o){
+                    //     window.sessionStorage.setItem("username",o.username)
+                    //     window.sessionStorage.setItem("truename",o.truename)
+                    //     window.sessionStorage.setItem("uidf",o.uidf)
+                    //     window.location.href="index.html";
+                    //     // console.log("成功")
+                    // })
+                // }
                 let canvas = document.getElementById("canvas");
                 let ctx = document.getElementById("canvas").getContext('2d')
                 ctx.drawImage(document.getElementById("video"), 0, 0, 300, 300)
@@ -99,61 +110,56 @@
 
                 sendBase64(img)
             }
-            //重复执行某个方法
-            var t1 = window.setInterval(getFace,500);
+
+
+                //重复执行某个方法
+                t1=window.setInterval(getFace,1000);
+
+
             // var t2 = window.setInterval("hello()",3000);
             //去掉定时器的方法
             //window.clearInterval(t1);
             let ctx = document.getElementById("canvas").getContext('2d')
             ctx.drawImage(document.getElementById("video"), 0, 0, 300, 300)
 
-            // 关闭摄像头
-            // $("#take").on("click",function(){
-            //     window.clearInterval(t1)
-            //     mediaStreamTrack.stop();
-            //     $("#canvas").text("");
-            // })
-
             function sendBase64(img){
-                $.ajax({
-                    url: 'Face/LoginFace',
-                    data:{
-                        imagebase64:img,
-                    },
-                    type: 'POST',
-                    dataType: 'json',
-                    success: function(res){
-                        // console.log(res)
-                        $.each(res,function(i,v){
-                            //转换为json串
-                            v=eval("("+v+")")
-                            console.log(v)
-                            if(v.error_msg== 'SUCCESS'){
-                                if(v.result.user_list[0].score>=90){
-                                    var bdy_userId=v.result.user_list[0].user_id;
-                                    console.log(bdy_userId)
-                                    $.post("Face/findUIDF",{"bdy_userId":bdy_userId},function(o){
-                                        window.sessionStorage.setItem("username",o.username)
-                                        window.sessionStorage.setItem("truename",o.truename)
-                                        window.sessionStorage.setItem("uidf",o.uidf)
-                                        window.location.href="index.html";
-                                    })
-                                    // window.clearInterval(t1);
-                                    // //关闭摄像头
-                                    // mediaStreamTrack.stop();
-                                    // console.log("登录成功")
-                                }else{
-                                    layer.msg("登录失败")
+                    $.ajax({
+                        url: 'Face/LoginFace',
+                        data:{
+                            imagebase64:img,
+                        },
+                        type: 'POST',
+                        dataType: 'json',
+                        success: function(res){
+                            $.each(res,function(i,v){
+                                //转换为json串
+                                v=eval("("+v+")")
+                                console.log(v)
+                                if(v.error_msg== 'SUCCESS'){
+                                    if(v.result.user_list[0].score>=90){
+                                        // bool=true;
+                                        var bdy_userId=v.result.user_list[0].user_id;
+                                        $.post("Face/findUIDF",{"bdy_userId":bdy_userId},function(o){
+                                            window.sessionStorage.setItem("username",o.username)
+                                            window.sessionStorage.setItem("truename",o.truename)
+                                            window.sessionStorage.setItem("uidf",o.uidf)
+                                            window.location.href="index.html";
+                                            // console.log("成功")
+                                        })
+                                        // window.clearInterval(t1);
+                                        // //关闭摄像头
+                                        // mediaStreamTrack.stop();
+                                        // console.log("登录成功")
+                                    }
+                                }else if(v.error_msg=='pic not has face'){
+                                    layer.msg("检测不到人脸")
                                 }
-                            }else{
-                                layer.msg("未检测到人脸")
-                            }
-                        })
-                    },
-                    error: function(res){
-                        console.log(res)
-                    }
-                });
+                            })
+                        },
+                        error: function(res){
+                            console.log(res)
+                        }
+                    });
             }
         }
     })

@@ -45,12 +45,9 @@ public class FaceController {
             byte[] bytes = decoder.decodeBuffer(str);
 
         ArrayList userResult=new ArrayList();
-        int i=0;
         for(FaceVo fv:list){
             String s = FaceSpot.searchFace(bytes, fv.getBdy_groupName(), fv.getBdy_userId().toString());
-            System.out.println(s+""+i);
             userResult.add(s);
-            i++;
         }
         return userResult;
     }
