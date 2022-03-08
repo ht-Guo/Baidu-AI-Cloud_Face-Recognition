@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象管理信息</title>
+</head>
+<body>
+<div class="layuimini-container layuimini-page-anim">
+    <div class="layuimini-main">
+
+        <fieldset class="table-search-fieldset">
+            <legend>查询信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+
+                    <div class="layui-form-item">
+                        <!--来源分类-->
+
+
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><font size="2">标题</font>&nbsp;:&nbsp;</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="letterTitlef" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><font size="2">当前办理人</font>&nbsp;:&nbsp;</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="truename" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline" style="margin-left: 240px ">
+                            <button type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+
+
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+     
+
+    </div>
+</div>
+
+<script>
+    layui.use(['form', 'table','miniPage','element'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table,
+            miniPage = layui.miniPage;
+
+        table.render({
+            elem: '#currentTableId',
+            url: 'DcdbController/findall1',
+            toolbar: '#toolbarDemo',
+            defaultToolbar: ['filter', 'exports', 'print', {
+                title: '提示',
+                layEvent: 'LAYTABLE_TIPS',
+                icon: 'layui-icon-tips'
+            }],
+            cols: [[
+                {type: "checkbox",width:50},
+                {field: 'idf',width:130,title:'序号'},
+                {field: 'archivetype',width:130,title:'预警'},
+                {field: 'letterTitlef', width:130,title:'标题'},
+                {field: 'dname',width:130,title:'当前办理单位'},
+                {field: 'truename',width:130,title:'当前办理人'},
+                {field: 'truename', width:130,title:'短信状态',templet:function (res) {
+                        if(res.truename!=null){
+                            return"<span>已发送</span>"
+                        }
+                    }},
+                {field: 'supervisorTimef',width:160,title:'预警时间'},
+
+            ]],
+            limits: [1, 5, 10],
+            limit: 5,
+            page: true,
+            skin: 'line'
+        });
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+            var result = (data.field);
+
+
+            //执行搜索重载
+            table.reload('currentTableId', {
+              where:result
+            });
+
+            return false;
+        });
+
+        /**
+         * toolbar事件监听
+         */
+        // table.on('toolbar(currentTableFilter)', function (obj) {
+        //     if (obj.event === 'add') {   // 监听添加操作
+        //         var content = miniPage.getHrefContent('page/table/add.html');
+        //         var openWH = miniPage.getOpenWidthHeight();
+        //
+        //         var index = layer.open({
+        //             title: '添加用户',
+        //             type: 1,
+        //             shade: 0.2,
+        //             maxmin:true,
+        //             shadeClose: true,
+        //             area: [openWH[0] + 'px', openWH[1] + 'px'],
+        //             offset: [openWH[2] + 'px', openWH[3] + 'px'],
+        //             content: content,
+        //         });
+        //         $(window).on("resize", function () {
+        //             layer.full(index);
+        //         });
+        //     } else if (obj.event === 'delete') {  // 监听删除操作
+        //         var checkStatus = table.checkStatus('currentTableId')
+        //             , data = checkStatus.data;
+        //         layer.alert(JSON.stringify(data));
+        //     }
+        // });
+
+        //监听表格复选框选择
+        // table.on('checkbox(currentTableFilter)', function (obj) {
+        //     console.log(obj)
+        // });
+        //
+        // table.on('tool(currentTableFilter)', function (obj) {
+        //     var data = obj.data;
+        //     if (obj.event === 'edit') {
+        //
+        //         var content = miniPage.getHrefContent('page/table/add.html');
+        //         var openWH = miniPage.getOpenWidthHeight();
+        //
+        //         var index = layer.open({
+        //             title: '编辑用户',
+        //             type: 1,
+        //             shade: 0.2,
+        //             maxmin:true,
+        //             shadeClose: true,
+        //             area: [openWH[0] + 'px', openWH[1] + 'px'],
+        //             offset: [openWH[2] + 'px', openWH[3] + 'px'],
+        //             content: content,
+        //         });
+        //         $(window).on("resize", function () {
+        //             layer.full(index);
+        //         });
+        //         return false;
+        //     } else if (obj.event === 'delete') {
+        //         layer.confirm('真的删除行么', function (index) {
+        //             obj.del();
+        //             layer.close(index);
+        //         });
+        //     }
+        // });
+
+    });
+</script>
+</body>
+</html>

@@ -1,7 +1,9 @@
 package com.sykj.edu.controller;
 
 import com.sykj.edu.dao.DBGLDao;
+import com.sykj.edu.dao.SystemDao;
 import com.sykj.edu.vo.ArchiveSupervisorVo;
+import com.sykj.edu.vo.XtyjVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +17,8 @@ import java.util.List;
 public class DCDBController {
     @Autowired
     private DBGLDao dBDao;
+    @Autowired
+    private SystemDao ss;
 
 //督办信息表
     @RequestMapping("findall")
@@ -39,4 +43,13 @@ public Object Update(int status,String idf,String SupervisorReplyIDf){
     int i = dBDao.updateStatus(status, idf, SupervisorReplyIDf);
     return i;
 }
+
+// 系统预警
+    @RequestMapping("findall1")
+    @ResponseBody
+    public Object list(XtyjVo xt){
+        return ss.querallList(xt);
+    }
+
+
 }

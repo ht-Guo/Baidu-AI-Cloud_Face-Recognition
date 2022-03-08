@@ -89,15 +89,12 @@ public class InitController {
 //        实时督查
                 final   Childs sSDC=new  Childs("实时督查","Moudel3/ssdb.html","fa fa-navicon","_self",null);
 //        系统预警
-                final   Childs xTYJ=new  Childs("系统预警","page/table.html","fa fa-tags","_self",null);
-//        督查统计
-                final   Childs dCTJ=new  Childs("督查统计","page/table.html","fa fa-tags","_self",null);
+                final   Childs xTYJ=new  Childs("系统预警","Moudel3/xtyj.html","fa fa-tags","_self",null);
                 List dCList=new ArrayList(){
                     {
                         add(dBGL);
                         add(sSDC);
                         add(xTYJ);
-                        add(dCTJ);
                     }
                 };
                 final   Childs dCDB=new  Childs("督察督办","","fa fa-gears","_self",dCList);
@@ -106,17 +103,20 @@ public class InitController {
 
                 case"查询统计":
                     //        查询统计(本局报表，上报报表，综合查询)
-//        本局报表
-                    final   Childs bJBB=new  Childs("本局报表","page/form.html","fa fa-list-alt","_self",null);
-//        上报报表
-                    final   Childs sBBB=new  Childs("上报报表","page/form-step.html","fa fa-navicon","_self",null);
-//        综合查询
-                    final   Childs zHCX=new  Childs("综合查询","page/login-3.html","fa fa-tags","_blank",null);
+//        我区群众到省、市、区集体上访一览表
+                    final   Childs SSQ=new  Childs("我区群众到省、市、区集体上访一览表","Moudel4/table1.html","fa fa-list-alt","_self",null);
+//        我区群众到省、市集体上访明细表
+                    final   Childs SSJT=new  Childs("我区群众到省、市、集体上访明细表","Moudel4/table2.html","fa fa-navicon","_self",null);
+//        群众到我区集体上访明细表
+                    final   Childs wq=new  Childs("群众到我区集体上访明细表","Moudel4/table3.html","fa fa-tags","_self",null);
+//                    综合查询
+                    final   Childs zHcx=new Childs("综合查询","Moudel4/zhcx.html","","_self",null);
                     List tJList=new ArrayList(){
                         {
-                            add(bJBB);
-                            add(sBBB);
-                            add(zHCX);
+                            add(SSQ);
+                            add(SSJT);
+                            add(wq);
+                            add(zHcx);
                         }
                     };
                     final   Childs cXTJ=new  Childs("查询统计","","fa fa-gears","_self",tJList);
