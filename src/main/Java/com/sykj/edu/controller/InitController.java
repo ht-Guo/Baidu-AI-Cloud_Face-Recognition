@@ -40,7 +40,7 @@ public class InitController {
         /**
          * homeInfo
          * */
-        Home home=new Home("首页","page/welcome-1.html");
+        Home home=new Home("首页","Moudel1/WelcomeHome.html");
         /**
          * logoInfo
          * */

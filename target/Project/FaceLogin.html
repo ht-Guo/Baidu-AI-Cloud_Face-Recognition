@@ -137,6 +137,9 @@
                                 console.log(v)
                                 if(v.error_msg== 'SUCCESS'){
                                     if(v.result.user_list[0].score>=90){
+                                        window.clearInterval(t1);
+                                        //关闭摄像头
+                                        mediaStreamTrack.stop();
                                         // bool=true;
                                         var bdy_userId=v.result.user_list[0].user_id;
                                         $.post("Face/findUIDF",{"bdy_userId":bdy_userId},function(o){
