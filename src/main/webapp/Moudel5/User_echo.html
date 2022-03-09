@@ -1,0 +1,123 @@
+<div class="layuimini-main">
+        <input type="hidden" name="uidf" id="uidf">
+        <div class="layui-form-item">
+            <label class="layui-form-label required">真实姓名&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="truename" id="truename" lay-verify="required" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">电话&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="mobilePhone" id="mobilePhone" lay-verify="required" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">邮箱&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="email" id="email" lay-verify="required" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">住宅电话&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="homePhone" id="homePhone" lay-verify="required" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">办公电话&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="officePhone" id="officePhone" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">家庭地址:&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="addr" id="addr" value="" class="layui-input">
+            </div>
+        </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">账号状态:&nbsp;:&nbsp;</label>
+    <div class="layui-input-inline">
+        <input type="text" name="isActive" id="isActive" value="" class="layui-input">
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">所属部门:&nbsp;:&nbsp;</label>
+    <div class="layui-input-inline">
+        <input type="text" name="depid" id="depid" value="" class="layui-input">
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">用户职位:&nbsp;:&nbsp;</label>
+    <div class="layui-input-inline">
+        <input type="text" name="jobid" id="jobid" value="" class="layui-input">
+    </div>
+    </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn layui-btn-normal" lay-submit lay-filter="close">关闭页面</button>
+            </div>
+        </div>
+</div>
+<script>
+    layui.use(['form', 'table'], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            table = layui.table,
+            $ = layui.$;
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+        form.render();
+        // 当前弹出层，防止ID被覆盖
+        var parentIndex = layer.index;
+
+
+        //加载用户所属部门信息
+        $.get("Sys_User/dept",function (bb) {
+            $.each(bb, function (index,b2) {
+                var str ="<option value='"+b2.did+"'>"+b2.dname+"</option>";
+                $("#depid").append(str);
+            });
+            form.render();
+        });
+        //加载用户所属职位信息
+        $.get("Sys_User/job",function (bb) {
+            $.each(bb, function (index,b2) {
+                var str="<option value='"+b2.jobid +"'>"+b2.jobname+"</option>";
+                $("#jobid").append(str);
+            });
+            form. render();
+        });
+
+        //返回事件
+        form.on('submit(close)', function (data) {
+            layer.close(parentIndex);
+            window.parent.layui.table.reload('currentTableIdus', {
+            });
+        });
+    });
+    //加载数据
+    function user2() {
+        layui.use(['form', 'table'], function () {
+            var form = layui.form,
+                layer = layui.layer,
+                table = layui.table,
+                $ = layui.$;
+            //去数据库中查询要修改的数据
+            $.get("Sys_User/find",{"uidf":$("#uidf").val()},function (data) {
+                $("#truename").val(data.truename);
+                $("#mobilePhone").val(data.mobilePhone);
+                $("#email").val(data.email);
+                $("#homePhone").val(data.homePhone);
+                $("#officePhone").val(data.officePhone);
+                $("#addr").val(data.addr);
+                $("#isActive").val(data.isActive);
+                $("#depid").val(data.depid);
+                $("#jobid").val(data.jobid);
+                form. render();
+            })
+        });
+    }
+</script>

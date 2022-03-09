@@ -59,7 +59,6 @@ public class InquiryStatisticsDaoImpl extends BaseDaoImp implements InquiryStati
                 "\twhere  bc.baseDataTypeId=5\n" +
                 "\tgroup by  bc.id,bc.dataValue";
         try {
-            System.out.println("查询数据的sql:" + sql);
             inquiryStatistics = qr.query(conn, sql, new BeanListHandler<InquiryStatistics>(InquiryStatistics.class));
 
             return inquiryStatistics;
@@ -82,7 +81,6 @@ public class InquiryStatisticsDaoImpl extends BaseDaoImp implements InquiryStati
         String sql = "SELECT l.idf,l.registerTimef,le.letterNamef,l.visiterCount,l.thirdQuestionType,l.questionAffiliations,le.letterAddressf,b.dataValue FROM letterbaseinfo l,lettersinfo le,basicdata b WHERE l.letterIDf=le.idf AND b.id=l.overVisitf ";
         if (registerTimef != null && !"".equals("registerTimef")){
             sql += " and l.registerTimef like'%" +registerTimef+ "%'";
-            System.out.println(sql);
         }
 
         try {
@@ -107,7 +105,6 @@ public class InquiryStatisticsDaoImpl extends BaseDaoImp implements InquiryStati
         String sql = "SELECT l.idf,l.registerTimef,le.letterNamef,l.visiterCount,l.thirdQuestionType,l.questionAffiliations,le.letterAddressf FROM letterbaseinfo l,lettersinfo le WHERE l.letterIDf=le.idf";
         if (registerTimef != null && !"".equals("registerTimef")){
             sql += " and l.registerTimef like'%" +registerTimef+ "%'";
-            System.out.println(sql);
         }
         try {
             publicLists = qr.query(conn, sql, new BeanListHandler<PublicList>(PublicList.class));
@@ -132,32 +129,26 @@ public class InquiryStatisticsDaoImpl extends BaseDaoImp implements InquiryStati
         //1.总序号
         if (idq.getLetterIDF() != null && !"".equals(idq.getLetterIDF())){
             sql += " and le.letterIDf like'%" +idq.getLetterIDF()+ "%'";
-            System.out.println(sql);
         }
         //2.信访人
         if (idq.getLetterNamef() != null && !"".equals(idq.getLetterNamef())){
             sql += " and lett.letterNamef like'%" +idq.getLetterNamef()+ "%'";
-            System.out.println(sql);
         }
         //3.登记时间
         if (idq.getRegisterTimef() != null && !"".equals(idq.getRegisterTimef())){
             sql += " and le.registerTimef like'%" +idq.getRegisterTimef()+ "%'";
-            System.out.println(sql);
         }
         //4.标题
         if (idq.getLetterTitlef() != null && !"".equals(idq.getLetterTitlef())){
             sql += " and le.letterTitlef like'%" +idq.getLetterTitlef()+ "%'";
-            System.out.println(sql);
         }
         // 5.登记人
         if (idq.getTruename() != null && !"".equals(idq.getTruename())){
             sql += " and sy.truename like'%" +idq.getTruename()+ "%'";
-            System.out.println(sql);
         }
         //6.状态
         if (idq.getState() != null && !"".equals(idq.getState())){
             sql += " and le.state like'%" +idq.getState()+ "%'";
-            System.out.println(sql);
         }
             return this.queryListForPage(idq,sql,IntegratedQuery.class);
 

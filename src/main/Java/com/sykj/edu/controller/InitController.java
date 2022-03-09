@@ -126,9 +126,9 @@ public class InitController {
             case"公共信息":
                 //        公共信息(通知通告，内部短消息)
 //        通知通告
-                final   Childs tZTG=new  Childs("通知通告","page/login-1.html","fa fa-stumbleupon-circle","_blank",null);
+                final   Childs tZTG=new  Childs("通知通告","Moudel6/Inform.html","fa fa-stumbleupon-circle","_self",null);
 //        内部短信息
-                final   Childs nBDXX=new  Childs("内部短消息","page/login-2.html","fa fa-viacoin","_blank",null);
+                final   Childs nBDXX=new  Childs("内部短消息","Moudel6/Innernote.html","fa fa-viacoin","_self",null);
                 List gGXXList=new ArrayList(){
                     {
                         add(tZTG);
@@ -142,7 +142,7 @@ public class InitController {
             case"系统管理":
                 //        系统管理(用户管理，角色管理)
 //        用户管理
-                final   Childs yHGL=new  Childs("用户管理","page/404.html","fa fa-hourglass-end","_self",null);
+                final   Childs yHGL=new  Childs("用户管理","Moudel5/User.html","fa fa-hourglass-end","_self",null);
 //        角色管理
                 final   Childs jSGL=new  Childs("角色管理","page/404.html","fa fa-hourglass-end","_self",null);
                 List xTGLList=new ArrayList(){

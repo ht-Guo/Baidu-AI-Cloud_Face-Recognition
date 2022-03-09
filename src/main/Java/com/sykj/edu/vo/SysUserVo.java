@@ -10,7 +10,7 @@ package com.sykj.edu.vo;
 */
 
 //用户管理表
-public class SysUserVo {
+public class SysUserVo extends BaseVo {
     private int uidf;//UIDF
     private String password;//登录密码
     private String username;//登录名

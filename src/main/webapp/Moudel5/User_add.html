@@ -1,0 +1,161 @@
+<div class="layuimini-main">
+    <div class="layui-form layuimini-form">
+        <div class="layui-input-block">
+            <div class="layui-form-item">
+                <label class="layui-form-label required">登录密码&nbsp;:&nbsp;</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="password" lay-verify="required" lay-reqtext="登录密码不能为空" placeholder="请输入登录密码" value="" class="layui-input">
+                </div>
+            </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">登录账号&nbsp;:&nbsp;</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="username"  lay-verify="required|isExist" lay-reqtext="登录账号不能为空" placeholder="请输入登录账号" value="" class="layui-input">
+                </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">真实姓名&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="truename" lay-verify="truename" lay-reqtext="真实姓名不能为空" placeholder="请输入真实姓名" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">邮件&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="email" lay-verify="required" lay-reqtext="邮件不能为空" placeholder="请输入邮件" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">移动电话&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="mobilePhone" placeholder="请输入移动电话" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">家庭电话:&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="homePhone" lay-reqtext="家庭电话不能为空" placeholder="请输入家庭电话" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">办公电话:&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="officePhone" placeholder="请输入办公电话" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">地址:&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="addr" lay-reqtext="地址不能为空" placeholder="请输入地址" value="" class="layui-input">
+            </div>
+        </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户状态</label>
+                <div class="layui-input-inline">
+                    <input type="radio" name="isActive" value="0" title=已删除>
+                </div>
+                <div class="layui-input-inline">
+                    <input type="radio" name="isActive" value="1" title="禁用">
+                </div>
+                <div class="layui-input-inline">
+                    <input type="radio" name="isActive" value="2" title="正常">
+                </div>
+            </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">部门编号:&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="depid" placeholder="请输入部门编号" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">职位编号&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" placeholder="请输入职位编号" name="jobid" value=""></div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">添加</button>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    layui.use(['form', 'table'], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            table = layui.table,
+            $ = layui.$;
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+        form.render();
+        // 当前弹出层，防止ID被覆盖
+        var parentIndex = layer.index;
+
+        //监听提交
+        form.on('submit(saveBtn)', function (data) {
+            $.ajax({
+                url:"Sys_User/add",
+                type:"post",
+                data:data.field,  //将表单参数传递到后台
+                success:function (data1) {
+                    if (data1>0){
+                        var index = layer.alert("添加成功",{
+                            title: '成功信息'
+                        }, function () {
+                            // 关闭弹出层
+                            layer.close(index);
+                            layer.close(parentIndex);
+                            //刷新表格
+                            window.parent.layui.table.reload('currentTableIdus', {
+                            });
+                        });
+                    }else {
+                        var index = layer.alert("添加失败",{
+                            title: '失败信息'
+                        }, function () {
+                            // 关闭弹出层
+                            layer.close(index);
+                        });
+                    }
+                }
+            });
+            return false;
+        });
+
+        //自动添加编号
+        table.on('toolbar(test)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id),
+                data = checkStatus.data; //获取选中的数据
+            switch(obj.event){
+                case 'add':
+                    $("#formStaff").resetForm();//重置表单
+                    var rowIndex = table.cache.test.length;//获取表格数据条数
+                    rowIndex = Number(rowIndex - 1);//获取最后一条数据索引
+                    if (rowIndex > -1) {
+                        var num = table.cache.test[rowIndex].staffNum;//根据索引获取最后一条数据编号
+                        var len = 4;
+                        num = Number(num) + Number(1);
+                        num = num.toString();
+                        while(num.length < len){
+                            num = "0" + num;
+                        }
+                        $("#formStaff [name='staffNum']").val(num);
+                        layer.open({
+                            type: 1,//类型
+                            title: '<i class="layui-icon layui-icon-add-1"> 新增员工信息</i>',
+                            offset: ['5%','30%'],
+                            area:['660px','560px'],//定义宽和高
+                            shadeClose:false,//点击遮罩层关闭
+                            content: $("#modStaff")//打开的内容
+                        });
+                    }
+                    break;
+            }
+            form.render();//刷新表单
+        });
+    });
+</script>

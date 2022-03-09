@@ -1,0 +1,199 @@
+<div class="layuimini-container layuimini-page-anim">
+    <div class="layuimini-main">
+
+        <fieldset class="table-search-fieldset">
+            <legend>用户查询</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item layui-input-inline">
+                        <label class="layui-form-label">用户状态</label>
+                        <div class="layui-input-inline" style="width: 120px">
+                            <input type="radio" name="isActive" value="0" title="已删除">
+                        </div>
+                        <div class="layui-input-inline" style="width: 100px">
+                            <input type="radio" name="isActive" value="1" title="禁用">
+                        </div>
+                        <div class="layui-input-inline">
+                            <input type="radio" name="isActive" value="2" title="正常">
+                        </div>
+                    </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">用户姓名</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="truename" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <button type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 查 询 </button>
+                        </div>
+                </form>
+            </div>
+        </fieldset>
+
+        <script type="text/html" id="toolbarDemo">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 添加 </button>
+            </div>
+        </script>
+
+        <table class="layui-hide" id="currentTableIdus" lay-filter="currentTableFilter"></table>
+
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+        </script>
+
+    </div>
+</div>
+
+<script>
+    layui.use(['form', 'table','miniPage','element'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table,
+            miniPage = layui.miniPage;
+            form.render();
+
+        table.render({
+            elem: '#currentTableIdus',
+            url: 'Sys_User/findAll',
+            toolbar: '#toolbarDemo',
+            defaultToolbar: ['filter', 'exports', 'print', {
+                title: '提示',
+                layEvent: 'LAYTABLE_TIPS',
+                icon: 'layui-icon-tips',
+                align:'center'
+            }],
+            cols: [[
+                {field: 'uidf', width: 150, title: '序号',align:"center"},
+                {field: 'username', width: 250, title: '账号',align:"center"},
+                {field: 'truename', width:200, title: '姓名',align:"center"},
+                {field: 'email', width: 250, title: '电子邮箱',align:"center"},
+                {field: 'isActive', title: '账号状态',templet:function (res) {
+                        if (res.isActive ===0){
+                            return "<spane>已删除</spane>"
+                        }else if (res.isActive ===1){
+                            return "<spane>禁用</spane>"
+                        } else{
+                            return "<spane>正常</spane>"
+                        }
+                    },Width: 150,align:"center"},
+                {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
+            ]],
+            limits: [10, 15, 20, 25, 50, 100],
+            limit: 8,
+            page: true,
+            skin: 'line'
+        });
+
+        // 监听查询操作
+        form.on('submit(data-search-btn)', function (data) {
+            var result = data.field;
+            //执行搜索重载
+            table.reload('currentTableIdus', {
+                    where:result
+            });
+            return false;
+        });
+
+        /**
+         * toolbar事件监听
+         */
+        table.on('toolbar(currentTableFilter)', function (obj) {
+            if (obj.event === 'add') {   // 监听添加操作
+                var content = miniPage.getHrefContent('Moudel5/User_add.html');
+                var openWH = miniPage.getOpenWidthHeight();
+
+                var index = layer.open({
+                    title: '添加用户',
+                    type: 1,
+                    shade: 0.2,
+                    maxmin:true,
+                    shadeClose: true,
+                    area: [openWH[0] + 'px', openWH[1] + 'px'],
+                    offset: [openWH[2] + 'px', openWH[3] + 'px'],
+                    content: content,
+                });
+                $(window).on("resize", function () {
+                    layer.full(index);
+                });
+            } else if (obj.event === 'delete') {  // 监听删除操作
+                var checkStatus = table.checkStatus('currentTableIdus')
+                    , data = checkStatus.data;
+                layer.alert(JSON.stringify(data));
+            }
+        });
+
+        //监听表格复选框选择
+        table.on('checkbox(currentTableFilter)', function (obj) {
+            console.log(obj)
+        });
+
+        //双击点击一行回显值
+        table.on('rowDouble(currentTableFilter)', function (obj) {
+            var data = obj.data;
+                var content = miniPage.getHrefContent('Moudel5/User_echo.html');
+                var openWH = miniPage.getOpenWidthHeight();
+                var index = layer.open({
+                    title: '查看用户信息',
+                    type: 1,
+                    shade: 0.2,
+                    maxmin: true,
+                    shadeClose: true,
+                    area: [openWH[0] + 'px', openWH[1] + 'px'],
+                    offset: [openWH[2] + 'px', openWH[3] + 'px'],
+                    content: content,
+                    success: function () {
+                        $("#uidf").val(data.uidf);
+                        user2();
+                    }
+                });
+                $(window).on("resize", function () {
+                layer.full(index);
+            });
+            return false;
+        });
+        //修改
+        table.on('tool(currentTableFilter)', function (obj) {
+            var data = obj.data;
+            var layEvent=obj.event;
+            if (layEvent === 'edit') {
+                var content = miniPage.getHrefContent('Moudel5/User_upd.html');
+                var openWH = miniPage.getOpenWidthHeight();
+
+                var index = layer.open({
+                    title: '修改用户信息',
+                    type: 1,
+                    shade: 0.2,
+                    maxmin:true,
+                    shadeClose: true,
+                    area: [openWH[0] + 'px', openWH[1] + 'px'],
+                    offset: [openWH[2] + 'px', openWH[3] + 'px'],
+                    content: content,
+                    success:function () {
+                        $("#uidf").val(data.uidf);
+                        user();
+                    }
+                });
+                $(window).on("resize", function () {
+                    layer.full(index);
+                });
+                return false;
+            }else if (obj.event === 'delete') {
+                layer.confirm('真的删除行么', function (index) {
+                    $.get("Sys_User/del",{uidf:data.uidf},function (d) {
+                        if (d>0){
+                            layer.alert("删除成功")
+                            obj.del();
+                            parent.layui.table.reload('currentTableIdus', {
+                            });
+                        } else {
+                            layer.alert("删除失败")
+                        }
+                    })
+                    layer.close(index);
+                });
+            }
+        });
+    });
+</script>

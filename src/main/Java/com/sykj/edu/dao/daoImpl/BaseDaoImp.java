@@ -36,12 +36,10 @@ public class BaseDaoImp {
 			QueryRunner qr = new QueryRunner();
 			//查询所有数据
 	        alldb =  (ArrayList) qr.query(conn,sql,new BeanListHandler<>(t));
-	        System.out.println("查询公共数据的SQL:"+sql);
 	        //构建分页查询的sql
 	        if(bv.getPage()!=null&&bv.getLimit()!=null) {
 		        sql= "select * from ("+sql+") pagelistdb limit "+bv.getStartpage()+","+bv.getLimit();
 	        }
-	        System.out.println("查询分页数据的SQL:"+sql);
 	        //查询分页数据
 	        pagedb =  (ArrayList) qr.query(conn,sql,new BeanListHandler<>(t));
 	        
@@ -84,9 +82,7 @@ public class BaseDaoImp {
 			//创建查询对象
 			QueryRunner qr = new QueryRunner();
 			//查询所有数据
-			System.out.println("查询公共数据的SQL:"+sql);
 	        alldb = (ArrayList) qr.query(conn,sql,new BeanListHandler<>(t));
-	       System.out.println("数据长度："+alldb.size());
 	        //对分页方法进行封装
 	         list.setPage(0);
 	 		 list.setLimit(15);
@@ -125,9 +121,7 @@ public class BaseDaoImp {
 			//创建查询对象
 			QueryRunner qr = new QueryRunner();
 			//查询所有数据
-			System.out.println("查询公共数据的SQL:"+sql);
 	        alldb =  (List<T>) qr.query(conn,sql,new BeanListHandler<>(t));
-	        System.out.println("数据长度："+alldb.size());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -156,7 +150,6 @@ public class BaseDaoImp {
 			//创建查询对象
 			QueryRunner qr = new QueryRunner();
 			//查询所有数据
-			System.out.println("查询公共数据的SQL:"+sql);
 	        ts =  (T) qr.query(conn,sql,new BeanHandler<>(t));
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -184,7 +177,6 @@ public class BaseDaoImp {
 			//创建查询对象
 			QueryRunner qr = new QueryRunner();
 			//查询所有数据
-			System.out.println("查询公共数据的SQL:"+sql);
 	        int num =  qr.update(conn,sql);
 	        return num;
 		}catch(Exception e) {

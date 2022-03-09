@@ -1,0 +1,138 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="layuimini-main">
+    <form class="layui-form" name="myform2" id="myform2" action="">
+        <input type="hidden" name="idf" id="idf">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">通告类型:&nbsp;:&nbsp;</label>
+                    <div class="layui-input-inline">
+                        <select name="type" id="type">
+                            <option value="77">公告</option>
+                            <option value="78">通知</option>
+                        </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">标题&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="titlef" id="titlef" lay-verify="required" lay-reqtext="电话不能为空" placeholder="请输入电话" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">发布人ID&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="useridf" id="useridf" lay-verify="required" lay-reqtext="邮箱不能为空" placeholder="请输入邮箱" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">内容&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="contentf" id="contentf" lay-verify="required" lay-reqtext="住宅电话不能为空" placeholder="请输入住宅电话" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">是否有用:&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <select name="isuserf" id="isuserf">
+                    <option value="0">无用</option>
+                    <option value="1">有用</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">发布时间&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="pubtime" id="pubtime" placeholder="请输入办公电话" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认修改</button>
+                <button class="layui-btn layui-btn-normal" lay-submit lay-filter="close">关闭页面</button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+<script>
+    layui.use(['form', 'table'], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            table = layui.table,
+            $ = layui.$;
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+        form.render();
+        // 当前弹出层，防止ID被覆盖
+        var parentIndex = layer.index;
+
+        //监听提交
+        form.on('submit(saveBtn)', function (data) {
+
+            $.get("Inform_Controller/upd",$("#myform2").serialize(),function (data) {
+                layer.close(parentIndex);
+                window.parent.layui.table.reload('currentTableIdin', {
+                });
+            })
+            return false;
+        });
+
+        //返回事件
+        form.on('submit(close)', function (data) {
+                layer.close(parentIndex);
+        });
+
+        //自动添加编号
+        table.on('toolbar(test)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id),
+                data = checkStatus.data; //获取选中的数据
+            switch(obj.event){
+                case 'add':
+                    $("#formStaff").resetForm();//重置表单
+                    var rowIndex = table.cache.test.length;//获取表格数据条数
+                    rowIndex = Number(rowIndex - 1);//获取最后一条数据索引
+                    if (rowIndex > -1) {
+                        var num = table.cache.test[rowIndex].staffNum;//根据索引获取最后一条数据编号
+                        var len = 4;
+                        num = Number(num) + Number(1);
+                        num = num.toString();
+                        while(num.length < len){
+                            num = "0" + num;
+                        }
+                        $("#formStaff [name='staffNum']").val(num);
+                        layer.open({
+                            type: 1,//类型
+                            title: '<i class="layui-icon layui-icon-add-1"> 新增员工信息</i>',
+                            offset: ['5%','30%'],
+                            area:['660px','560px'],//定义宽和高
+                            shadeClose:false,//点击遮罩层关闭
+                            content: $("#modStaff")//打开的内容
+                        });
+                    }
+                    break;
+            }
+        });
+    });
+
+    //加载数据
+    function inform() {
+        layui.use(['form', 'table'], function () {
+            var form = layui.form,
+                layer = layui.layer,
+                table = layui.table,
+                $ = layui.$;
+            //去数据库中查询要修改的数据
+            $.get("Inform_Controller/find",{"idf":$("#idf").val()},function (data) {
+                // layer.alert(data)
+                $("#type").val(data.type);
+                $("#titlef").val(data.titlef);
+                $("#useridf").val(data.useridf);
+                $("#contentf").val(data.contentf);
+                $("#isuserf").val(data.isuserf);
+                $("#pubtime").val(data.pubtime);
+                form. render();
+            })
+        });
+    }
+</script>

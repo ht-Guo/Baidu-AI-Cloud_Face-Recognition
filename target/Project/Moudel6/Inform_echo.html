@@ -1,0 +1,88 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="layuimini-main">
+        <input type="hidden" name="idf" id="idf">
+        <div class="layui-form-item">
+            <label class="layui-form-label">通告类型:&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="type" id="type" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">标题&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="titlef" id="titlef" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">发布人ID&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="useridf" id="useridf" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">内容&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="contentf" id="contentf" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">是否有用:&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="isuserf" id="isuserf" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">发布时间&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="pubtime" id="pubtime" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn layui-btn-normal" lay-submit lay-filter="close">关闭页面</button>
+            </div>
+        </div>
+</div>
+</div>
+<script>
+    layui.use(['form', 'table'], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            table = layui.table,
+            $ = layui.$;
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+        form.render();
+        // 当前弹出层，防止ID被覆盖
+        var parentIndex = layer.index;
+
+        // 返回事件
+        form.on('submit(close)', function (data) {
+            layer.close(parentIndex);
+            window.parent.layui.table.reload('currentTableIdin', {
+            });
+        });
+    });
+
+    //加载数据
+    function inform2() {
+        layui.use(['form', 'table'], function () {
+            var form = layui.form,
+                layer = layui.layer,
+                table = layui.table,
+                $ = layui.$;
+            //去数据库中查询要修改的数据
+            $.get("Inform_Controller/find",{"idf":$("#idf").val()},function (data) {
+                $("#type").val(data.type);
+                $("#titlef").val(data.titlef);
+                $("#useridf").val(data.useridf);
+                $("#contentf").val(data.contentf);
+                $("#isuserf").val(data.isuserf);
+                $("#pubtime").val(data.pubtime);
+                form. render();
+            })
+        });
+    }
+</script>
