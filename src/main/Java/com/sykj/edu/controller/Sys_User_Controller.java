@@ -33,7 +33,7 @@ public class Sys_User_Controller {
     //修改
     @RequestMapping("/update")
     @ResponseBody
-    public Object upd(SysUserVo su,Integer uidf){
+    public Object upd(SysUserVo su, Integer uidf){
         return sud.upd(su,uidf);
     }
 

@@ -51,7 +51,6 @@
             if(data>0){
             $.post("XFDJ/InsertApproveInfo",{"let_idf":$("#idf").val(),"idf":$("#idf").val(),"userId":$("#userId").val()},function(data){
               if(data>0){
-                alert("办理成功")
                 layer.msg("办理成功")
                 layer.close(index)
                 window.parent.layui.table.reload('currentTableId123', {

@@ -66,7 +66,6 @@
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认修改</button>
-<!--            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="close">关闭页面</button>-->
             </div>
         </div>
     </form>
@@ -87,7 +86,7 @@
 
 
         //加载用户所属部门信息
-         $.post("Sys_User/dept",function (bb) {
+         $.get("Sys_User/dept",function (bb) {
         $.each(bb, function (index,b2) {
             var str ="<option value='"+b2.did+"'>"+b2.dname+"</option>";
             $("#depid").append(str);
@@ -95,7 +94,7 @@
         form.render();
     });
         //加载用户所属职位信息
-        $.post("Sys_User/job",function (bb) {
+        $.get("Sys_User/job",function (bb) {
             $.each(bb, function (index,b2) {
                 var str="<option value='"+b2.jobid +"'>"+b2.jobname+"</option>";
                 $("#jobid").append(str);
@@ -106,18 +105,13 @@
         //监听提交
         form.on('submit(saveBtn)', function (data) {
 
-            $.post("Sys_User/update",$("#myform").serialize(),function (data) {
+            $.get("Sys_User/update",$("#myform").serialize(),function (data) {
                 layer.close(parentIndex);
-                window.parent.layui.table.reload('currentTableIdus', {
+                parent.layui.table.reload('currentTableIduser', {
                 });
             })
             return false;
         });
-
-        // //返回事件
-        // form.on('submit(close)', function (data) {
-        //         layer.close(parentIndex);
-        // });
 
         //自动添加编号
         table.on('toolbar(test)', function(obj){
@@ -150,24 +144,26 @@
             }
         });
     });
-
     //加载数据
-    function user() {
-        layui.use(['form', 'table'], function () {
-            //去数据库中查询要修改的数据
-            $.post("Sys_User/find", {"uidf": $("#uidf").val()}, function (data) {
-                $("#truename").val(data.truename);
-                $("#mobilePhone").val(data.mobilePhone);
-                $("#email").val(data.email);
-                $("#homePhone").val(data.homePhone);
-                $("#officePhone").val(data.officePhone);
-                $("#addr").val(data.addr);
-                $("#isActive").val(data.isActive);
-                $("#depid").val(data.depid);
-                $("#jobid").val(data.jobid);
-                form.render();
-            })
-        })
-    }
-
+        function user() {
+            layui.use(['form', 'table'], function () {
+                var form = layui.form,
+                    layer = layui.layer,
+                    table = layui.table,
+                    $ = layui.$;
+                //去数据库中查询要修改的数据
+                $.get("Sys_User/find",{"uidf":$("#uidf").val()},function (data) {
+                    $("#truename").val(data.truename);
+                    $("#mobilePhone").val(data.mobilePhone);
+                    $("#email").val(data.email);
+                    $("#homePhone").val(data.homePhone);
+                    $("#officePhone").val(data.officePhone);
+                    $("#addr").val(data.addr);
+                    $("#isActive").val(data.isActive);
+                    $("#depid").val(data.depid);
+                    $("#jobid").val(data.jobid);
+                    form. render();
+                })
+            });
+        }
 </script>

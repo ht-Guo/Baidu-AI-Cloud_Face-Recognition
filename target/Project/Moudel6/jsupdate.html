@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>角色修改</title>
+</head>
+<body>
+<div class="layuimini-main">
+    <form class="layui-form" name="mainform" action="" id="mainform">
+        <input type="hidden" name="roelId" id="roelId" >
+        <fieldset class="table-search-fieldset">
+            <legend>角色信息</legend>
+            <div class="layui-form-item">
+                <label class="layui-form-label required">角色名称</label>
+                <div class="layui-input-block">
+                    <input type="text" id="roleName" name="roleName" lay-verify="required"  placeholder="请输入角色名称" value="" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">角色描述</label>
+                <div class="layui-input-block">
+                    <textarea placeholder="请输入内容" class="layui-textarea" name="remark"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认修改</button>
+                    <button class="layui-btn layui-btn-normal"  lay-filter="fanhui">返回</button>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="table-search-fieldset">
+            <legend>权限信息</legend>
+            <table id="munu-table" class="layui-table" lay-filter="munu-table"></table>
+        </fieldset>
+    </form>
+</div>
+<script>
+    layui.use(['form', 'table', 'treetable'], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            table = layui.table,
+            $ = layui.$;
+        var treetable = layui.treetable;
+
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+        form.render();
+
+        // 当前弹出层，防止ID被覆盖
+        var parentIndex = layer.index;
+
+        //监听提交
+        form.on('submit(saveBtn)', function (data) {
+
+            $.get("system/saveupdate",$("#mainform").serialize(),function(data){
+                layer.close(parentIndex);
+            });
+
+            return false;
+        });
+
+        // 加载用户所属部门信息
+        $.ajax({
+            url: "system/querydeptlist",
+            type: "post",
+            success: function (db) {
+                $.each(db, function (index, dd) {
+                    var str = "<option value='" + dd.did + "'>" +dd.dname+ "</option>";
+                    $("#depid").append(str);
+                });
+                form.render();
+            }
+        });
+        //加载用户所属职位信息
+        $.ajax({
+            url:"system/queryjoblist",
+            type:"post",
+            success:function(db) {
+                $.each(db, function (index, dd) {
+                    var str = "<option value='" + dd.jobid + "'>" + dd.jobname + "</option>";
+                    $("#jobid").append(str);
+                })
+                form.render();
+            }
+        });
+
+        // 渲染表格
+        layer.load(2);
+        treetable.render({
+            treeColIndex: 1,
+            treeSpid: -1,
+            treeIdName: 'authorityId',
+            treePidName: 'parentId',
+            elem: '#munu-table',
+            url: 'api/menus.json',
+            page: false,
+            cols: [[
+                {type: 'checkbox'},
+                {field: 'authorityName', minWidth: 200, title: '权限名称'},
+                {
+                    field: 'isMenu', width: 80, align: 'center', templet: function (d) {
+                        if (d.isMenu == 1) {
+                            return '<span class="layui-badge layui-bg-gray">按钮</span>';
+                        }
+                        if (d.parentId == -1) {
+                            return '<span class="layui-badge layui-bg-blue">目录</span>';
+                        } else {
+                            return '<span class="layui-badge-rim">菜单</span>';
+                        }
+                    }, title: '类型'
+                }
+            ]],
+            done: function () {
+                layer.closeAll('loading');
+            }
+        });
+
+        $('#btn-expand').click(function () {
+            treetable.expandAll('#munu-table');
+        });
+
+        $('#btn-fold').click(function () {
+            treetable.foldAll('#munu-table');
+        });
+    });
+
+    function loadupdatedb(){
+        layui.use(['form', 'table'], function () {
+            var form = layui.form,
+                layer = layui.layer,
+                table = layui.table,
+                $ = layui.$;
+            //去数据库中查询要修改的用户的数据
+            $.get("system/toloadUserInfo",{"uidf":$("#uidf").val()},function(data){
+                //layer.alter(data);
+                $("#truename").val(data.truename);
+                $("#mobilePhone").val(data.mobilePhone);
+                form.render();
+            });
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<div class="layuimini-main">
+        <div class="layui-form-item">
+            <input type="hidden" name="idf" id="idf">
+            <label class="layui-form-label" style="">用户名&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="letterNamef" placeholder="请输入用户名" id="letterNamef"  class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="letterCardNof" placeholder="请输入密码" id="letterCardNof" lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    <div class="layui-form layuimini-form" id="f" name="dengjiform" >
+            <div class="layui-form-item">
+                <label class="layui-form-label">账号状态&nbsp;:&nbsp;</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="workDept" value="0"  class="layui-input" title="正常" checked="">
+                    <input type="radio" name="workDept" value="1"  class="layui-input" title="禁用">
+                </div>
+            </div>
+    </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">昵称&nbsp;:&nbsp;</label>
+                <div class="layui-input-block">
+                    <input type="text" name="letterPostNof" placeholder="请输入昵称" id="letterPostNof" lay-verify="required|number" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form layuimini-form" id="v" name="dengjiform" >
+            <div class="layui-form-item">
+                <label class="layui-form-label">选择性别&nbsp;:&nbsp;</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="workDept" value="2"  class="layui-input" title="男" checked="">
+                    <input type="radio" name="workDept" value="3"  class="layui-input" title="女">
+                </div>
+                </div>
+            </div>
+            <div class="layui-form layuimini-form" id="a" name="dengjiform" >
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                <label class="layui-form-label" style="white-space: nowrap;">权限分配&nbsp;:&nbsp;</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="workDept" class="layui-input" title="信访登记管理员">
+                    <input type="checkbox" name="workDept" class="layui-input" title="信访处理管理员">
+                    <input type="checkbox" name="workDept" class="layui-input" title="督查督办管理员">
+                    <input type="checkbox" name="workDept" class="layui-input" title="重点对象管理员">
+                    <input type="checkbox" name="workDept" class="layui-input" title="查询统计管理员">
+                </div>
+                </div>
+            </div>
+            </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+            <label class="layui-form-label">电子邮箱&nbsp;:&nbsp;</label>
+            <div class="layui-input-block">
+                <input type="text" name="letterHomeAddrf" placeholder="请输入电子邮箱" id="letterHomeAddrf" placeholder="" autocomplete="off" class="layui-input">
+            </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+            <label class="layui-form-label">移动电话&nbsp;:&nbsp;</label>
+            <div class="layui-input-block">
+                <input type="text" name="letterOriRegAdsf" placeholder="请输入移动电话" id="c" autocomplete="off" class="layui-input">
+            </div>
+            </div>
+        </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">办公电话&nbsp;:&nbsp;</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="letterOriRegAdsf" placeholder="请输入办公电话" id="b" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">用户单位&nbsp;:&nbsp;</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="letterOriRegAdsf" placeholder="请输入用户单位" id="e" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">职务&nbsp;:&nbsp;</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="letterOriRegAdsf" placeholder="请输入职务" id="" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">住宅电话&nbsp;:&nbsp;</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="letterOriRegAdsf" placeholder="请输入住宅电话" id="h" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">详细住宅&nbsp;:&nbsp;</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="letterOriRegAdsf" placeholder="请输入详细住宅" id="i" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+    </form>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认添加</button>
+                    <button class="layui-btn layui-btn-normal"  lay-filter="fanhui">返回</button>
+                </div>
+            </div>
+        </div>
+<script>
+    layui.use(['form', 'layedit', 'laydate','table'], function () {
+        var form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate
+            , table = layui.table;
+        var $ = layui.jquery;
+    })
+</script>
+</div>

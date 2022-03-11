@@ -1,0 +1,185 @@
+<div class="layuimini-container layuimini-page-anim">
+    <div class="layuimini-main">
+
+        <fieldset class="table-search-fieldset">
+            <legend>信息查询</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">发送日期</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="sendtime" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">发送者</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="letterNamef" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <button type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 查 询 </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+
+        <script type="text/html" id="toolbarDemo">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 发送消息 </button>
+            </div>
+        </script>
+
+        <table class="layui-hide" id="currentTableIdinner" lay-filter="currentTableFilterinner"></table>
+
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+        </script>
+
+    </div>
+</div>
+
+<script>
+    layui.use(['form', 'table','miniPage','element'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table,
+            miniPage = layui.miniPage;
+
+        table.render({
+            elem: '#currentTableIdinner',
+            url: 'Innernote_Controller/findAll',
+            toolbar: '#toolbarDemo',
+            defaultToolbar: ['filter', 'exports', 'print', {
+                title: '提示',
+                layEvent: 'LAYTABLE_TIPS',
+                icon: 'layui-icon-tips'
+            }],
+            cols: [[
+                {field: 'msgid', width: 120, title: '序号', sort: true,align:"center"},
+                {field: 'letterNamef', width: 120, title: '发送人',align:"center"},
+                {field: 'content', width: 200, title: '信息内容',align:"center"},
+                {field: 'isreaded', width: 150, title: '阅读标志',templet:function (res) {
+                    console.log(res)
+                        if (res.isreaded===1){
+                            return "<span>已读</span>"
+                        } else if(res.isreaded===2){
+                            return "<span>已回复</span>"
+                        }else if (res.isreaded===0) {
+                            return"<span>未读</span>"
+                        }
+                    },align:"center"},
+                {field: 'sendtime', title: '发送时间',width: 200,align:"center"},
+                {field: 'readtime', width: 200, title: '阅读时间',align:"center"},
+                {field: 'dataValue', width: 150, title: '短信类型',align:"center"},
+                {title: '操作', width: 150, toolbar: '#currentTableBar', align: "center"}
+            ]],
+            limits: [10, 15, 20, 25, 50, 100],
+            limit: 8,
+            page: true,
+            skin: 'line'
+        });
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+            var result = data.field;
+            //执行搜索重载
+            table.reload('currentTableIdinner', {
+                where: result
+            });
+            return false;
+        });
+
+        /**
+         * toolbar事件监听
+         */
+        table.on('toolbar(currentTableFilterinner)', function (obj) {
+            if (obj.event === 'add') {   // 监听添加操作
+                var content = miniPage.getHrefContent('Moudel6/Innernote_add.html');
+                var openWH = miniPage.getOpenWidthHeight();
+
+                var index = layer.open({
+                    title: '添加用户',
+                    type: 1,
+                    shade: 0.2,
+                    maxmin:true,
+                    shadeClose: true,
+                    area: ['600px', '700px'],
+                    content: content,
+                });
+                $(window).on("resize", function () {
+                    layer.full(index);
+                });
+            } else if (obj.event === 'delete') {  // 监听删除操作
+                var checkStatus = table.checkStatus('currentTableIdinner')
+                    , data = checkStatus.data;
+                layer.alert(JSON.stringify(data));
+            }
+        });
+
+        //双击点击一行回显值
+        table.on('rowDouble(currentTableFilterinner)', function (obj) {
+
+            var data = obj.data;
+            var content = miniPage.getHrefContent('Moudel6/Innernote_echo.html');
+            var openWH = miniPage.getOpenWidthHeight();
+            var index = layer.open({
+                title: '查看用户信息',
+                type: 1,
+                shade: 0.2,
+                maxmin: true,
+                shadeClose: true,
+                area: ['500px', '700px'],
+                content: content,
+                success: function () {
+                    $("#msgid").val(data.msgid);
+                    innernote();
+                }
+            });
+            $(window).on("resize", function () {
+                layer.full(index);
+            });
+            return false;
+        });
+
+        //修改
+        table.on('tool(currentTableFilterinner)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'edit') {
+
+                var content = miniPage.getHrefContent('Moudel6/add.html');
+                var openWH = miniPage.getOpenWidthHeight();
+
+                var index = layer.open({
+                    title: '编辑用户',
+                    type: 1,
+                    shade: 0.2,
+                    maxmin:true,
+                    shadeClose: true,
+                    area: ['500px', '700px'],
+                    content: content,
+                });
+                $(window).on("resize", function () {
+                    layer.full(index);
+                });
+                return false;
+            } else if (obj.event === 'delete') {
+                layer.confirm('真的删除行么', function (index) {
+                    $.get("Innernote_Controller/del",{msgid:data.msgid},function (d) {
+                        if (d>0){
+                            layer.alert("删除成功")
+                            obj.del();
+                            parent.layui.table.reload('currentTableIdinner', {
+                            });
+                        } else {
+                            layer.alert("删除失败")
+                        }
+                    })
+                    layer.close(index);
+                });
+            }
+        });
+    });
+</script>

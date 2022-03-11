@@ -169,9 +169,9 @@ public class InitController {
             case "重点对象":
                 //       重点对象管理(重点对象查询，维稳报表)
 //        重点对象查询
-                final   Childs zDDXCX=new  Childs("重点对象查询","page/button.html","fa fa-exclamation-triangle","_self",null);
+                final   Childs zDDXCX=new  Childs("重点对象查询","Moudel5/dxgllist.html","fa fa-exclamation-triangle","_self",null);
 //        维稳报表
-                final   Childs wWBB=new  Childs("维稳报表","page/layer.html","fa fa-shield","_self",null);
+                final   Childs wWBB=new  Childs("维稳报表","Moudel5/wwzb.html","fa fa-shield","_self",null);
                 List zDDXGLList=new ArrayList(){
                     {
                         add(zDDXCX);

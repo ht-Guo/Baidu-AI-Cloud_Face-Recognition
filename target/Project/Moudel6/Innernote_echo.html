@@ -1,0 +1,68 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <div class="layuimini-main">
+        <input type="hidden" name="msgid" id="msgid">
+        <div class="layui-form-item">
+            <label class="layui-form-label">接收人员:&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="recid" id="recid" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">标题&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="title" id="title" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">信息内容&nbsp;:&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="	content" id="content" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn layui-btn-normal" lay-submit lay-filter="close">关闭页面</button>
+            </div>
+        </div>
+</div>
+</div>
+<script>
+    layui.use(['form', 'table'], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            table = layui.table,
+            $ = layui.$;
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+        form.render();
+        // 当前弹出层，防止ID被覆盖
+        var parentIndex = layer.index;
+
+        // 返回事件
+        form.on('submit(close)', function (data) {
+            layer.close(parentIndex);
+            parent.layui.table.reload.reload('currentTableIdinner', {
+            });
+        });
+    });
+
+    //加载数据
+    function innernote() {
+        layui.use(['form', 'table'], function () {
+            var form = layui.form,
+                layer = layui.layer,
+                table = layui.table,
+                $ = layui.$;
+            //去数据库中查询要修改的数据
+            $.get("Innernote_Controller/find",{"msgid":$("#msgid").val()},function (data) {
+                // layer.alert(data)
+                $("#recid").val(data.recid);
+                $("#title").val(data.title);
+                $("#content").val(data.content);
+                form. render();
+            })
+        });
+    }
+</script>

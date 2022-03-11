@@ -27,7 +27,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label required">信息内容&nbsp;:&nbsp;</label>
                 <div class="layui-input-block">
-                    <textarea name="contentf" lay-verify="required" lay-reqtext="信息内容不能为空" placeholder="请输入信息内容" style="width: 400px;height: 80px" value="" class="layui-input"></textarea>
+                    <textarea name="contentf" lay-verify="required" lay-reqtext="信息内容不能为空" placeholder="请输入信息内容" style="width: 300px;height: 80px" value="" class="layui-input"></textarea>
                 </div>
             </div>
             <div class="layui-form-item">
@@ -81,7 +81,7 @@
                             // 关闭弹出层
                             layer.close(index);
                             layer.close(parentIndex);
-                            window.parent.layui.table.reload('currentTableIdin', {
+                            parent.layui.table.reload('currentTableIdinform', {
                             });
                         });
                     }else {

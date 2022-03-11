@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>维稳情况登记表</title>
+    <script type="text/javascript" src="../js/jquery-3.3.1.min.js">
+
+    </script>
+</head>
+<body>
+<div class="layuimini-main">
+    <div class="layui-form layuimini-form">
+        <form>
+            <fieldset class="table-search-fieldset">
+                <legend>维稳情况登记</legend>
+                <div>
+                    <h5 style="text-align: center">登记维稳情况</h5>
+                    <hr></hr>
+                    <div>
+                        <div style="margin: 10px 10px 10px 10px">
+                            <form class="layui-form layui-form-pane" action="">
+                                <input type="hidden" name="idf" id="idf">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">信访人姓名</font>&nbsp;:&nbsp;</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="letterNamef" id="letterNamef" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline" align="center">
+                                        <label class="layui-form-label">身份证</font>&nbsp;:&nbsp;</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="letterCardNof" id="letterCardNof" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline" align="right">
+                                        <label class="layui-form-label">联系电话</font>&nbsp;:&nbsp;</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="letterMobilef" id="letterMobilef" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">工作单位</font>&nbsp;:&nbsp;</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="workDept" id="workDept" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline" align="center">
+                                        <label class="layui-form-label">单位邮编</font>&nbsp;:&nbsp;</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="letterPostNof" id="letterPostNof" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline" align="right">
+                                        <label class="layui-form-label">联系地址</font>&nbsp;:&nbsp;</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="letterAddressf" id="letterAddressf" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">联系地址邮编</font>&nbsp;:&nbsp;</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="letterAdsPostNof" id="letterAdsPostNof" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline" align="center">
+                                        <label class="layui-form-label">常住地址</font>&nbsp;:&nbsp;</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="letterHomeAddrf" id="letterHomeAddrf" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline" align="right">
+                                        <label class="layui-form-label">户籍地址</font>&nbsp;:&nbsp;</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="letterOriRegAdsf" id="letterOriRegAdsf" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <hr></hr>
+                    <h5 style="text-align: center">历史查询</h5>
+                    <hr></hr>
+                </div>
+                <div>
+                    <table class="layui-hide" id="currentTableIdd" lay-filter="currentTableFilterdd"></table>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<script>
+    layui.use(['form', 'table'], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            table = layui.table,
+            $ = layui.$;
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+        form.render();
+        // 当前弹出层，防止ID被覆盖
+        var parentIndex = layer.index;
+        //监听提交
+        form.on('submit(saveBtn)', function (data) {
+            var index =data.field;
+            title: '最终的保存信息'
+        }, function () {
+            // 关闭弹出层
+            layer.close(index);
+            layer.close(parentIndex);
+        });
+        return false;
+    })
+
+    layui.use(['form','layedit','laydate'], function() {
+        var form = layui.form
+            , layer = layui.layer
+            , laydate = layui.laydate;
+        laydate.render({
+            elem: '#date1',
+            value: new Date(),
+        });
+    })
+    function loadhxz() {
+        layui.use(['form', 'table'], function () {
+            var form = layui.form,
+                layer = layui.layer,
+                table = layui.table,
+                $ = layui.$;
+            $.get("list/toupdate",{"idf":$("#idf").val()}, function (data) {
+                $("#letterNamef").val(data.letterNamef);//信访人姓名
+                $("#letterCardNof").val(data.letterCardNof);//身份证
+                $("#letterMobilef").val(data.letterMobilef);//联系电话
+                $("#workDept").val(data.workDept);//工作单位
+                $("#letterPostNof").val(data.letterPostNof);//单位邮编
+                $("#letterAddressf").val(data.letterAddressf);//联系地址
+                $("#letterAdsPostNof").val(data.letterAdsPostNof);//联系地址邮编
+                $("#letterHomeAddrf").val(data.letterHomeAddrf);//常住地址
+                $("#letterOriRegAdsf").val(data.letterOriRegAdsf);//户籍地址
+                form.render();
+            })
+        });
+    }
+    //历史查询
+    layui.use(['table'], function () {
+        var $ = layui.jquery,
+            table = layui.table;
+
+        table.render({
+            elem: '#currentTableIdd',
+            url: 'lest/findall',
+            cols: [[
+                {field: 'idf', width: 150, title: '序号', sort: true,align:'center'},
+                {field: 'useridf', width: 150, title: '登记人',align:'center'},
+                {field: 'recordDatef', width: 200, title: '维稳时间', sort: true,align:'center'},
+                {field: 'recordTypef', width: 150, title: '维稳类型', align: 'center',templet:function(res){
+                        if(res.recordTypef== 0){
+                            return "<spane>日常维稳</spane>"
+                        }else if(res.recordTypef== 1){
+                            return "<spane>上方预测</spane>";
+                        }}},
+                {field: 'titlef', width: 150, title: '维稳标题',align:'center'},
+                {field: 'contentf', title: '维稳内容',align:'center'}
+
+            ]],
+            limits: [5, 10, 15, 20, 25, 100],
+            limit: 5,
+            page: true,
+            skin: 'line'
+        });
+    });
+</script>
+</head>
+</body>
+</html>

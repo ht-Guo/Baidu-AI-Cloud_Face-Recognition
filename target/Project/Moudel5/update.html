@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改页面</title>
+</head>
+<body>
+<div class="layuimini-main">
+    <div class="layui-form layuimini-form">
+        <form name="mainform" id="mianform">
+            <input type="hidden" name="idf" id="idf">
+        <div class="layui-form-item">
+            <label class="layui-form-label required">真实姓名&nbsp;:&nbsp;</label>
+            <div class="layui-input-block">
+                <input type="text" id="letterNamef" name="letterNamef" lay-verify="required" placeholder="请输入你的真实姓名" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">身份证&nbsp;:&nbsp;</label>
+            <div class="layui-input-block">
+                <input type="text" id="letterCardNof" name="letterCardNof" lay-verify="required" placeholder="请输入你的身份证信息" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系电话&nbsp;:&nbsp;</label>
+            <div class="layui-input-block">
+                <input type="text" id="letterMobilef" name="letterMobilef" placeholder="请输入你的电话号码" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">工作单位&nbsp;:&nbsp;</label>
+            <div class="layui-input-block">
+                <input type="text" id="workDept" name="workDept" placeholder="请输入你的工作单位" value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">属地&nbsp;:&nbsp;</label>
+            <div class="layui-input-block">
+                <input type="text" id="letterOriRegAdsf" name="letterOriRegAdsf" placeholder="请输入你的户籍所在地" value="" class="layui-input"></input>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="submit" class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认修改</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+<script>
+    layui.use(['form', 'table'], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            table = layui.table,
+            $ = layui.$;
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+        form.render();
+        // 当前弹出层，防止ID被覆盖
+        var parentIndex = layer.index;
+
+        //监听提交
+        form.on('submit(saveBtn)', function (data) {
+            $.get("list/update", $("#mianform").serialize(), function (data) {
+                layer.close(parentIndex);
+            })
+            return false;
+        });
+    });
+            function loadupdate() {
+                layui.use(['form','table'], function () {
+                    var form = layui.form,
+                        layer = layui.layer,
+                        table = layui.table,
+                        $ = layui.$;
+                    $.get("list/toupdate",{"idf":$("#idf").val()}, function (data) {
+                        $("#letterNamef").val(data.letterNamef);
+                        $("#letterCardNof").val(data.letterCardNof);
+                        $("#letterMobilef").val(data.letterMobilef);
+                        $("#workDept").val(data.workDept);
+                        $("#letterOriRegAdsf").val(data.letterOriRegAdsf);
+                        form.render();
+                    })
+                });
+            }
+</script>
+</body>
+</html>

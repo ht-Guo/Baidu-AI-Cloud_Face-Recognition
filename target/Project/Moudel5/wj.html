@@ -1,0 +1,240 @@
+<div class="layuimini-main">
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend>维稳情况登记</legend>
+    </fieldset>
+    <form class="layui-form layuimini-form" id="letterinfoform" name="letterinfoform" >
+        <div class="layui-inline">
+            <input type="hidden" name="idf" id="idf">
+            <label class="layui-form-label" style="">姓名&nbsp;:&nbsp;</label>
+            <div class="layui-input-block">
+                <input type="text" name="letterNamef" id="letterNamef"  class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">身份证&nbsp;:&nbsp;</label>
+            <div class="layui-input-block">
+                <input type="text" name="letterCardNof" id="letterCardNof" lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">联系电话&nbsp;:&nbsp;</label>
+                <div class="layui-input-block">
+                    <input type="text" name="letterMobilef" id="letterMobilef"  class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">工作单位&nbsp;:&nbsp;</label>
+                <div class="layui-input-block">
+                    <input type="text" name="workDept" id="workDept" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">单位邮编&nbsp;:&nbsp;</label>
+                <div class="layui-input-block">
+                    <input type="text" name="letterPostNof" id="letterPostNof" lay-verify="required|number" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">联系地址&nbsp;:&nbsp;</label>
+                <div class="layui-input-block">
+                    <input type="text" name="letterAddressf" id="letterAddressf" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">联系地址邮编&nbsp;:&nbsp;</label>
+                <div class="layui-input-block">
+                    <input type="tel" name="letterAdsPostNof" id="letterAdsPostNof"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-inline">
+            <label class="layui-form-label">常住地址&nbsp;:&nbsp;</label>
+            <div class="layui-input-block">
+                <input type="text" name="letterHomeAddrf" id="letterHomeAddrf" placeholder="" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">户籍地址&nbsp;:&nbsp;</label>
+            <div class="layui-input-block">
+                <input type="text" name="letterOriRegAdsf" id="letterOriRegAdsf" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </form>
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+        <legend>维稳工作</legend>
+    </fieldset>
+    <div class="layui-form layuimini-form" id="dengjifrom" name="dengjiform" >
+        <div>
+             <label class="layui-form-label">登记时间&nbsp;:&nbsp;</label>
+            <div></div>
+        </div>
+        <div class="layui-form-item">
+            <input type="hidden" id="useridf" name="useridf">
+            <input type="hidden" name="vipidf" id="vipidf">
+            <label class="layui-form-label">登记人</label>
+            <div class="layui-input-block">
+                <input type="text" name="truename" readonly  id="truename" autocomplete="off"  class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">标题</label>
+            <div class="layui-input-block">
+                <input type="text" name="titlef" id="titlef" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">类别</label>
+            <div class="layui-input-block">
+                <input type="radio" name="recordTypef" value="0" title="日常维稳" checked="">
+                <input type="radio" name="recordTypef" value="1" title="上访预测">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">内容</label>
+            <div class="layui-input-block">
+                <textarea placeholder="请输入内容" class="layui-textarea" name="contentf" id="contentf"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认保存</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </div>
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+        <legend>历史查询</legend>
+    </fieldset>
+    <table class="layui-hide" id="historyTableId" lay-filter="historyTableFilter"></table>
+</div>
+<script>
+    layui.use(['form', 'layedit', 'laydate','table'], function () {
+        var form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate
+            , table = layui.table;
+        var $ = layui.jquery;
+
+        /**初始化维稳登记人信息
+         *
+         * 默认获取当前登录人信息*/
+        $("#useridf").val(window.sessionStorage.getItem("uidf"));
+        $("#truename").val(window.sessionStorage.getItem("truename"));
+
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+        form.render();
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+
+        //创建一个编辑器
+        var editIndex = layedit.build('LAY_demo_editor');
+
+        //自定义验证规则
+        form.verify({
+            title: function (value) {
+                if (value.length < 5) {
+                    return '标题至少得5个字符啊';
+                }
+            }
+            , pass: [
+                /^[\S]{6,12}$/
+                , '密码必须6到12位，且不能出现空格'
+            ]
+            , content: function (value) {
+                layedit.sync(editIndex);
+            }
+        });
+
+        //监听指定开关
+        form.on('switch(switchTest)', function (data) {
+            layer.msg('开关checked：' + (this.checked ? 'true' : 'false'), {
+                offset: '6px'
+            });
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+
+        form.on('submit(saveBtn)', function (data) {
+            console.log(data.field);
+            $.ajax({
+                url: "lest/insert",
+                type: "post",
+                data: data.field,
+                success: function (db) {
+                    if (db > 0) {
+                        var index = layer.alert("新增成功", {
+                            title: '提示信息'
+                        });
+                        table.reload('historyTableId', {
+                            page: {
+                                curr: 1
+                            }
+                        });
+                    } else {
+                        var index = layer.alert("新增失败", {
+                            title: '失败信息'
+                        });
+                    }
+                }
+            })
+        });
+        table.render({
+            elem: '#historyTableId',
+            url: 'lest/findall',
+            cols: [[
+                {field: 'idf', width: 150, title: '序号', sort: true,align:'center'},
+                {field: 'useridf', width: 150, title: '登记人',align:'center'},
+                {field: 'recordDatef', width: 200, title: '维稳时间', sort: true,align:'center'},
+                {field: 'recordTypef', width: 150, title: '维稳类型', align: 'center',templet:function(res){
+                        if(res.recordTypef== 0){
+                            return "<spane>日常维稳</spane>"
+                        }else if(res.recordTypef== 1){
+                            return "<spane>上方预测</spane>";
+                        }}},
+                {field: 'titlef', width: 150, title: '维稳标题',align:'center'},
+                {field: 'contentf', title: '维稳内容',align:'center'}
+            ]],
+            limits: [5, 10, 15, 20, 25, 100],
+            limit: 5,
+            page: true,
+            skin: 'line'
+        });
+    })
+    function loadhxz() {
+        layui.use(['form', 'table'], function () {
+            var form = layui.form,
+                layer = layui.layer,
+                table = layui.table,
+                $ = layui.$;
+            $.get("list/toupdate",{"idf":$("#idf").val()},function(data){
+                $("#vipidf").val(data.idf);
+                $("#letterNamef").val(data.letterNamef);
+                $("#letterCardNof").val(data.letterCardNof);
+                $("#letterMobilef").val(data.letterMobilef);
+                $("#workDept").val(data.workDept);
+                $("#letterAddressf").val(data.letterAddressf);
+                $("#letterPostNof").val(data.letterPostNof);
+                $("#letterAdsPostNof").val(data.letterAdsPostNof);
+                $("#letterHomeAddrf").val(data.letterHomeAddrf);
+                $("#letterOriRegAdsf").val(data.letterOriRegAdsf);
+                form.render();
+            })
+        });
+    }
+</script>

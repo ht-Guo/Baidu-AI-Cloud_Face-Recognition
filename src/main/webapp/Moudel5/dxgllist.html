@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象管理信息</title>
+</head>
+<body>
+<div class="layuimini-container layuimini-page-anim">
+    <div class="layuimini-main">
+        <fieldset class="table-search-fieldset">
+            <legend>查询信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><font size="2">属地</font>&nbsp;:&nbsp;</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="letterOriRegAdsf" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label"><font size="2">信访人</font>&nbsp;:&nbsp;</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="letterNamef" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <button type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i>查询</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+
+        <script type="text/html" id="toolbarDemo">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add">添加</button>
+            </div>
+        </script>
+                    <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilters"></table>
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">修改</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+            <a class="layui-btn layui-btn-danger layui-btn-xs data-count-wj" lay-event="wj">维稳登记</a>
+        </script>
+    </div>
+</div>
+<script>
+    layui.use(['form', 'table','miniPage','element'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table,
+            miniPage = layui.miniPage;
+
+        table.render({
+            elem: '#currentTableId',
+            url: 'list/findAll'
+            ,limit:5//要传向后台的每页显示条数
+            ,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+                layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']//自定义分页布局
+                ,limits:[5,10,15]
+                ,first: false //不显示首页
+                ,last: false //不显示尾页
+            },
+            toolbar: '#toolbarDemo',
+            cols: [[
+                {type: "checkbox",width:50},
+                {field: 'idf',width:80,title:'编号',align:"center"},
+                {field: 'letterNamef',width:130,title:'信访人',align:"center"},
+                {field: 'letterCardNof', width:180,title:'身份证',align:"center"},
+                {field: 'letterMobilef', width:130,title:'联系电话',align:"center"},
+                {field: 'workDept',width:130,title:'工作单位',align:"center"},
+                {field: 'letterOriRegAdsf',width:180,title:'属地',align:"center"},
+                {field: 'recordDatef',width:180,title:'最新登记时间',align:"center"},
+                {title: '操作', Width:30,toolbar:'#currentTableBar',align:"center"}
+            ]]
+        });
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function(data) {
+            var result = data.field;
+            table.reload('currentTableId',{
+                where: result
+            });
+            return false;
+        });
+
+        //添加
+        table.on('toolbar(currentTableFilters)', function(obj) {
+            if (obj.event === 'add') {   // 监听添加操作
+                var content = miniPage.getHrefContent('Moudel5/add.html');
+                var openWH = miniPage.getOpenWidthHeight();
+                var index = layer.open({
+                    title: '添加用户',
+                    type: 1,
+                    shade: 0.2,
+                    maxmin:true,
+                    shadeClose: true,
+                    area: [openWH[0] + 'px', openWH[1] + 'px'],
+                    offset: [openWH[2] + 'px', openWH[3] + 'px'],
+                    content: content,
+                });
+                $(window).on("resize", function () {
+                    layer.full(index);
+                });
+            }
+        });
+
+        //监听表格复选框选择
+        table.on('checkbox(currentTableFilters)', function (obj) {
+            console.log(obj)
+        });
+
+        //修改
+        table.on('tool(currentTableFilters)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'edit') {
+                var content = miniPage.getHrefContent('Moudel5/update.html');
+                var openWH = miniPage.getOpenWidthHeight();
+                var index = layer.open({
+                    title: '修改用户',
+                    type: 1,
+                    shade: 0.2,
+                    maxmin: true,
+                    shadeClose: true,
+                    area: [openWH[0] + 'px', openWH[1] + 'px'],
+                    offset: [openWH[2] + 'px', openWH[3] + 'px'],
+                    content: content,
+                    success: function () {
+                        $("#idf").val(data.idf);
+                        loadupdate();
+                    }
+                });
+                form.render();
+                $(window).on("resize", function () {
+                    layer.full(index);
+                });
+               return false;
+
+               //删除
+            } else if (obj.event === 'delete') {
+                layer.confirm('真的删除行么', function (index) {
+                    $.get("list/todelete",{"idf":data.idf},function(dd) {
+                        if(dd > 0){
+                            obj.del();
+                            layer.alert("数据删除成功!");
+                        }else{
+                            layer.alert("数据删除失败!");
+                        }
+                    })
+                    layer.close(index);
+                });
+                //维稳登记
+            }else if (obj.event === 'wj') {   // 监听维稳登记操作
+
+                var content = miniPage.getHrefContent('Moudel5/wj.html');
+                var openWH = miniPage.getOpenWidthHeight();
+                var index = layer.open({
+                    title: '维稳登记',
+                    type: 1,
+                    shade: 0.2,
+                    maxmin:true,
+                    shadeClose: true,
+                    area: [openWH[0] + 'px', openWH[1] + 'px'],
+                    offset: [openWH[2] + 'px', openWH[3] + 'px'],
+                    content: content,
+                    success: function () {
+                        $("#idf").val(data.idf);
+                        loadhxz();
+                    }
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>
+</body>
+</html>

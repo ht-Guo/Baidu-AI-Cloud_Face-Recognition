@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加页面</title>
+</head>
+<div>
+<div class="layuimini-main">
+    <form id="mainform" class="layui-form layui-form-pane" >
+    <div class="layui-form layuimini-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">信访人姓名&nbsp;:&nbsp;</label>
+            <div class="layui-input-block">
+                <input type="text" name="letterNamef" id="letterNamef"  value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">身份证&nbsp;:&nbsp;</label>
+            <div class="layui-input-block">
+                <input type="text" name="letterCardNof" id="letterCardNof"  value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系电话&nbsp;:&nbsp;</label>
+            <div class="layui-input-block">
+                <input type="text" name="letterMobilef" id="letterMobilef"  value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">工作单位&nbsp;:&nbsp;</label>
+            <div class="layui-input-block">
+                <input type="text" name="workDept" id="workDept"  value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">单位邮编&nbsp;:&nbsp;</label>
+            <div class="layui-input-block">
+                <input type="text" id="letterPostNof" name="letterPostNof"  value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系地址&nbsp;:&nbsp;</label>
+            <div class="layui-input-block">
+                <input type="text" id="letterAddressf" name="letterAddressf"  value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系地址邮编&nbsp;:&nbsp;</label>
+            <div class="layui-input-block">
+                <input type="text" id="letterAdsPostNof" name="letterAdsPostNof"  value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">常住地址&nbsp;:&nbsp;</label>
+            <div class="layui-input-block">
+                <input type="text" id="letterHomeAddrf" name="letterHomeAddrf"  value="" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">户籍地址&nbsp;:&nbsp;</label>
+            <div class="layui-input-block">
+                <input type="text" id="letterOriRegAdsf" name="letterOriRegAdsf"  value="" class="layui-input">
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认保存</button>
+        </div>
+    </div>
+    </form>
+</div>
+</div>
+<script>
+    layui.use(['form', 'table'], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            table = layui.table,
+            $ = layui.$;
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+        form.render();
+        // 当前弹出层，防止ID被覆盖
+        var parentIndex = layer.index;
+        //监听提交
+        form.on('submit(saveBtn)',function (data) {
+        $.get("list/toinsert",$("#mainform").serialize(),function (data) {
+            layer.close(parentIndex);
+
+        })
+            return false;
+        });
+        //自动添加编号
+        table.on('toolbar(test)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id),
+                data = checkStatus.data; //获取选中的数据
+            switch(obj.event){
+                case 'add':
+                    $("#formStaff").resetForm();//重置表单
+                    var rowIndex = table.cache.test.length;//获取表格数据条数
+                    rowIndex = Number(rowIndex - 1);//获取最后一条数据索引
+                    if (rowIndex > -1) {
+                        var num = table.cache.test[rowIndex].staffNum;//根据索引获取最后一条数据编号
+                        var len = 4;
+                        num = Number(num) + Number(1);
+                        num = num.toString();
+                        while(num.length < len){
+                            num = "0" + num;
+                        }
+                        $("#formStaff [name='staffNum']").val(num);
+                        layer.open({
+                            type: 1,//类型
+                            title: '<i class="layui-icon layui-icon-add-1">新增员工信息</i>',
+                            offset: ['5%','30%'],
+                            area:['660px','560px'],//定义宽和高
+                            shadeClose:false,//点击遮罩层关闭
+                            content: $("#modStaff")//打开的内容
+                        });
+                    }
+                    break;
+            }
+        });
+    });
+    </script>
+</body>
+</html>

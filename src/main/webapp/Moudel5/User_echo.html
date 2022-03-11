@@ -1,3 +1,4 @@
+
 <div class="layuimini-main">
         <input type="hidden" name="uidf" id="uidf">
         <div class="layui-form-item">
@@ -59,7 +60,7 @@
                 <button class="layui-btn layui-btn-normal" lay-submit lay-filter="close">关闭页面</button>
             </div>
         </div>
-</div>
+</div></div>
 <script>
     layui.use(['form', 'table'], function () {
         var form = layui.form,
@@ -75,7 +76,7 @@
 
 
         //加载用户所属部门信息
-        $.post("Sys_User/dept",function (bb) {
+        $.get("Sys_User/dept",function (bb) {
             $.each(bb, function (index,b2) {
                 var str ="<option value='"+b2.did+"'>"+b2.dname+"</option>";
                 $("#depid").append(str);
@@ -83,7 +84,7 @@
             form.render();
         });
         //加载用户所属职位信息
-        $.post("Sys_User/job",function (bb) {
+        $.get("Sys_User/job",function (bb) {
             $.each(bb, function (index,b2) {
                 var str="<option value='"+b2.jobid +"'>"+b2.jobname+"</option>";
                 $("#jobid").append(str);
@@ -94,7 +95,8 @@
         //返回事件
         form.on('submit(close)', function (data) {
             layer.close(parentIndex);
-            window.parent.layui.table.reload('currentTableIdus', {
+            window.parent.table.reload('currentTableIduser', {
+                where:result
             });
         });
     });
@@ -106,7 +108,7 @@
                 table = layui.table,
                 $ = layui.$;
             //去数据库中查询要修改的数据
-            $.post("Sys_User/find",{"uidf":$("#uidf").val()},function (data) {
+            $.get("Sys_User/find",{"uidf":$("#uidf").val()},function (data) {
                 $("#truename").val(data.truename);
                 $("#mobilePhone").val(data.mobilePhone);
                 $("#email").val(data.email);

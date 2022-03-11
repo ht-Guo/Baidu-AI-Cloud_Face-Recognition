@@ -36,7 +36,7 @@
             </div>
         </script>
 
-        <table class="layui-hide" id="currentTableIdin" lay-filter="currentTableFilter"></table>
+        <table class="layui-hide" id="currentTableIdinform" lay-filter="currentTableFilterinform"></table>
 
         <script type="text/html" id="currentTableBar">
             <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
@@ -56,7 +56,7 @@
         form.render();
 
         table.render({
-            elem: '#currentTableIdin',
+            elem: '#currentTableIdinform',
             url: 'Inform_Controller/findAll',
             toolbar: '#toolbarDemo',
             defaultToolbar: ['filter', 'exports', 'print', {
@@ -89,7 +89,7 @@
         form.on('submit(data-search-btn)', function (data) {
             var result = data.field;
             //执行搜索重载
-            table.reload('currentTableIdin', {
+            table.reload('currentTableIdinform', {
                 where:result
             });
             return false;
@@ -98,7 +98,7 @@
         /**
          * toolbar事件监听
          */
-        table.on('toolbar(currentTableFilter)', function (obj) {
+        table.on('toolbar(currentTableFilterinform)', function (obj) {
             if (obj.event === 'add') {   // 监听添加操作
                 var content = miniPage.getHrefContent('Moudel6/Inform_add.html');
                 var openWH = miniPage.getOpenWidthHeight();
@@ -109,22 +109,21 @@
                     shade: 0.2,
                     maxmin:true,
                     shadeClose: true,
-                    area: [openWH[0] + 'px', openWH[1] + 'px'],
-                    offset: [openWH[2] + 'px', openWH[3] + 'px'],
+                    area: ['600px', '700px'],
                     content: content,
                 });
                 $(window).on("resize", function () {
                     layer.full(index);
                 });
             } else if (obj.event === 'delete') {  // 监听删除操作
-                var checkStatus = table.checkStatus('currentTableIdin')
+                var checkStatus = table.checkStatus('currentTableIdinform')
                     , data = checkStatus.data;
                 layer.alert(JSON.stringify(data));
             }
         });
 
         //双击点击一行回显值
-        table.on('rowDouble(currentTableFilter)', function (obj) {
+        table.on('rowDouble(currentTableFilterinform)', function (obj) {
             var data = obj.data;
             var content = miniPage.getHrefContent('Moudel6/Inform_echo.html');
             var openWH = miniPage.getOpenWidthHeight();
@@ -134,8 +133,7 @@
                 shade: 0.2,
                 maxmin: true,
                 shadeClose: true,
-                area: [openWH[0] + 'px', openWH[1] + 'px'],
-                offset: [openWH[2] + 'px', openWH[3] + 'px'],
+                area: ['500px', '700px'],
                 content: content,
                 success: function () {
                     $("#idf").val(data.idf);
@@ -149,7 +147,7 @@
         });
 
         //修改
-        table.on('tool(currentTableFilter)', function (obj) {
+        table.on('tool(currentTableFilterinform)', function (obj) {
             var data = obj.data;
             if (obj.event === 'edit') {
 
@@ -162,8 +160,7 @@
                     shade: 0.2,
                     maxmin:true,
                     shadeClose: true,
-                    area: [openWH[0] + 'px', openWH[1] + 'px'],
-                    offset: [openWH[2] + 'px', openWH[3] + 'px'],
+                    area: ['500px', '700px'],
                     content: content,
                     success:function () {
                         $("#idf").val(data.idf);
@@ -176,11 +173,11 @@
                 return false;
             }else if (obj.event === 'delete') {
                 layer.confirm('真的删除行么', function (index) {
-                    $.post("Inform_Controller/del",{idf:data.idf},function (d) {
+                    $.get("Inform_Controller/del",{idf:data.idf},function (d) {
                         if (d>0){
                             layer.alert("删除成功")
                             obj.del();
-                            parent.layui.table.reload('currentTableIdin', {
+                            parent.layui.table.reload('currentTableIdinform', {
                             });
                         } else {
                             layer.alert("删除失败")

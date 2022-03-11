@@ -99,7 +99,7 @@
         form.on('submit(saveBtn)', function (data) {
             $.ajax({
                 url:"Sys_User/add",
-                type:"get",
+                type:"post",
                 data:data.field,  //将表单参数传递到后台
                 success:function (data1) {
                     if (data1>0){
@@ -110,7 +110,7 @@
                             layer.close(index);
                             layer.close(parentIndex);
                             //刷新表格
-                            window.parent.layui.table.reload('currentTableIdus', {
+                            parent.layui.table.reload('currentTableIduser', {
                             });
                         });
                     }else {

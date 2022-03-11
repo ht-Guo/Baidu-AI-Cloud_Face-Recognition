@@ -61,7 +61,8 @@
         // 返回事件
         form.on('submit(close)', function (data) {
             layer.close(parentIndex);
-            window.parent.layui.table.reload('currentTableIdin', {
+            window.parent.table.reload('currentTableIdinform', {
+                where:result
             });
         });
     });
@@ -74,7 +75,7 @@
                 table = layui.table,
                 $ = layui.$;
             //去数据库中查询要修改的数据
-            $.post("Inform_Controller/find",{"idf":$("#idf").val()},function (data) {
+            $.get("Inform_Controller/find",{"idf":$("#idf").val()},function (data) {
                 $("#type").val(data.type);
                 $("#titlef").val(data.titlef);
                 $("#useridf").val(data.useridf);

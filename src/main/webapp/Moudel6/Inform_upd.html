@@ -48,7 +48,6 @@
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认修改</button>
-                <button class="layui-btn layui-btn-normal" lay-submit lay-filter="close">关闭页面</button>
             </div>
         </div>
     </form>
@@ -72,16 +71,12 @@
 
             $.get("Inform_Controller/upd",$("#myform2").serialize(),function (data) {
                 layer.close(parentIndex);
-                window.parent.layui.table.reload('currentTableIdin', {
+                parent.layui.table.reload('currentTableIdinform', {
                 });
             })
             return false;
         });
 
-        //返回事件
-        form.on('submit(close)', function (data) {
-                layer.close(parentIndex);
-        });
 
         //自动添加编号
         table.on('toolbar(test)', function(obj){

@@ -1,0 +1,160 @@
+<div class="layuimini-main">
+    <div class="layui-form layuimini-form">
+        <div class="layui-input-block">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label required">消息标题&nbsp;:&nbsp;</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="title" lay-verify="required" lay-reqtext="消息标题不能为空" placeholder="请输入消息标题" value="" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label required">消息内容&nbsp;:&nbsp;</label>
+                <div class="layui-input-block">
+                    <textarea name="content"  lay-verify="required|isExist" lay-reqtext="消息内容不能为空" style="width: 300px;height: 80px" placeholder="请输入消息内容" value="" class="layui-input"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label required">发件人ID&nbsp;:&nbsp;</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="sendid"  lay-verify="required|isExist" lay-reqtext="发件人ID不能为空" placeholder="请输入发件人ID" value="" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label required">发送日期&nbsp;:&nbsp;</label>
+                <div class="layui-input-inline">
+                    <input type="datetime-local" name="sendtime" lay-verify="required" lay-reqtext="发送日期不能为空" placeholder="请输入发送日期" value="" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label required">收件人ID&nbsp;:&nbsp;</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="recid"  lay-verify="required|isExist" lay-reqtext="收件人ID不能为空" placeholder="请输入收件人ID" value="" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">是否已读</label>
+                <div class="layui-input-inline">
+                    <select name="isreaded" id="isreaded">
+                        <option value="0">未读</option>
+                        <option value="1">已读</option>
+                        <option value="2">已回复</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">是否删除</label>
+                <div class="layui-input-inline">
+                    <select name="isdel" id="isdel">
+                        <option value="0">是</option>
+                        <option value="1">否</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">读取日期:&nbsp;:&nbsp;</label>
+                <div class="layui-input-inline">
+                    <input type="datetime-local" name="readtime" lay-reqtext="读取日期不能为空" placeholder="请输入读取日期" value="" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">消息类型</label>
+                <div class="layui-input-inline">
+                    <select name="msgtype" id="msgtype">
+                        <option value="">请选择消息类型</option>
+                    </select>
+                </div>
+            </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">添加</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    layui.use(['form', 'table'], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            table = layui.table,
+            $ = layui.$;
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+        form.render();
+        // 当前弹出层，防止ID被覆盖
+        var parentIndex = layer.index;
+
+        //加载消息类型
+        $.get("Innernote_Controller/type",function (bb) {
+            $.each(bb, function (index,b2) {
+                var str="<option value='"+b2.id +"'>"+b2.baseValue+"</option>";
+                $("#msgtype").append(str);
+            });
+            form. render();
+        });
+
+        //监听提交
+        form.on('submit(saveBtn)', function (data) {
+            $.ajax({
+                url:"Innernote_Controller/add",
+                type:"post",
+                data:data.field,  //将表单参数传递到后台
+                success:function (data1) {
+                    if (data1>0){
+                        var index = layer.alert("添加成功",{
+                            title: '成功信息'
+                        }, function () {
+                            // 关闭弹出层
+                            layer.close(index);
+                            layer.close(parentIndex);
+                            parent.layui.table.reload('currentTableIdinner', {
+                            });
+                        });
+                    }else {
+                        var index = layer.alert("添加失败",{
+                            title: '失败信息'
+                        }, function () {
+                            // 关闭弹出层
+                            layer.close(index);
+                        });
+                    }
+                }
+            });
+            return false;
+        });
+
+        //自动添加编号
+        table.on('toolbar(test)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id),
+                data = checkStatus.data; //获取选中的数据
+            switch(obj.event){
+                case 'add':
+                    $("#formStaff").resetForm();//重置表单
+                    var rowIndex = table.cache.test.length;//获取表格数据条数
+                    rowIndex = Number(rowIndex - 1);//获取最后一条数据索引
+                    if (rowIndex > -1) {
+                        var num = table.cache.test[rowIndex].staffNum;//根据索引获取最后一条数据编号
+                        var len = 4;
+                        num = Number(num) + Number(1);
+                        num = num.toString();
+                        while(num.length < len){
+                            num = "0" + num;
+                        }
+                        $("#formStaff [name='staffNum']").val(num);
+                        layer.open({
+                            type: 1,//类型
+                            title: '<i class="layui-icon layui-icon-add-1"> 新增员工信息</i>',
+                            offset: ['5%','30%'],
+                            area:['660px','560px'],//定义宽和高
+                            shadeClose:false,//点击遮罩层关闭
+                            content: $("#modStaff")//打开的内容
+                        });
+                    }
+                    break;
+            }
+            form.render();//刷新表单
+        });
+    });
+</script>
