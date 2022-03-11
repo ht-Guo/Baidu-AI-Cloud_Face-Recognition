@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>信访查询</title>
+</head>
+<body>
+<!---->
+<div class="layuimini-container layuimini-page-anim">
+    <div class="layuimini-main">
+
+        <fieldset class="table-search-fieldset">
+            <legend>查询信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">查询号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="idf" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">信访人</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="letterNamef" autocomplete="off" class="layui-input">
+                            </div>
+
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">标题</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="letterTitlef" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <button type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+
+        <table class="layui-hide" id="currentTableId123" lay-filter="currentTableFilter123456789"></table>
+
+    </div>
+</div>
+
+<script>
+    layui.use(['layer','form', 'table','miniPage','element'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table,
+            miniPage = layui.miniPage;
+            var layer=layui.layer;
+
+        table.render({
+            elem: '#currentTableId123',
+            url: 'XFDJ/findAll',
+            toolbar: '#toolbarDemo',
+            method:"post",
+            defaultToolbar: ['filter', 'exports', 'print', {
+                title: '提示',
+                layEvent: 'LAYTABLE_TIPS',
+                icon: 'layui-icon-tips'
+            }], where: {
+                "letterRegisterIdf":window.sessionStorage.getItem("uidf"),  //登记人编号
+            },
+            cols: [[
+                {type: "checkbox", width: 70},
+                {field: 'idf', width: 200, title: '查询号', sort: true},
+                {field: 'letterNamef', width: 200, title: '信访人'},
+                {field: 'letterMobilef', width: 200, title: '信访人电话', sort: true},
+                {field: 'dataValue', width: 190, title: '来源'},
+                {field: 'letterTitlef', title: '标题',width:220},
+                {field: 'registerTimef', width: 220, title: '日期', sort: true},
+            ]],
+            limits: [5, 10, 15],
+            limit: 5,
+            page: true,
+            skin: 'line',
+        });
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+            var result = data.field;
+            //执行搜索重载
+            table.reload('currentTableId123', {
+                page: {
+                    curr: 1
+                }
+                , where: {
+                    "letterRegisterIdf":window.sessionStorage.getItem("uidf"),  //登记人编号
+                    "idf":result.idf,   //查询号
+                   "letterNamef":result.letterNamef,    //信访人
+                    "letterTitlef":result.letterTitlef,     //标题
+                }
+            }, 'data');
+            return false;
+        });
+
+        var content = miniPage.getHrefContent('Moudel1/XFCL.html');
+        table.on('rowDouble(currentTableFilter123456789)', function(obj){
+            console.log(obj.data)
+                layer.open({
+                    title: '办理',
+                    type:1
+                    ,content: content,
+                    area: ['500px', '300px'],
+                    shadeClose:true,
+                    success:function(){
+                        $("#idf").val(obj.data.idf);
+                        $.post("XFDJ/FindSys_User",function(data){
+                            $.each(data,function(i,v){
+                                var option=$("<option value='"+v.uidf+"'>"+v.truename+"</option>")[0];
+                                $("#userId")[0].append(option);
+                            })
+                        })
+                    },
+                });
+        });
+    });
+</script>
+</body>
+</html>

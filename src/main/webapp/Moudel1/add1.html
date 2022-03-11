@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>办理</title>
+</head>
+<body>
+
+<div class="layuimini-main">
+
+
+    <div class="layui-form layuimini-form">
+
+        <fieldset class="layui-elem-field" style="margin-top: 30px;">
+            <legend>信访登记</legend>
+
+            <!-- 表单  addForm-->
+            <form class="layui-form" action="" lay-filter="addForm">
+                <!--            信访受理登记表 -->
+                <div class="layui-row layui-col-space10">
+                    <div class="layui-col-md4"></div>
+                    <div class="layui-col-md4" style="text-align: center";>
+                        <h2>信访受理登记表</h2>
+                    </div>
+                    <div class="layui-col-md4"></div>
+                </div>
+                <!--            属性类别 -->
+                <div class="layui-row layui-col-space10 layui-form-item ">
+                    <div class="layui-col-md3"></div>
+                    <div class="layui-col-md6" style="text-align: center">
+                        <!--属性类别 letterProperties-->
+                        <div class="layui-inline">
+                            <input type="radio" lay-verify="otherReq" name="letterPropertiesf" value="列入排查" title="列入排查" checked>
+                            <input type="radio" lay-verify="otherReq" name="letterPropertiesf" value="领导包案" title="领导包案">
+                            <input type="radio" lay-verify="otherReq" name="letterPropertiesf" value="代接代访件" title="代接代访件">
+                            <input type="radio" lay-verify="otherReq" name="letterPropertiesf" value="非正常上访" title="非正常上访">
+                            <input type="radio" lay-verify="otherReq" name="letterPropertiesf" value="领导批示" title="领导批示">
+                            <input type="radio" lay-verify="otherReq" name="letterPropertiesf" value="敏感时期上访" title="敏感时期上访">
+                        </div>
+                    </div>
+                    <div class="layui-col-md3"></div>
+                </div>
+                <div class="layui-tab-content" style="height: 300px;">
+                    <!--信访登记-->
+                    <div class="layui-tab-item layui-show">
+                        <!--信访人 基本信息 -->
+                        <div style="height: 22px; text-align: center; margin-bottom: 10px;"><h2>信访人基本信息</h2></div>
+                        <div class="layui-form-item" style="margin-top: 30px">
+                            <!--信访人 letterName-->
+                            <!---->
+                            <div class="layui-inline" style="margin-left: 80px">
+                                <label class="layui-form-label">信访人:</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" id="letterNamef" name="letterNamef" lay-verify="required"
+                                           autocomplete placeholder="请输入姓名" class="layui-input">
+                                </div>
+                            </div>
+                            <!--证件类型 cardType-->
+                            <div class="layui-inline">
+                                <label class="layui-form-label">证件类型:</label>
+                                <div class="layui-input-inline">
+                                    <select name="cardTypef" autocomplete placeholder="请选择">
+                                    </select>
+                                </div>
+                            </div>
+                            <!--身份证 idCard-->
+                            <div class="layui-inline">
+                                <label class="layui-form-label">证件号码:</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="letterCardNof" lay-verify="required" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <!--手机号 phone-->
+                            <div class="layui-inline" style="margin-left: 80px">
+                                <label class="layui-form-label">联系电话:</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" id="phone" name="letterMobilef" lay-verify="phone" autocomplete
+                                           placeholder="请输入Phone" class="layui-input">
+                                </div>
+                            </div>
+                            <!--工作单位 work-->
+                            <div class="layui-inline">
+                                <label class="layui-form-label">工作单位:</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" lay-verify="required" id="work" name="workDept" autocomplete
+                                           placeholder="请输入Work" class="layui-input">
+                                </div>
+                            </div>
+                            <!--工作邮编 workEmail-->
+                            <div class="layui-inline">
+                                <label class="layui-form-label">单位邮编:</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" lay-verify="required" id="workEmail" name="letterPostNof"
+                                           lay-verify="email" autocomplete placeholder="请输入Email" class="layui-input">
+                                </div>
+                            </div>
+                            <!--                            联系地址 letterAddress-->
+                            <div class="layui-inline" style="margin-left: 80px">
+                                <label class="layui-form-label">联系地址:</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" lay-verify="required" id="letterAddress" name="letterAddressf"
+                                           autocomplete placeholder="请输入Address" class="layui-input">
+                                </div>
+                            </div>
+                            <!--                            联系地址邮编 addressEmail-->
+                            <div class="layui-inline">
+                                <label class="layui-form-label">联系地址邮编:</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" lay-verify="required" id="addressEmail" name="letterAdsPostNof"
+                                           autocomplete placeholder="请输入Email-No" class="layui-input">
+                                </div>
+                            </div>
+                            <!--                            常住地址 homeAddress-->
+                            <div class="layui-inline">
+                                <label class="layui-form-label">常驻地址:</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" lay-verify="required" id="homeAddress" name="letterHomeAddrf"
+                                           autocomplete placeholder="请输入Home" class="layui-input">
+                                </div>
+                            </div>
+                            <!--                            户籍地址  letterOriRegAdsf  houRegAddress-->
+                            <div class="layui-inline" style="margin-left: 80px">
+                                <label class="layui-form-label">户籍地址:</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" lay-verify="required" name="letterOriRegAdsf"
+                                           autocomplete placeholder="户籍地址" class="layui-input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label"></label>
+                            <div class="layui-input-inline">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--                        处理情况-->
+                    <div style="height: 22px"><h2>处理情况</h2></div>
+                    <div class="layui-form-item  " style="margin-top: 10px">
+                        <label class="layui-form-label">受理形式:</label>
+                        <!--   <div class="layui-input-block "></div>-->
+                        <div class="layui-input-block ">
+                            <div class="layui-inline">
+                                <input type="radio" name="isRegist" id="is2" checked value="1" title="立案" lay-filter="abc">
+                                <input type="radio" name="isRegist" id="is1"  value="0" title="不立案" lay-filter="abc">
+                                <!--                                         <input type="radio" name="sex" value="禁" title="禁用" disabled="">-->
+                            </div>
+                        </div>
+
+
+                    <!--                        信访件 基本信息-->
+                    <div style="height: 22px;text-align: center;margin-bottom: 70px;"><h1>信访件基本信息</h1></div>
+                    <div class="layui-form-item" style="margin-top: 30px">
+
+                        <!--                                标题 letterTitle-->
+                        <div class="layui-inline" style="margin-left: 80px">
+                            <label class="layui-form-label">信访标题:</label>
+                            <div class="layui-input-inline">
+                                <input type="text" lay-verify="required" id="letterTitlef" autocomplete
+                                       name="letterTitlef" value="" placeholder="请输入标题" class="layui-input">
+                            </div>
+                        </div>
+                        <!--                                信访来源 letterSource-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">信访来源:</label>
+                            <div class="layui-input-inline">
+                                <select  name="letterSource" autocomplete placeholder="请选择">
+                                </select>
+                            </div>
+                        </div>
+                        <!--                                是否公开 isPublic-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">是否公开:</label>
+                            <div class="layui-input-inline">
+                                <input type="radio" lay-verify="otherReq" name="isPublic" value="1" title="是" checked>
+                                <input type="radio" lay-verify="otherReq" name="isPublic" value="0" title="否">
+                            </div>
+                        </div>
+
+                        <!--                                性质分类 natureType-->
+                        <div class="layui-inline" style="margin-left: 80px">
+                            <label class="layui-form-label">性质分类:</label>
+                            <div class="layui-input-inline">
+                                <select  name="natureType" autocomplete placeholder="请选择">
+                                </select>
+                            </div>
+                        </div>
+                        <!--                                信访次数 letterCount-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">信访次数:</label>
+                            <div class="layui-input-inline">
+                                <select  name="letterCount" autocomplete placeholder="请选择">
+                                    <option value="0">0</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!--                                曾访部门 visitedDept-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">曾访部门:</label>
+                            <div class="layui-input-inline">
+                                <select  name="visitedDept" autocomplete placeholder="请选择">
+                                </select>
+                            </div>
+                        </div>
+                        <!--                                来访规模 visitScope-->
+                        <div class="layui-inline" style="margin-left: 80px">
+                            <label class="layui-form-label">来访规模:</label>
+                            <div class="layui-input-inline">
+                                <input type="radio" lay-skin="primary" name="visitScope" value="个人访" title="个人访"
+                                       lay-verify="otherReq" checked>
+                                <input type="radio" lay-skin="primary" name="visitScope" value="集体访" title="集体访"
+                                       lay-verify="otherReq">
+                            </div>
+                        </div>
+                        <!--                                来访人数 visitCount-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">来访人数:</label>
+                            <div class="layui-input-inline">
+                                <select  name="visiterCount" autocomplete placeholder="请选择">
+                                </select>
+                            </div>
+                        </div>
+                        <!--                                责任地区 dutyArea             responsibleArea-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">责任地区:</label>
+                            <div class="layui-input-inline">
+                                <select  name="dutyArea" autocomplete placeholder="请选择">
+                                </select>
+                            </div>
+                        </div>
+                        <!--                               事发单位或地址 happenAddressf          happenAddress-->
+                        <div class="layui-inline" style="margin-left: 80px">
+                            <label class="layui-form-label">事发单位或地址:</label>
+                            <div class="layui-input-inline">
+                                <input type="text" lay-verify="required" name="happenAddressf"
+                                       autocomplete placeholder="happenAddress" class="layui-input">
+                            </div>
+                        </div>
+                        <!--                               问题分类 thirdQuestionType        questionType-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">问题分类:</label>
+                            <div class="layui-input-inline">
+                                <input type="text" lay-verify="required" name="thirdQuestionType"
+                                       autocomplete placeholder="请输入问题" class="layui-input">
+                            </div>
+                        </div>
+                        <!--                                突出问题 standQuestion-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">突出问题:</label>
+                            <div class="layui-input-inline">
+                                <select  name="standQuestion" autocomplete placeholder="请选择">
+                                </select>
+                            </div>
+                        </div>
+                        <!--                                来访异常情况 visitExeceptionCasef      exceptionCase-->
+                        <div class="layui-inline" style="margin-left: 80px">
+                            <label class="layui-form-label">来访异常情况:</label>
+                            <div class="layui-input-inline">
+                                <select  name="visitExeceptionCasef" autocomplete placeholder="请选择">
+                                </select>
+                            </div>
+                        </div>
+                        <!--                                越级上访  overVisitf                       overVisit-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">越级上访:</label>
+                            <div class="layui-input-inline">
+                                <select  name="overVisitf" autocomplete placeholder="请选择">
+                                </select>
+                            </div>
+                        </div>
+                        <!-- 对不上                               不清楚问题所属单位 questionDept-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">问题所属单位:</label>
+                            <div class="layui-input-inline">
+                                <select  name="questionAffiliations" autocomplete placeholder="请选择">
+                                </select>
+                            </div>
+                        </div>
+                        <!--          对不上                      批示领导  approveLeader              leader-->
+                        <div class="layui-inline" style="margin-left: 80px">
+                            <label class="layui-form-label">批示领导:</label>
+                            <div class="layui-input-inline">
+                                <select  name="approveLeader" autocomplete placeholder="请选择">
+                                </select>
+                            </div>
+                        </div>
+                        <!--                                转/交来单位  toPassDept                 passDept-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">转/交来单位:</label>
+                            <div class="layui-input-inline">
+<!--                                <input type="text" lay-verify="required"  name="toPassDept" autocomplete-->
+<!--                                       placeholder="请输入单位" class="layui-input">-->
+                                <select name="toPassDept" autocomplete placeholder="请选择">
+                                </select>
+                            </div>
+                        </div>
+                        <!--                                来文号   documentNof                  documentNo-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">来文号:</label>
+                            <div class="layui-input-inline">
+                                <input type="text" lay-verify="required"  name="documentNof" autocomplete
+                                       placeholder="请输入来文号" class="layui-input">
+                            </div>
+                        </div>
+                        <!--                                转/交来时间   toPassTimef              passTime-->
+                        <div class="layui-inline" style="margin-left: 80px">
+                            <label class="layui-form-label">转/交来时间:</label>
+                            <div class="layui-input-inline">
+                                <input name="toPassTimef" type="text" class="layui-input" id="test1" disabled>
+                            </div>
+                        </div>
+                        <!--                                来信形式   letterStylef                    letterType-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">来信形式:</label>
+                            <div class="layui-input-inline">
+                                <select name="letterStylef" autocomplete placeholder="请选择">
+                                </select>
+                            </div>
+                        </div>
+                        <!--                                受信人  letterReceiverf                receiver-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">受信人:</label>
+                            <div class="layui-input-inline">
+                                <select name="letterReceiverf" autocomplete placeholder="请选择">
+                                </select>
+                            </div>
+                        </div>
+                        <!--                                收信日期   letterReceiveTimef       receiveTime-->
+                        <div class="layui-inline" style="margin-left: 80px">
+                            <label class="layui-form-label">收信日期:</label>
+                            <div class="layui-input-inline">
+                                <input name="letterReceiveTimef" type="text" class="layui-input" id="test2" disabled>
+                            </div>
+                        </div>
+                        <div class="layui-inline" id="letterNumf">
+                            <label class="layui-form-label">越秀区信访局:</label>
+                            <div class="layui-input-inline">
+                                <select name="letterNumf" autocomplete placeholder="请选择">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline" id="passLimitDatef">
+                            <label class="layui-form-label">回复时间:</label>
+                            <div class="layui-input-inline">
+                                    <input name="passLimitDatef" type="text" class="layui-input" id="test3">
+                            </div>
+                        </div>
+
+                        <!--                                信访事项  letterItemf                    letterItem-->
+                        <div class="layui-form-item layui-form-text" style="margin-left: 80px">
+                            <label class="layui-form-label">信访事项:</label>
+                            <div class="layui-input-block">
+                                <textarea autocomplete  name="letterItemf"
+                                          placeholder="请输入信访事项" class="layui-textarea"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+
+                        <hr/>
+                        <div class="layui-inline"></div>
+                        <div class="layui-row layui-col-space10">
+                            <div class="layui-col-md4" style="text-align: center">
+                                <button type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="data-search-btn">保存</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>
+
+</body>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    layui.use(['layer','form', 'table', 'miniPage', 'element','laydate'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table,
+            miniPage = layui.miniPage,
+            laydate=layui.laydate,
+            layer=layui.layer;
+
+        form.on('radio(abc)',function(){
+            var check1=$("#is1").prop("checked");//不立案
+            var check2=$("#is2").prop("checked");//立案
+            if(check1==true){
+            $("#passLimitDatef").hide();
+            }else if(check2==true){
+                $("#passLimitDatef").show();
+            }
+            form.render();
+        });
+
+
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+            var result = data.field;
+            $.ajax({
+                dataType:"json",
+                url:"XFDJ/InsertLettersInfo",
+                data:{
+                    "letterNamef":result.letterNamef,//姓名
+                    "cardTypef":result.cardTypef,//证件类型编号
+                    "letterCardNof":result.letterCardNof,//信访人证件号
+                    "letterMobilef":result.letterMobilef,//联系电话
+                    "workDept":result.workDept,//工作单位
+                    "letterPostNof":result.letterPostNof,//单位邮编
+                    "letterAddressf":result.letterAddressf,//联系地址
+                    "letterAdsPostNof":result.letterAdsPostNof,//联系地址邮编
+                    "letterHomeAddrf":result.letterHomeAddrf, //常住地址
+                    "letterOriRegAdsf":result.letterOriRegAdsf, //户籍地址
+                    "letterPropertiesf":result.letterPropertiesf, //重点维稳对象
+                    //重点对象
+                    "userIdf":window.sessionStorage.getItem("uidf"),//登记人编号
+                    "recordTypef":result.natureType,//登记类别
+                    "titlef":result.letterTitlef,//标题
+                    "contentf":result.letterItemf//登记内容
+                },
+                type:"post",
+                success:function(data){
+                    if(data>0){
+                        $.ajax({
+                            dataType:"json",
+                            url:"XFDJ/InsertLetterbaseinfo",
+                            type:"post",
+                            data:{
+                                 "letterRegisterIdf":window.sessionStorage.getItem("uidf"),//信访登记人编号
+                                "letterSource":result.letterSource,//信访来源
+                                "isPublic":result.isPublic,//是否公开
+                                "letterIDf":result.letterIDf,//信访人编号
+                                "natureType":result.natureType,//性质分类编号
+                                "letterCount":result.letterCount,//信访次数
+                                "visitedDept":result.visitedDept,//曾访部门
+                                "visitScope":result.visitScope,//来访规模
+                                "visiterCount":result.visiterCount,//来访人数
+                                "dutyArea":result.dutyArea,//责任区
+                                "happenAddressf":result.happenAddressf,//事发单位或地址
+                                "thirdQuestionType":result.thirdQuestionType,//三级问题分类
+                                "standQuestion":result.standQuestion,//突出问题
+                                "visitExeceptionCasef":result.visitExeceptionCasef,//来访异常情况编号
+                                "overVisitf":result.overVisitf,//越级上访编号
+                                "questionAffiliations":result.questionAffiliations,//问题所属单位
+                                "approveLeader":result.approveLeader,//批示领导编号
+                                "toPassDept":result.toPassDept,//转交来单位
+                                "documentNof":result.documentNof,//来文号
+                                "toPassTimef":result.toPassTimef,//转交来时间
+                                "letterStylef":result.letterStylef,//来信形式编号
+                                "letterReceiverf":result.letterReceiverf,//受信人编号
+                                "letterReceiveTimef":result.letterReceiveTimef,//收信日期
+                                " limitDatef":result.passLimitDatef,//办理时限
+                                "letterItemf":result.letterItemf,//信访事项
+                                "isRegist":result.isRegist,//是否立案
+                                "passLimitDatef":result.passLimitDatef,//回复时间
+                                "letterNumf":result.letterNumf,//越秀区信访局编号
+                                "letterPropertiesf":result.letterPropertiesf,//属性类别
+                                "letterTitlef":result.letterTitlef//标题
+                            },
+                            success:function(data){
+                                if(data>0){
+                                    layer.msg("登记成功")
+                                    //刷新当前页
+                                    window.location.reload()
+                                }
+                            }
+                        })
+                    }
+                }
+            })
+            return false;
+        });
+
+
+
+        laydate.render({
+            elem:"#test1",
+            type:"datetime",
+            value: new Date(),
+            format:"yyyy-MM-dd HH:mm:ss"
+        });
+        laydate.render({
+            elem:"#test2",
+            type:"datetime",
+            value: new Date(),
+            format:"yyyy-MM-dd HH:mm:ss"
+        });
+
+        laydate.render({
+            elem:"#test3",
+            type:"datetime",
+            min: 1,
+            // max:10,
+            format:"yyyy-MM-dd HH:mm:ss"
+        });
+
+        for(var count=1;count<=100;count++){
+            $("select[name=letterCount]").append("<option value='"+count+"'>"+count+"<option>")
+            $("select[name=visiterCount]").append("<option value='"+count+"'>"+count+"<option>")
+        }
+        form.render();
+
+
+        //证件类型
+        $.get("XFDJ/FindAllBase", {baseValue: "证件类型"}, function (data) {
+            $.each(data, function (i, v) {
+                $("select[name=cardTypef]").append("<option value='" + v.id + "'>" + v.dataValue + "</option>")
+            })
+            form.render();
+        })
+        //越秀区信访局编号
+        $.get("XFDJ/FindAllBase", {baseValue: "越秀区信访局编号"}, function (data) {
+            $.each(data, function (i, v) {
+                $("select[name=letterNumf]").append("<option value='" + v.id + "'>" + v.dataValue + "</option>")
+            })
+            form.render();
+        })
+
+        //信访来源
+        $.get("XFDJ/FindAllBase", {baseValue: "信访来源"}, function (data) {
+            $.each(data, function (c, d) {
+                $("select[name=letterSource]").append("<option value='" + d.id + "'>" + d.dataValue + "</option>")
+            })
+            form.render();
+        })
+
+        //性质分类
+        $.get("XFDJ/FindAllBase", {baseValue: "性质分类"}, function (data) {
+            $.each(data, function (z, e) {
+                $("select[name=natureType]").append("<option value='" + e.id + "'>" + e.dataValue + "</option>")
+            })
+            form.render();
+        })
+
+        //曾访部门
+        $.get("XFDJ/FindAllBase", {baseValue: "曾访部门"}, function (data) {
+            $.each(data, function (b, u) {
+                $("select[name=visitedDept]").append("<option value='" + u.id + "'>" + u.dataValue + "</option>")
+            })
+            form.render();
+        })
+
+        //责任地区
+        $.get("XFDJ/FindAllBase", {baseValue: "责任地区"}, function (data) {
+            $.each(data, function (h, t) {
+                $("select[name=dutyArea]").append("<option value='" + t.id + "'>" + t.dataValue + "</option>")
+            })
+            form.render();
+        })
+
+        //突出问题
+        $.get("XFDJ/FindAllBase", {baseValue: "突出问题"}, function (data) {
+            $.each(data, function (f, r) {
+                $("select[name=standQuestion]").append("<option value='" + r.id + "'>" + r.dataValue + "</option>")
+            })
+            form.render();
+        })
+
+
+        //来访异常情况
+        $.get("XFDJ/FindAllBase", {baseValue: "来访异常情况"}, function (data) {
+            $.each(data, function (h, t) {
+                $("select[name=visitExeceptionCasef]").append("<option value='" + t.id + "'>" + t.dataValue + "</option>")
+            })
+            form.render();
+        })
+
+        //越级上访
+        $.get("XFDJ/FindAllBase", {baseValue: "越级上访"}, function (data) {
+            $.each(data, function (h, t) {
+                $("select[name=overVisitf]").append("<option value='" + t.id + "'>" + t.dataValue + "</option>")
+            })
+            form.render();
+        })
+
+
+        //单位
+        $.post("XFDJ/department",function(data){
+            $.each(data,function(i,v){
+                // console.log(v)
+                $("select[name=questionAffiliations]").append("<option value='"+v.dname+"'>"+v.dname+"<option>")
+                $("select[name=toPassDept]").append("<option value='"+v.did+"'>"+v.dname+"<option>")
+            })
+        })
+
+
+        //来信形式
+        $.get("XFDJ/FindAllBase", {baseValue: "来信形式"}, function (data) {
+            $.each(data, function (h, t) {
+                $("select[name=letterStylef]").append("<option value='" + t.id + "'>" + t.dataValue + "</option>")
+            })
+            form.render();
+        })
+
+        //受信人 //批示领导
+        $.post("XFDJ/FindSys_User",function(data){
+            $.each(data,function(i,v){
+                $("select[name=letterReceiverf]").append("<option value='"+v.uidf+"'>"+v.truename+"</option>")
+                $("select[name=approveLeader]").append("<option value='"+v.uidf+"'>"+v.truename+"</option>")
+            })
+            form.render();
+        })
+
+
+    });
+</script>
+
+</html>

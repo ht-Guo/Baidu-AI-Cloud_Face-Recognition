@@ -176,7 +176,7 @@
                 return false;
             }else if (obj.event === 'delete') {
                 layer.confirm('真的删除行么', function (index) {
-                    $.get("Inform_Controller/del",{idf:data.idf},function (d) {
+                    $.post("Inform_Controller/del",{idf:data.idf},function (d) {
                         if (d>0){
                             layer.alert("删除成功")
                             obj.del();

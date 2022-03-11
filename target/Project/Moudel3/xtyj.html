@@ -65,18 +65,18 @@
                 icon: 'layui-icon-tips'
             }],
             cols: [[
-                {type: "checkbox",width:50},
-                {field: 'idf',width:130,title:'序号'},
-                {field: 'archivetype',width:130,title:'预警'},
-                {field: 'letterTitlef', width:130,title:'标题'},
-                {field: 'dname',width:130,title:'当前办理单位'},
-                {field: 'truename',width:130,title:'当前办理人'},
-                {field: 'truename', width:130,title:'短信状态',templet:function (res) {
+                {type: "checkbox",width:70},
+                {field: 'idf',width:170,title:'序号'},
+                {field: 'archivetype',width:170,title:'预警'},
+                {field: 'letterTitlef', width:210,title:'标题'},
+                {field: 'dname',width:170,title:'当前办理单位'},
+                {field: 'truename',width:170,title:'当前办理人'},
+                {field: 'truename', width:170,title:'短信状态',templet:function (res) {
                         if(res.truename!=null){
                             return"<span>已发送</span>"
                         }
                     }},
-                {field: 'supervisorTimef',width:160,title:'预警时间'},
+                {field: 'supervisorTimef',width:170,title:'预警时间'},
 
             ]],
             limits: [1, 5, 10],

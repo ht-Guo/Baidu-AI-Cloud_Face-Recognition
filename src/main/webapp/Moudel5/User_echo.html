@@ -75,7 +75,7 @@
 
 
         //加载用户所属部门信息
-        $.get("Sys_User/dept",function (bb) {
+        $.post("Sys_User/dept",function (bb) {
             $.each(bb, function (index,b2) {
                 var str ="<option value='"+b2.did+"'>"+b2.dname+"</option>";
                 $("#depid").append(str);
@@ -83,7 +83,7 @@
             form.render();
         });
         //加载用户所属职位信息
-        $.get("Sys_User/job",function (bb) {
+        $.post("Sys_User/job",function (bb) {
             $.each(bb, function (index,b2) {
                 var str="<option value='"+b2.jobid +"'>"+b2.jobname+"</option>";
                 $("#jobid").append(str);
@@ -106,7 +106,7 @@
                 table = layui.table,
                 $ = layui.$;
             //去数据库中查询要修改的数据
-            $.get("Sys_User/find",{"uidf":$("#uidf").val()},function (data) {
+            $.post("Sys_User/find",{"uidf":$("#uidf").val()},function (data) {
                 $("#truename").val(data.truename);
                 $("#mobilePhone").val(data.mobilePhone);
                 $("#email").val(data.email);

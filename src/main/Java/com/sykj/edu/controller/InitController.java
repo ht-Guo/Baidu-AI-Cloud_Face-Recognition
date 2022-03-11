@@ -58,19 +58,30 @@ public class InitController {
         for(int i=0;i<allInit.size();i++){
         switch(allInit.get(i).getTitle()){
             case "信访登记":
+                //       信访登记
+                final   Childs xfdj=new  Childs("信访登记","Moudel1/add1.html","fa fa-pencil","_self",null);
+//        非正常上访
+                final   Childs xfcx=new  Childs("信访查询","Moudel1/XinFangChaXun.html","fa fa-search","_self",null);
+                List XF=new ArrayList(){
+                    {
+                        add(xfdj);
+                        add(xfcx);
+                    }
+                };
+
                 //        信访登记
-                final   Childs xFDJ=new  Childs("信访登记","page/menu.html","fa fa-window-maximize","_self",null);
+                final   Childs xFDJ=new  Childs("信访登记","","fa fa-pencil-square-o","_self",XF);
                 xFGNMK.add(xFDJ);
                 break;
 
             case"信访处理":
 //      信访处理(待办件，非正常上访，已办件)
 //        待办件
-                final   Childs dBJ=new  Childs("待办件","Moudel2/table-dbj.html","fa fa-tachometer","_self",null);
+                final   Childs dBJ=new  Childs("待办件","Moudel2/table-dbj.html","fa fa-send","_self",null);
 //        非正常上访
-                final   Childs fZCCSF=new  Childs("非正常上访","Moudel2/table-fzcsf.html","fa fa-tachometer","_self",null);
+                final   Childs fZCCSF=new  Childs("非正常上访","Moudel2/table-fzcsf.html","fa fa-exclamation-circle","_self",null);
 //        已办件
-                final   Childs yBJ=new  Childs("已办件","Moudel2/YBJ.html","fa fa-tachometer","_self",null);
+                final   Childs yBJ=new  Childs("已办件","Moudel2/YBJ.html","fa fa-check-square-o","_self",null);
                 List xFList=new ArrayList(){
                     {
                         add(dBJ);
@@ -78,18 +89,18 @@ public class InitController {
                         add(yBJ);
                     }
                 };
-                final   Childs xFCL=new  Childs("信访处理","","fa fa-gears","_self",xFList);
+                final   Childs xFCL=new  Childs("信访处理","","fa fa-thumb-tack","_self",xFList);
                 xFGNMK.add(xFCL);
                 break;
 
             case "督查督办":
                 //        督查督办(督办管理，实时督查，系统预警，督查统计)
 //        督办管理
-                final   Childs dBGL=new  Childs("督办管理","Moudel3/table.html","fa fa-list-alt","_self",null);
+                final   Childs dBGL=new  Childs("督办管理","Moudel3/table.html","fa fa-tags","_self",null);
 //        实时督查
-                final   Childs sSDC=new  Childs("实时督查","Moudel3/ssdb.html","fa fa-navicon","_self",null);
+                final   Childs sSDC=new  Childs("实时督查","Moudel3/ssdb.html","fa fa-eye","_self",null);
 //        系统预警
-                final   Childs xTYJ=new  Childs("系统预警","Moudel3/xtyj.html","fa fa-tags","_self",null);
+                final   Childs xTYJ=new  Childs("系统预警","Moudel3/xtyj.html","fa fa-bell","_self",null);
                 List dCList=new ArrayList(){
                     {
                         add(dBGL);
@@ -97,20 +108,20 @@ public class InitController {
                         add(xTYJ);
                     }
                 };
-                final   Childs dCDB=new  Childs("督察督办","","fa fa-gears","_self",dCList);
+                final   Childs dCDB=new  Childs("督察督办","","fa fa-bookmark-o","_self",dCList);
                 xFGNMK.add(dCDB);
                 break;
 
                 case"查询统计":
                     //        查询统计(本局报表，上报报表，综合查询)
 //        我区群众到省、市、区集体上访一览表
-                    final   Childs SSQ=new  Childs("我区群众到省、市、区集体上访一览表","Moudel4/table1.html","fa fa-list-alt","_self",null);
+                    final   Childs SSQ=new  Childs("我区群众到省、市、区集体上访一览表","Moudel4/table1.html","fa fa-bar-chart-o","_self",null);
 //        我区群众到省、市集体上访明细表
-                    final   Childs SSJT=new  Childs("我区群众到省、市、集体上访明细表","Moudel4/table2.html","fa fa-navicon","_self",null);
+                    final   Childs SSJT=new  Childs("我区群众到省、市、集体上访明细表","Moudel4/table2.html","fa fa-bar-chart-o","_self",null);
 //        群众到我区集体上访明细表
-                    final   Childs wq=new  Childs("群众到我区集体上访明细表","Moudel4/table3.html","fa fa-tags","_self",null);
+                    final   Childs wq=new  Childs("群众到我区集体上访明细表","Moudel4/table3.html","fa fa-bar-chart-o","_self",null);
 //                    综合查询
-                    final   Childs zHcx=new Childs("综合查询","Moudel4/zhcx.html","","_self",null);
+                    final   Childs zHcx=new Childs("综合查询","Moudel4/zhcx.html","fa fa-filter","_self",null);
                     List tJList=new ArrayList(){
                         {
                             add(SSQ);
@@ -119,32 +130,32 @@ public class InitController {
                             add(zHcx);
                         }
                     };
-                    final   Childs cXTJ=new  Childs("查询统计","","fa fa-gears","_self",tJList);
+                    final   Childs cXTJ=new  Childs("查询统计","","fa fa-pie-chart","_self",tJList);
                     xFGNMK.add(cXTJ);
                     break;
 
             case"公共信息":
                 //        公共信息(通知通告，内部短消息)
 //        通知通告
-                final   Childs tZTG=new  Childs("通知通告","Moudel6/Inform.html","fa fa-stumbleupon-circle","_self",null);
+                final   Childs tZTG=new  Childs("通知通告","Moudel6/Inform.html","fa fa-bullhorn","_self",null);
 //        内部短信息
-                final   Childs nBDXX=new  Childs("内部短消息","Moudel6/Innernote.html","fa fa-viacoin","_self",null);
+                final   Childs nBDXX=new  Childs("内部短消息","Moudel6/Innernote.html","fa fa-comments","_self",null);
                 List gGXXList=new ArrayList(){
                     {
                         add(tZTG);
                         add(nBDXX);
                     }
                 };
-                final   Childs gGXX=new  Childs("公共信息","","fa fa-flag-o","_self",gGXXList);
+                final   Childs gGXX=new  Childs("公共信息","","fa fa-envelope","_self",gGXXList);
                 xFGNMK.add(gGXX);
                 break;
 
             case"系统管理":
                 //        系统管理(用户管理，角色管理)
 //        用户管理
-                final   Childs yHGL=new  Childs("用户管理","Moudel5/User.html","fa fa-hourglass-end","_self",null);
+                final   Childs yHGL=new  Childs("用户管理","Moudel5/User.html","fa fa-users","_self",null);
 //        角色管理
-                final   Childs jSGL=new  Childs("角色管理","page/404.html","fa fa-hourglass-end","_self",null);
+                final   Childs jSGL=new  Childs("角色管理","page/404.html","fa fa-user-times","_self",null);
                 List xTGLList=new ArrayList(){
                     {
                         add(yHGL);
@@ -158,7 +169,7 @@ public class InitController {
             case "重点对象":
                 //       重点对象管理(重点对象查询，维稳报表)
 //        重点对象查询
-                final   Childs zDDXCX=new  Childs("重点对象查询","page/button.html","fa fa-snowflake-o","_self",null);
+                final   Childs zDDXCX=new  Childs("重点对象查询","page/button.html","fa fa-exclamation-triangle","_self",null);
 //        维稳报表
                 final   Childs wWBB=new  Childs("维稳报表","page/layer.html","fa fa-shield","_self",null);
                 List zDDXGLList=new ArrayList(){
@@ -167,7 +178,7 @@ public class InitController {
                         add(wWBB);
                     }
                 };
-                final   Childs zDDXGL=new  Childs("重点对象管理","","fa fa-snowflake-o","",zDDXGLList);
+                final   Childs zDDXGL=new  Childs("重点对象管理","","fa fa-user-secret","",zDDXGLList);
                 xFGNMK.add(zDDXGL);
                 break;
         }

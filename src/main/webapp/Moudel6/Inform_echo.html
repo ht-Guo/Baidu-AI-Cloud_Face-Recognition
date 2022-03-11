@@ -74,7 +74,7 @@
                 table = layui.table,
                 $ = layui.$;
             //去数据库中查询要修改的数据
-            $.get("Inform_Controller/find",{"idf":$("#idf").val()},function (data) {
+            $.post("Inform_Controller/find",{"idf":$("#idf").val()},function (data) {
                 $("#type").val(data.type);
                 $("#titlef").val(data.titlef);
                 $("#useridf").val(data.useridf);

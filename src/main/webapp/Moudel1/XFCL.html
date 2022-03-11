@@ -1,0 +1,66 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="layuimini-main">
+  <div class="layui-form-item">
+    <label class="layui-form-label">信访件&nbsp;:&nbsp;</label>
+    <div class="layui-input-inline">
+      <input type="text" name="idf" id="idf" class="layui-input" readonly>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label required">办理人&nbsp;:&nbsp;</label>
+    <div class="layui-input-inline">
+      <select name="userId" id="userId" autocomplete placeholder="请选择">
+      </select>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label required">回复时间&nbsp;:&nbsp;</label>
+    <div class="layui-input-inline">
+      <input type="text" lay-verify="required" name="limitDatef" id="test3" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button type="submit" class="layui-btn layui-btn-normal" lay-verify="required" lay-submit lay-filter="data-search-btn">办理</button>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+  layui.use(['form', 'table','laydate'], function () {
+    var form = layui.form,
+            layer = layui.layer,
+            table = layui.table,
+            $ = layui.$,
+            laydate=layui.laydate;
+
+    var index=layer.index;
+
+    laydate.render({
+      elem:"#test3",
+      type:"datetime",
+      min: 1,
+      // max:10,
+      format:"yyyy-MM-dd HH:mm:ss"
+    });
+
+    form.on('submit(data-search-btn)', function (data) {
+          $.post("XFDJ/UpdateLetterBaseInfo",{"limitDatef":$("#test3").val(),"idf":$("#idf").val()},
+          function(data){
+            if(data>0){
+            $.post("XFDJ/InsertApproveInfo",{"let_idf":$("#idf").val(),"idf":$("#idf").val(),"userId":$("#userId").val()},function(data){
+              if(data>0){
+                alert("办理成功")
+                layer.msg("办理成功")
+                layer.close(index)
+                window.parent.layui.table.reload('currentTableId123', {
+                });
+              }
+            })
+            }
+          })
+    })
+
+  })
+</script>
